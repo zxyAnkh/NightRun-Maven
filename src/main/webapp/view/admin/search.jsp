@@ -30,31 +30,7 @@
     <script src="../../js/search.js" type="text/javascript"></script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                    aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="">管理员端</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="/view/admin/main">首页</a></li>
-                <li><a href="#run">夜跑管理</a></li>
-                <li><a href="/view/admin/users">用户管理</a></li>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="/view/admin/admin"> ${beanadminEntity.aname}</a></li>
-                <li><a href="<c:url value="/view/admin/signout"/>">退出登录</a></li>
-            </ul>
-        </div><!--/.nav-collapse -->
-    </div>
-</nav>
+<%@include file="head.jsp"%>
 <div class="btn-toolbar" role="toolbar">
     <div class="btn-group btn-group-sm">
         <input id="stime" size="16" type="text" value="" readonly class="form_date" onchange="timeChange()" placeholder = "起始时间">
