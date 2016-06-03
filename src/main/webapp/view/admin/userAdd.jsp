@@ -1,12 +1,12 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: zxy
-  Date: 5/14/2016
-  Time: 6:19 PM
+  Date: 6/3/2016
+  Time: 8:26 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>城院夜跑系统</title>
@@ -26,7 +26,7 @@
     <!-- 只有使用字体图标时才需要加载 Font-Awesome -->
     <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../../js/jquery-2.2.4.min.js" type="text/javascript"></script>
-    <script src="../../js/select.js" type="text/javascript"></script>
+    <script src="../../js/userAdd.js" type="text/javascript"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-static-top">
@@ -60,27 +60,31 @@
         <a href="<c:url value="/view/admin/usersAll"/>" class="btn btn-primary btn-lg" role="button">显示注销学生</a>
     </div>
 </div>
-<div class="html-editor-align-center">
-    <table class="table table-striped">
-        <thead>
-        <tr>
-            <th>#</th>
-            <th>学号</th>
-            <th>姓名</th>
-            <th>年级</th>
-        </tr>
-        </thead>
-        <tbody>
-        <c:forEach items="${viewJsAsEntityList}" var="viewJsAsEntity" varStatus="status">
-            <tr>
-                <td>${status.count}</td>
-                <td>${viewJsAsEntity.sno}</td>
-                <td>${viewJsAsEntity.sname}</td>
-                <td>${viewJsAsEntity.sgrade}</td>
-            </tr>
-        </c:forEach>
-        </tbody>
-    </table>
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span12">
+            <form action="/view/admin/add" method="post" class="form-horizontal">
+                <fieldset>
+                    <legend>添加学生</legend>
+                    <div class="form-group form-group-sm">
+                        <label class="col-sm-2 control-label" for="no">学号&nbsp;&nbsp;</label>
+                        <div class="input-group">
+                            <input class="form-control" type="text" id="no" value="" name="no" onchange="check()"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <label class="col-sm-2 control-label" for="name">姓名&nbsp;&nbsp;</label>
+                        <div class="input-group">
+                            <input class="form-control" type="text" id="name" value="" name="name" onchange="check()"/>
+                        </div>
+                    </div>
+                    <div class="form-group form-group-sm">
+                        <button type="submit" class="btn btn-primary disabled" id="submit">确定</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 </div>
 </body>
 </html>

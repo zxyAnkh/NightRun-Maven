@@ -18,4 +18,5 @@ public interface AdminDao {
     List<ViewJsRunEntity> loadRun(String ano, int branch, Boolean isAll);
     List<ViewJsRunEntity> fuzzyQuery(String type, String keyword, int branch, Boolean isAll);
     Boolean modify(BeanadminEntity beanadminEntity);
+    Boolean addUser(BeanuserEntity beanuserEntity);
 }

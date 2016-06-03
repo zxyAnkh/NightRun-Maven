@@ -4,7 +4,9 @@ import cn.edu.zucc.entity.BeanadminEntity;
 import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
 import cn.edu.zucc.form.BeanadminForm;
+import cn.edu.zucc.form.BeanuserForm;
 import cn.edu.zucc.service.AdminService;
+import net.sf.ehcache.CacheManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +29,8 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
+//    @Autowired
+//    private CacheManager cacheManager;
 
     private static final Log logger = LogFactory.getLog(AdminController.class);
 
@@ -121,6 +125,21 @@ public class AdminController {
                     return "admin/admin";
                 }
             }
+        }
+        return "admin/signin";
+    }
+
+    @RequestMapping("/userAdd")
+    public String userAdd() {
+        return "/admin/userAdd";
+    }
+
+    @RequestMapping("/add")
+    public String add(BeanuserForm beanuserForm,HttpSession httpSession) {
+        logger.info("add");
+        if(httpSession.getAttribute("beanadminEntity") != null) {
+            if(adminService.addUser(beanuserForm))
+                return "admin/user";
         }
         return "admin/signin";
     }

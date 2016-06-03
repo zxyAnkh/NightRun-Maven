@@ -2,11 +2,13 @@ package cn.edu.zucc.daoImpl;
 
 import cn.edu.zucc.dao.AdminDao;
 import cn.edu.zucc.entity.BeanadminEntity;
+import cn.edu.zucc.entity.BeanuserEntity;
 import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.annotations.SQLInsert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -69,5 +71,11 @@ public class AdminDaoImpl implements AdminDao {
                 + beanadminEntity.getApwd() + "' where aId = " + beanadminEntity.getaId();
         int result = sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
         return result == 1;
+    }
+
+    @Override
+    public Boolean addUser(BeanuserEntity beanuserEntity) {
+
+        return null;
     }
 }

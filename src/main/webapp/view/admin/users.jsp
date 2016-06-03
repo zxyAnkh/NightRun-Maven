@@ -18,6 +18,13 @@
     <meta name="HandheldFriendly" content="True"/>
     <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <!-- Buttons 库的核心文件 -->
+    <link rel="stylesheet" href="/css/buttons.css">
+    <!-- 当需要使用带下拉菜单的按钮时才需要加载下面的 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/buttons.js"></script>
+    <!-- 只有使用字体图标时才需要加载 Font-Awesome -->
+    <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../../js/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script src="../../js/select.js" type="text/javascript"></script>
 </head>
@@ -49,6 +56,7 @@
 </nav>
 <div class="btn-toolbar" role="toolbar">
     <div class="btn-group btn-group-sm" role="group">
+        <a href="<c:url value="/view/admin/userAdd"/>" class="btn btn-primary" role="button">添加</a>
         <a href="<c:url value="/view/admin/usersAll"/>" class="btn btn-primary btn-lg" role="button">显示注销学生</a>
     </div>
 </div>

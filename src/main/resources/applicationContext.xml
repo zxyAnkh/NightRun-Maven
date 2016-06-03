@@ -69,20 +69,20 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
     </aop:config>
     <!-- 缓存配置 -->
-    <cache:annotation-driven cache-manager="cacheManager"/>
-    <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
-        <property name="caches">
-            <set>
-                <bean name="myCache" class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"/>
-            </set>
-        </property>
-    </bean>
+    <!--<cache:annotation-driven cache-manager="cacheManager"/>-->
+    <!--<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">-->
+    <!--<property name="caches">-->
+    <!--<set>-->
+    <!--<bean name="myCache" class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean"/>-->
+    <!--</set>-->
+    <!--</property>-->
+    <!--</bean>-->
     <!-- 若只想使用Spring自身提供的缓存器,则注释掉下面的两个关于Ehcache配置的bean,并启用上面的SimpleCacheManager即可 -->
     <!-- Spring提供的基于的Ehcache实现的缓存管理器 -->
     <!--<bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">-->
-    <!--<property name="configLocation" value="classpath:ehcache.xml"/>-->
+        <!--<property name="configLocation" value="ehcache.xml"/>-->
     <!--</bean>-->
     <!--<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">-->
-    <!--<property name="cacheManager" ref="cacheManagerFactory"/>-->
+        <!--<property name="cacheManager" ref="cacheManagerFactory"/>-->
     <!--</bean>-->
 </beans>
