@@ -20,7 +20,7 @@ function urlcheck() {
         case "usersAll":
             document.getElementById("user").classList = "active";
             break;
-        case "usersAdd":
+        case "userAdd":
             document.getElementById("user").classList = "active";
             break;
         case "admin":

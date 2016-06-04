@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -56,13 +57,19 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Boolean addUser(BeanuserForm beanuserForm) {
+    public Boolean addUser(BeanuserForm beanuserForm){
         BeanuserEntity beanuserEntity = new BeanuserEntity();
         beanuserEntity.setSno(beanuserForm.getNo());
         beanuserEntity.setSname(beanuserForm.getName());
-        beanuserEntity.setSbranch(beanuserForm.getBranch());
-        beanuserEntity.setSgrade(beanuserForm.getGrade());
-        beanuserEntity.setAddtime(beanuserForm.getAddtime());
-        return adminDao.addUser(beanuserEntity);
+        beanuserEntity.setSpwd("123456");
+        beanuserEntity.setSbranch(Integer.parseInt(beanuserForm.getNo().substring(4,5)));
+        beanuserEntity.setSgrade(Integer.parseInt(beanuserForm.getNo().substring(1,3)));
+        beanuserEntity.setAddtime(new Date());
+        try {
+            return adminDao.addUser(beanuserEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

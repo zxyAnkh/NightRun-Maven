@@ -139,7 +139,7 @@ public class AdminController {
         logger.info("add");
         if(httpSession.getAttribute("beanadminEntity") != null) {
             if(adminService.addUser(beanuserForm))
-                return "admin/user";
+                return "redirect:users";
         }
         return "admin/signin";
     }

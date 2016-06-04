@@ -74,8 +74,12 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
-    public Boolean addUser(BeanuserEntity beanuserEntity) {
-
-        return null;
+    public Boolean addUser(BeanuserEntity beanuserEntity) throws  Exception{
+        try{
+            sessionFactory.getCurrentSession().save(beanuserEntity);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
     }
 }
