@@ -33,6 +33,15 @@ public class AdminDaoImpl implements AdminDao {
     }
 
     @Override
+    public Boolean findByNo(String sno, int branch) {
+        String hql = "from ViewJsAsEntity where sno=?";
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery(hql);
+        query.setString(0, sno);
+        return query.list() == null;
+    }
+
+    @Override
     public List<ViewJsAsEntity> loadUser(String ano, Boolean isAll) {
         String hql = "from ViewJsAsEntity where ano=?";
         if (isAll == Boolean.FALSE)

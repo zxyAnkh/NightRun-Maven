@@ -8,18 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>城院夜跑系统</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <!-- 新 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="http://cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../js/head.js"></script>
 </head>
 <body onload="urlcheck()">
@@ -48,5 +36,12 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
+<div class="btn-toolbar hidden" role="toolbar" id="userdiv">
+    <div class="btn-group btn-group-sm" role="group">
+        <a href="<c:url value="/view/admin/userAdd"/>" class="btn btn-primary" role="button">单独添加</a>
+        <a href="<c:url value="/view/admin/usersAdd"/>" class="btn btn-primary" role="button">多个添加</a>
+        <a href="<c:url value="/view/admin/usersAll"/>" class="btn btn-primary btn-lg" role="button">显示注销学生</a>
+    </div>
+</div>
 </body>
 </html>

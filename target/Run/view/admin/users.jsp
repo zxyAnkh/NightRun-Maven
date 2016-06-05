@@ -30,12 +30,6 @@
 </head>
 <body>
 <%@include file="head.jsp"%>
-<div class="btn-toolbar" role="toolbar">
-    <div class="btn-group btn-group-sm" role="group">
-        <a href="<c:url value="/view/admin/userAdd"/>" class="btn btn-primary" role="button">添加</a>
-        <a href="<c:url value="/view/admin/usersAll"/>" class="btn btn-primary btn-lg" role="button">显示注销学生</a>
-    </div>
-</div>
 <div class="html-editor-align-center">
     <table class="table table-striped">
         <thead>

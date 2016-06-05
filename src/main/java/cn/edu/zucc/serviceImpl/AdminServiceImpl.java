@@ -10,7 +10,9 @@ import cn.edu.zucc.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
@@ -45,31 +47,40 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<ViewJsRunEntity> fuzzyQuery(String type,String keyword, int branch, Boolean isAll) {
-        if (keyword != null && !"".equals(keyword)){
-            return adminDao.fuzzyQuery(type,keyword, branch, isAll);
+    public List<ViewJsRunEntity> fuzzyQuery(String type, String keyword, int branch, Boolean isAll) {
+        if (keyword != null && !"".equals(keyword)) {
+            return adminDao.fuzzyQuery(type, keyword, branch, isAll);
         }
         return null;
     }
+
     @Override
     public Boolean modify(BeanadminEntity beanadminEntity) {
         return adminDao.modify(beanadminEntity);
     }
 
     @Override
-    public Boolean addUser(BeanuserForm beanuserForm){
+    public Boolean addUser(BeanuserForm beanuserForm) {
         BeanuserEntity beanuserEntity = new BeanuserEntity();
         beanuserEntity.setSno(beanuserForm.getNo());
         beanuserEntity.setSname(beanuserForm.getName());
         beanuserEntity.setSpwd("123456");
-        beanuserEntity.setSbranch(Integer.parseInt(beanuserForm.getNo().substring(4,5)));
-        beanuserEntity.setSgrade(Integer.parseInt(beanuserForm.getNo().substring(1,3)));
+        beanuserEntity.setSbranch(Integer.parseInt(beanuserForm.getNo().substring(4, 5)));
+        beanuserEntity.setSgrade(Integer.parseInt(beanuserForm.getNo().substring(1, 3)));
         beanuserEntity.setAddtime(new Date());
         try {
-            return adminDao.addUser(beanuserEntity);
+            if (adminDao.findByNo(beanuserEntity.getSno(), beanuserEntity.getSbranch()))
+                return adminDao.addUser(beanuserEntity);
+            else
+                return false;
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public Boolean addUsers(File file) {
+        return null;
     }
 }

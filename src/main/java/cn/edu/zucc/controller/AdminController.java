@@ -4,6 +4,7 @@ import cn.edu.zucc.entity.BeanadminEntity;
 import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
 import cn.edu.zucc.form.BeanadminForm;
+import cn.edu.zucc.form.BeanuserFileForm;
 import cn.edu.zucc.form.BeanuserForm;
 import cn.edu.zucc.service.AdminService;
 import net.sf.ehcache.CacheManager;
@@ -15,9 +16,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -116,7 +120,7 @@ public class AdminController {
             model.addAttribute("beanadminForm", beanadminForm);
             BeanadminEntity beanadminEntity = (BeanadminEntity) httpSession.getAttribute("beanadminEntity");
             if (beanadminForm.getOldpwd() != null && beanadminForm.getOldpwd().equals(beanadminEntity.getApwd())) {
-                if(!"".equals(beanadminForm.getNewpwd2()))
+                if (!"".equals(beanadminForm.getNewpwd2()))
                     beanadminEntity.setApwd(beanadminForm.getNewpwd2());
                 beanadminEntity.setAname(beanadminForm.getName());
                 if (adminService.modify(beanadminEntity))
@@ -134,12 +138,40 @@ public class AdminController {
         return "/admin/userAdd";
     }
 
+    @RequestMapping("/usersAdd")
+    public String usersAdd() {
+        return "/admin/usersAdd";
+    }
+
     @RequestMapping("/add")
-    public String add(BeanuserForm beanuserForm,HttpSession httpSession) {
+    public String add(BeanuserForm beanuserForm, HttpSession httpSession) {
         logger.info("add");
-        if(httpSession.getAttribute("beanadminEntity") != null) {
-            if(adminService.addUser(beanuserForm))
+        if (httpSession.getAttribute("beanadminEntity") != null) {
+            BeanadminEntity beanadminEntity = (BeanadminEntity) httpSession.getAttribute("beanadminEntity");
+            if (beanadminEntity.getAbranch() == Integer.parseInt(beanuserForm.getNo().substring(4, 5)) && adminService.addUser(beanuserForm))
                 return "redirect:users";
+            else
+                return "redirect:users";
+        }
+        return "admin/signin";
+    }
+
+    @RequestMapping("/adds")
+    public String adds(HttpSession httpSession, BeanuserFileForm beanuserFileForm) {
+        logger.info("adds");
+        if (httpSession.getAttribute("beanadminEntity") != null) {
+            MultipartFile multipartFile = beanuserFileForm.getFile();
+            String fileName = multipartFile.getOriginalFilename();
+            try {
+                File file = new File("/upload/", fileName);
+                multipartFile.transferTo(file);
+                if (adminService.addUsers(file)) {
+                    return "redirect:users";
+                }
+                return "redirect:users";
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
         return "admin/signin";
     }

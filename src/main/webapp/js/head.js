@@ -7,24 +7,35 @@ function urlcheck() {
     switch (urlend){
         case "main":
             document.getElementById("home").classList = "active";
+            document.getElementById("userdiv").classList = "btn-toolbar hidden";
             break;
         case "search":
             document.getElementById("home").classList = "active";
+            document.getElementById("userdiv").classList = "btn-toolbar hidden";
             break;
         case "notice":
             document.getElementById("notice").classList = "active";
+            document.getElementById("userdiv").classList = "btn-toolbar hidden";
             break;
         case "users":
             document.getElementById("user").classList = "active";
+            document.getElementById("userdiv").classList = "btn-toolbar";
             break;
         case "usersAll":
             document.getElementById("user").classList = "active";
+            document.getElementById("userdiv").classList = "btn-toolbar";
             break;
         case "userAdd":
             document.getElementById("user").classList = "active";
+            document.getElementById("userdiv").classList = "btn-toolbar";
+            break;
+        case "usersAdd":
+            document.getElementById("user").classList = "active";
+            document.getElementById("userdiv").classList = "btn-toolbar";
             break;
         case "admin":
             document.getElementById("admin").classList = "active";
+            document.getElementById("userdiv").classList = "btn-toolbar hidden";
             break;
         default:
             break;

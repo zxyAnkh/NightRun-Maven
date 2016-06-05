@@ -5,7 +5,9 @@ import cn.edu.zucc.entity.BeanuserEntity;
 import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
 import cn.edu.zucc.form.BeanuserForm;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
 import java.util.List;
 
 /**
@@ -18,4 +20,5 @@ public interface AdminService {
     List<ViewJsRunEntity> fuzzyQuery(String type, String keyword, int branch, Boolean isAll);
     Boolean modify(BeanadminEntity beanadminEntity);
     Boolean addUser(BeanuserForm beanuserForm);
+    Boolean addUsers(File file);
 }

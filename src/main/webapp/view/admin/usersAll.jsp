@@ -22,11 +22,6 @@
 </head>
 <body>
 <%@include file="head.jsp"%>
-<div class="btn-toolbar" role="toolbar">
-    <div class="btn-group btn-group-sm" role="group">
-        <a href="<c:url value="/view/admin/users"/>" class="btn btn-primary btn-lg active" role="button">隐藏注销学生</a>
-    </div>
-</div>
 <div class="html-editor-align-center">
     <table class="table table-striped">
         <thead>

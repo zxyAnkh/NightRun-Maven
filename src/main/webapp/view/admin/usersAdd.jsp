@@ -2,12 +2,28 @@
 <%--
   Created by IntelliJ IDEA.
   User: zxy
-  Date: 6/3/2016
-  Time: 8:26 PM
+  Date: 6/4/2016
+  Time: 9:22 AM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
+<script type="text/javascript">
+    function isExcel(inputFile) {
+        var file = inputFile.value;
+        if (file == "")
+            document.getElementById("submit").classList = "btn btn-primary disabled";
+        else {
+            var type = file.substr(file.lastIndexOf('.') + 1);
+            if ("xls" == type || "xlsx" == type)
+                document.getElementById("submit").classList = "btn btn-primary";
+            else {
+                document.getElementById("submit").classList = "btn btn-primary disabled";
+                inputFile.value = "";
+            }
+        }
+    }
+</script>
 <head>
     <title>城院夜跑系统</title>
     <meta charset="utf-8">
@@ -20,33 +36,24 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <!-- Buttons 库的核心文件 -->
     <link rel="stylesheet" href="/css/buttons.css">
-    <!-- 当需要使用带下拉菜单的按钮时才需要加载下面的 JavaScript 文件 -->
-    <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
-    <script type="text/javascript" src="/js/buttons.js"></script>
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap-fileinput/4.3.1/css/fileinput.min.css">
+    <link rel="script" href="http:// //cdn.bootcss.com/bootstrap-fileinput/4.3.1/js/fileinput.min.js">
     <!-- 只有使用字体图标时才需要加载 Font-Awesome -->
     <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../../js/jquery-2.2.4.min.js" type="text/javascript"></script>
-    <script src="../../js/userAdd.js" type="text/javascript"></script>
 </head>
 <body>
-<%@include file="head.jsp"%>
+<%@include file="head.jsp" %>
 <div class="container-fluid">
     <div class="row-fluid">
         <div class="span12">
-            <form action="/view/admin/add" method="post" class="form-horizontal">
+            <form action="/view/admin/adds" method="post" enctype="multipart/form-data">
                 <fieldset>
-                    <legend>添加学生</legend>
+                    <legend>多个添加</legend>
                     <div class="form-group form-group-sm">
-                        <label class="col-sm-2 control-label" for="no">学号&nbsp;&nbsp;</label>
-                        <div class="input-group">
-                            <input class="form-control" type="text" id="no" value="" name="no" onchange="check()"/>
-                        </div>
-                    </div>
-                    <div class="form-group form-group-sm">
-                        <label class="col-sm-2 control-label" for="name">姓名&nbsp;&nbsp;</label>
-                        <div class="input-group">
-                            <input class="form-control" type="text" id="name" value="" name="name" onchange="check()"/>
-                        </div>
+                        <label for="inputFile">File input</label>
+                        <input type="file" id="inputFile" onchange="isExcel(this)"/>
+                        <p class="help-block">Please choose your file to upload.</p>
                     </div>
                     <div class="form-group form-group-sm">
                         <button type="submit" class="btn btn-primary disabled" id="submit">确定</button>

@@ -14,6 +14,7 @@ import java.util.List;
  */
 public interface AdminDao {
     BeanadminEntity findByNo(String ano);
+    Boolean findByNo(String sno,int branch);
     List<ViewJsAsEntity> loadUser(String ano, Boolean isAll);
     List<ViewJsRunEntity> loadRun(String ano, int branch, Boolean isAll);
     List<ViewJsRunEntity> fuzzyQuery(String type, String keyword, int branch, Boolean isAll);
