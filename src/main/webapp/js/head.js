@@ -20,10 +20,12 @@ function urlcheck() {
         case "users":
             document.getElementById("user").classList = "active";
             document.getElementById("userdiv").classList = "btn-toolbar";
+            document.getElementById("users").classList = "btn btn-primary btn-lg";
             break;
         case "usersAll":
             document.getElementById("user").classList = "active";
             document.getElementById("userdiv").classList = "btn-toolbar";
+            document.getElementById("usersall").classList = "btn btn-primary btn-lg";
             break;
         case "userAdd":
             document.getElementById("user").classList = "active";
