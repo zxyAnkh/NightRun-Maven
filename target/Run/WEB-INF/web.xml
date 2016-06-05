@@ -17,6 +17,11 @@
             <param-name>contextConfigLocation</param-name>
             <param-value>classpath:/applicationContext.xml</param-value>
         </init-param>
+        <multipart-config>
+            <max-file-size>10485670</max-file-size>
+            <max-request-size>418018841</max-request-size>
+            <file-size-threshold>1048576</file-size-threshold>
+        </multipart-config>
         <load-on-startup>1</load-on-startup>
     </servlet>
     <servlet-mapping>

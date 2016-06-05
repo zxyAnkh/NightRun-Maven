@@ -13,7 +13,7 @@
 </head>
 <body>
 <form action="/view/admin/adds" method="post" enctype="multipart/form-data">
-    <input type="file" id="inputFile"/>
+    <input type="file" id="inputFile" name="file"/>
     <button type="submit" id="submit">确定</button>
 </form>
 </body>

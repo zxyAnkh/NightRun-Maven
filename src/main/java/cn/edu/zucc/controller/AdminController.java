@@ -4,10 +4,8 @@ import cn.edu.zucc.entity.BeanadminEntity;
 import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
 import cn.edu.zucc.form.BeanadminForm;
-import cn.edu.zucc.form.BeanuserFileForm;
 import cn.edu.zucc.form.BeanuserForm;
 import cn.edu.zucc.service.AdminService;
-import net.sf.ehcache.CacheManager;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +20,8 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -157,13 +157,14 @@ public class AdminController {
     }
 
     @RequestMapping("/adds")
-    public String adds(HttpSession httpSession, BeanuserFileForm beanuserFileForm) {
+    public String adds(HttpSession httpSession, @RequestParam("file") MultipartFile multipartFile) {
         logger.info("adds");
         if (httpSession.getAttribute("beanadminEntity") != null) {
-            MultipartFile multipartFile = beanuserFileForm.getFile();
-            String fileName = multipartFile.getOriginalFilename();
+            String path = httpSession.getServletContext().getRealPath("/upload");
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
+            String fileName = simpleDateFormat.format(new Date());
+            File file = new File(path, fileName+".xls");
             try {
-                File file = new File("/upload/", fileName);
                 multipartFile.transferTo(file);
                 if (adminService.addUsers(file)) {
                     return "redirect:users";

@@ -52,7 +52,7 @@
                     <legend>多个添加</legend>
                     <div class="form-group form-group-sm">
                         <label for="inputFile">File input</label>
-                        <input type="file" id="inputFile" onchange="isExcel(this)"/>
+                        <input type="file" id="inputFile" name="file" onchange="isExcel(this)"/>
                         <p class="help-block">Please choose your file to upload.</p>
                     </div>
                     <div class="form-group form-group-sm">

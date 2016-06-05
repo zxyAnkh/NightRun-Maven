@@ -6,6 +6,7 @@ import cn.edu.zucc.entity.BeanuserEntity;
 import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
 import cn.edu.zucc.form.BeanuserForm;
+import cn.edu.zucc.handle.ReadExcel;
 import cn.edu.zucc.service.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -81,6 +83,22 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public Boolean addUsers(File file) {
-        return null;
+        try {
+            List<BeanuserForm> formList = new ReadExcel().readExcel(file.getPath());
+            if (formList != null) {
+                for (BeanuserForm beanuserForm : formList) {
+                    System.out.println(beanuserForm.getNo() + "  " + beanuserForm.getName());
+                    Boolean aBoolean = addUser(beanuserForm);
+                    System.out.println(aBoolean);
+                    if (aBoolean == false) {
+                        return false;
+                    }
+                }
+                return true;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return false;
     }
 }

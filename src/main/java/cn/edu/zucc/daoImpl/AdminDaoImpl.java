@@ -32,6 +32,7 @@ public class AdminDaoImpl implements AdminDao {
         return (BeanadminEntity) query.uniqueResult();
     }
 
+    // not found: true
     @Override
     public Boolean findByNo(String sno, int branch) {
         String hql = "from ViewJsAsEntity where sno=?";
