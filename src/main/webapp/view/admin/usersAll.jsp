@@ -23,7 +23,7 @@
 <body>
 <%@include file="head.jsp"%>
 <div class="html-editor-align-center">
-    <table class="table table-striped">
+    <table class="table table-striped" id="usertable">
         <thead>
         <tr>
             <th>#</th>

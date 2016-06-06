@@ -100,9 +100,13 @@ public class AdminController {
     public String search(@RequestParam("type") String type, @RequestParam("keyword") String keyword, Model model, HttpSession httpSession) {
         logger.info("mainPageFuzzyQuery");
         if (httpSession.getAttribute("beanadminEntity") != null) {
-            List<ViewJsRunEntity> runSearchResult = adminService.fuzzyQuery(type, keyword, 1, Boolean.FALSE);
+            if ("rkeyword".equals(type) || "rtime".equals(type)) {
+                List<ViewJsRunEntity> runSearchResult = adminService.findRun(type, keyword, 1, Boolean.FALSE);
+                model.addAttribute("runSearchResult", runSearchResult);
+            } else if ("skeyword".equals(type) || "stime".equals(type)) {
+
+            }
             logger.info(keyword);
-            model.addAttribute("runSearchResult", runSearchResult);
             return "admin/search";
         }
         return "admin/signin";
@@ -163,7 +167,7 @@ public class AdminController {
             String path = httpSession.getServletContext().getRealPath("/upload");
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
             String fileName = simpleDateFormat.format(new Date());
-            File file = new File(path, fileName+".xls");
+            File file = new File(path, fileName + ".xls");
             try {
                 multipartFile.transferTo(file);
                 if (adminService.addUsers(file)) {
@@ -173,6 +177,16 @@ public class AdminController {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+        return "admin/signin";
+    }
+
+    @RequestMapping("/delete")
+    public String deleteuser(HttpSession httpSession, List<String> list) {
+        if (httpSession.getAttribute("beanadminEntity") != null) {
+            BeanadminEntity beanadminEntity = (BeanadminEntity) httpSession.getAttribute("beanadminEntity");
+            adminService.deleteUser(list, beanadminEntity.getAbranch());
+            return "redirect:users";
         }
         return "admin/signin";
     }

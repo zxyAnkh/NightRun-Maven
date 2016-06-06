@@ -17,8 +17,9 @@ public interface AdminService {
     BeanadminEntity doLogin(String no, String pwd);
     List<ViewJsAsEntity> loadUser(String ano, Boolean isAll);
     List<ViewJsRunEntity> loadRun(String ano, int branch, Boolean isAll);
-    List<ViewJsRunEntity> fuzzyQuery(String type, String keyword, int branch, Boolean isAll);
+    List<ViewJsRunEntity> findRun(String type, String keyword, int branch, Boolean isAll);
     Boolean modify(BeanadminEntity beanadminEntity);
     Boolean addUser(BeanuserForm beanuserForm);
     Boolean addUsers(File file);
+    Boolean deleteUser(List<String> snoList,int branch);
 }

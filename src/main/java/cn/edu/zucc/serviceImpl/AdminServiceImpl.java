@@ -49,9 +49,9 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<ViewJsRunEntity> fuzzyQuery(String type, String keyword, int branch, Boolean isAll) {
+    public List<ViewJsRunEntity> findRun(String type, String keyword, int branch, Boolean isAll) {
         if (keyword != null && !"".equals(keyword)) {
-            return adminDao.fuzzyQuery(type, keyword, branch, isAll);
+            return adminDao.findRun(type, keyword, branch, isAll);
         }
         return null;
     }
@@ -71,7 +71,7 @@ public class AdminServiceImpl implements AdminService {
         beanuserEntity.setSgrade(Integer.parseInt(beanuserForm.getNo().substring(1, 3)));
         beanuserEntity.setAddtime(new Date());
         try {
-            if (adminDao.findByNo(beanuserEntity.getSno(), beanuserEntity.getSbranch()))
+            if (adminDao.findByNo(beanuserEntity.getSno(), beanuserEntity.getSbranch()) == null)
                 return adminDao.addUser(beanuserEntity);
             else
                 return false;
@@ -90,7 +90,7 @@ public class AdminServiceImpl implements AdminService {
                     System.out.println(beanuserForm.getNo() + "  " + beanuserForm.getName());
                     Boolean aBoolean = addUser(beanuserForm);
                     System.out.println(aBoolean);
-                    if (aBoolean == false) {
+                    if (!aBoolean) {
                         return false;
                     }
                 }
@@ -100,5 +100,19 @@ public class AdminServiceImpl implements AdminService {
             e.printStackTrace();
         }
         return false;
+    }
+
+    @Override
+    public Boolean deleteUser(List<String> snoList, int branch) {
+        int flag = 1;
+        for (String sno : snoList) {
+            ViewJsAsEntity viewJsAsEntity = adminDao.findByNo(sno, branch);
+            int id = viewJsAsEntity.getsId();
+            if (!adminDao.deleteUser(id)) {
+                flag = 0;
+                break;
+            }
+        }
+        return flag == 1;
     }
 }

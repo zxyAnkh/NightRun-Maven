@@ -40,7 +40,10 @@
     <div class="btn-group btn-group-sm" role="group">
         <a href="<c:url value="/view/admin/userAdd"/>" class="btn btn-primary" role="button">单独添加</a>
         <a href="<c:url value="/view/admin/usersAdd"/>" class="btn btn-primary" role="button">多个添加</a>
-        <a href="<c:url value="/view/admin/usersAll"/>" class="btn btn-primary btn-lg" role="button">显示注销学生</a>
+        <a onclick="delusers()" class="btn btn-primary hidden" role="button" id="delete">删除</a>
+        <a onclick="restoreusers()" class="btn btn-primary hidden" role="button" id="restore">恢复</a>
+        <a href="<c:url value="/view/admin/users"/>" class="btn btn-primary btn-lg hidden" role="button" id="usersall">显示注销学生</a>
+        <a href="<c:url value="/view/admin/usersAll"/>" class="btn btn-primary btn-lg hidden" role="button" id="users">隐藏注销学生</a>
     </div>
 </div>
 </body>

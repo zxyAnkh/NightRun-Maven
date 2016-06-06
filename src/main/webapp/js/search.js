@@ -10,7 +10,7 @@ function timeQuery() {
     var ey = etime.substr(0, 4);
     var eM = etime.substr(5, 2);
     var ed = etime.substr(8, 2);
-    location.href = "search?type=time&keyword=" + sy + sM + sd + ey + eM + ed + ed;
+    location.href = "search?type=rtime&keyword=" + sy + sM + sd + ey + eM + ed + ed;
 }
 function timeChange() {
     var stime = document.getElementById("stime").value;
@@ -20,7 +20,12 @@ function timeChange() {
         document.getElementById("time").classList = "btn btn-primary";
     }
 }
-function fuzzyQuery() {
+function find() {
+    var type=document.getElementById("type").value;
+    if(type = "夜跑")
+        findRun()
+}
+function findRun() {
     var keyword = document.getElementById("ksearch").value;
-    location.href = "search?type=keyword&keyword=" + keyword;
+    location.href = "search?type=rkeyword&keyword=" + keyword;
 }

@@ -3,7 +3,7 @@
  */
 $(function(){
     function initTableCheckbox() {
-        var $table = $('#runtable');
+        var $table = $('#usertable');
         var $thr = $table.find('thead tr');
         var $checkAllTh = $('<th><input type="checkbox" id="checkAll" name="checkAll" /></th>');
         /*将全选/反选复选框添加到表头最前，即增加一列*/

@@ -28,7 +28,6 @@
     <script type="text/javascript" src="../../js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
     <link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="../../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-    <script src="../../js/select.js" type="text/javascript"></script>
     <script src="../../js/search.js" type="text/javascript"></script>
 </head>
 <body>
@@ -52,11 +51,11 @@
     </script>
     <div class="btn-group btn-group-sm" role="group">
         <input type="text" class="form-control" placeholder="请输入学号或姓名" id="ksearch"
-               onkeydown="if(event.keyCode == 13) fuzzyQuery()">
+               onkeydown="if(event.keyCode == 13) findRun()">
     </div>
 </div>
 <div class="html-editor-align-center">
-    <table class="table table-striped" id="runtable">
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>#</th>

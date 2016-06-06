@@ -20,10 +20,14 @@ function urlcheck() {
         case "users":
             document.getElementById("user").classList = "active";
             document.getElementById("userdiv").classList = "btn-toolbar";
+            document.getElementById("users").classList = "btn btn-primary btn-lg";
+            document.getElementById("delete").classList = "btn btn-primary";
             break;
         case "usersAll":
             document.getElementById("user").classList = "active";
             document.getElementById("userdiv").classList = "btn-toolbar";
+            document.getElementById("usersall").classList = "btn btn-primary btn-lg";
+            document.getElementById("restore").classList = "btn btn-primary";
             break;
         case "userAdd":
             document.getElementById("user").classList = "active";

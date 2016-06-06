@@ -27,11 +27,12 @@
     <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="../../js/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script src="../../js/select.js" type="text/javascript"></script>
+    <script src="../../js/deleteuser.js" type="text/javascript"></script>
 </head>
 <body>
 <%@include file="head.jsp"%>
 <div class="html-editor-align-center">
-    <table class="table table-striped">
+    <table class="table table-striped" id="usertable">
         <thead>
         <tr>
             <th>#</th>
@@ -44,7 +45,7 @@
         <c:forEach items="${viewJsAsEntityList}" var="viewJsAsEntity" varStatus="status">
             <tr>
                 <td>${status.count}</td>
-                <td>${viewJsAsEntity.sno}</td>
+                <td name="item">${viewJsAsEntity.sno}</td>
                 <td>${viewJsAsEntity.sname}</td>
                 <td>${viewJsAsEntity.sgrade}</td>
             </tr>

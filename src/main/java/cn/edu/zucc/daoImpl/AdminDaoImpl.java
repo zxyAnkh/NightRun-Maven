@@ -31,12 +31,12 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
 
     // not found: true
     @Override
-    public Boolean findByNo(String sno, int branch) {
+    public ViewJsAsEntity findByNo(String sno, int branch) {
         String hql = "from ViewJsAsEntity where sno=?";
         Session session = getCurrentSession();
         Query query = session.createQuery(hql);
         query.setString(0, sno);
-        return query.list() == null;
+        return (ViewJsAsEntity) query.uniqueResult();
     }
 
     @Override
@@ -44,6 +44,8 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         String hql = "from ViewJsAsEntity where ano=?";
         if (isAll == Boolean.FALSE)
             hql += " and deltime is null";
+        else
+            hql += " and deltime is not null";
         Session session = getCurrentSession();
         Query query = session.createQuery(hql);
         query.setString(0, ano);
@@ -59,11 +61,11 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
     }
 
     @Override
-    public List<ViewJsRunEntity> fuzzyQuery(String type, String keyword, int branch, Boolean isAll) {
+    public List<ViewJsRunEntity> findRun(String type, String keyword, int branch, Boolean isAll) {
         String hql = "from ViewJsRunEntity";
-        if ("keyword".equals(type)) {
+        if ("rkeyword".equals(type)) {
             hql += " where sno like '%" + keyword + "%' or sname like '%" + keyword + "%'";
-        } else if ("time".equals(type)) {
+        } else if ("rtime".equals(type)) {
             hql += " where starttime > '" + keyword.substring(0, 4) + "-" + keyword.substring(4, 6) + "-" + keyword.substring(6, 8)
                     + "' and endtime < '" + keyword.substring(8, 12) + "-" + keyword.substring(12, 14) + "-" + keyword.substring(14) + "'";
         }
@@ -81,12 +83,19 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
     }
 
     @Override
-    public Boolean addUser(BeanuserEntity beanuserEntity) throws  Exception{
-        try{
+    public Boolean addUser(BeanuserEntity beanuserEntity) throws Exception {
+        try {
             getCurrentSession().save(beanuserEntity);
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             return false;
         }
+    }
+
+    @Override
+    public Boolean deleteUser(int id) {
+        String hql = "update BeanuserEntity set deltime = now() where sId = " + id;
+        int result = getCurrentSession().createQuery(hql).executeUpdate();
+        return result == 1;
     }
 }
