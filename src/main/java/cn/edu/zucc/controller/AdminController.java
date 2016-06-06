@@ -8,10 +8,12 @@ import cn.edu.zucc.form.BeanuserForm;
 import cn.edu.zucc.service.AdminService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,6 +23,7 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -182,10 +185,16 @@ public class AdminController {
     }
 
     @RequestMapping("/delete")
-    public String deleteuser(HttpSession httpSession, List<String> list) {
+    public String deleteuser(HttpSession httpSession, @RequestBody JSONObject json) {
+        logger.info("deleteuser");
         if (httpSession.getAttribute("beanadminEntity") != null) {
-            BeanadminEntity beanadminEntity = (BeanadminEntity) httpSession.getAttribute("beanadminEntity");
-            adminService.deleteUser(list, beanadminEntity.getAbranch());
+            List<String> list = new ArrayList<String>();
+            for (int i = 1; i <= json.length(); i++) {
+                list.add(json.getString(String.valueOf(i)));
+                System.out.println(list.get(i - 1));
+            }
+//            BeanadminEntity beanadminEntity = (BeanadminEntity) httpSession.getAttribute("beanadminEntity");
+//            adminService.deleteUser(list, beanadminEntity.getAbranch());
             return "redirect:users";
         }
         return "admin/signin";
