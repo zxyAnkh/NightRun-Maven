@@ -20,6 +20,5 @@ public interface AdminService {
     List<ViewJsRunEntity> findRun(String type, String keyword, int branch, Boolean isAll);
     Boolean modify(BeanadminEntity beanadminEntity);
     Boolean addUser(BeanuserForm beanuserForm);
-    Boolean addUsers(File file);
-    Boolean deleteUser(List<String> snoList,int branch);
+    Boolean deleteUser(String sno,int branch);
 }

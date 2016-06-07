@@ -26,11 +26,6 @@ public class AdminServiceImplTest {
 
     @Test
     public void deleteUser() throws Exception {
-        List<String> list = new ArrayList<String>();
-        list.add("31301001");
-        list.add("31301002");
-        if(adminService.deleteUser(list,1))
-            System.out.println("success");
     }
 
 }

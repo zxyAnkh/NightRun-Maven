@@ -30,16 +30,6 @@ public class AdminControllerTest {
 
     @Test
     public void deleteuser() throws Exception {
-        JSONObject jsonObject = new JSONObject();
-        jsonObject.put("1", "31301001");
-        jsonObject.put("2", "31301002");
-        List<String> list = new ArrayList<String>();
-        for (int i = 1; i <= jsonObject.length(); i++) {
-            list.add(jsonObject.getString(String.valueOf(i)));
-            System.out.println(list.get(i - 1));
-        }
-        if(adminService.deleteUser(list,1))
-            System.out.println("success");
     }
 
 }

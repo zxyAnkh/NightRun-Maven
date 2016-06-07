@@ -12,11 +12,14 @@ function delusers() {
             json[count] = items[i].innerHTML;
         }
     }
+    var url = window.location.href;
+    alert(url);
     $.ajax({
         type: "POST",
         url: "/view/admin/delete",
         data: json, //组装参数
-        dataType: "json"
+        dataType: "json",
+        contentType:"application/json"
     });
 }
 function restoreusers() {

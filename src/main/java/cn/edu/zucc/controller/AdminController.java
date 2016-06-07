@@ -1,10 +1,12 @@
 package cn.edu.zucc.controller;
 
 import cn.edu.zucc.entity.BeanadminEntity;
+import cn.edu.zucc.entity.BeanuserEntity;
 import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
 import cn.edu.zucc.form.BeanadminForm;
 import cn.edu.zucc.form.BeanuserForm;
+import cn.edu.zucc.handle.ReadExcel;
 import cn.edu.zucc.service.AdminService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -173,7 +175,12 @@ public class AdminController {
             File file = new File(path, fileName + ".xls");
             try {
                 multipartFile.transferTo(file);
-                if (adminService.addUsers(file)) {
+                List<BeanuserForm> formList = new ReadExcel().readExcel(file.getPath());
+                if (formList != null) {
+                    for (BeanuserForm beanuserForm : formList) {
+                        adminService.addUser(beanuserForm);
+                        System.out.println(beanuserForm.getNo());
+                    }
                     return "redirect:users";
                 }
                 return "redirect:users";
@@ -188,13 +195,13 @@ public class AdminController {
     public String deleteuser(HttpSession httpSession, @RequestBody JSONObject json) {
         logger.info("deleteuser");
         if (httpSession.getAttribute("beanadminEntity") != null) {
+            BeanadminEntity beanadminEntity = (BeanadminEntity) httpSession.getAttribute("beanadminEntity");
             List<String> list = new ArrayList<String>();
             for (int i = 1; i <= json.length(); i++) {
                 list.add(json.getString(String.valueOf(i)));
                 System.out.println(list.get(i - 1));
+//                adminService.deleteUser(list.get(i - 1), beanadminEntity.getAbranch());
             }
-//            BeanadminEntity beanadminEntity = (BeanadminEntity) httpSession.getAttribute("beanadminEntity");
-//            adminService.deleteUser(list, beanadminEntity.getAbranch());
             return "redirect:users";
         }
         return "admin/signin";

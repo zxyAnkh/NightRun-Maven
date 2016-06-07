@@ -55,6 +55,8 @@
             </props>
         </property>
     </bean>
+    <bean id="stringHttpMessageConverter" class="org.springframework.http.converter.StringHttpMessageConverter"/>
+
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     </bean>

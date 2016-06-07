@@ -58,6 +58,9 @@
           <element id="library" level="project" name="Maven: com.googlecode.ehcache-spring-annotations:ehcache-spring-annotations:1.2.0" />
           <element id="library" level="project" name="Maven: com.google.guava:guava:r09" />
           <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: com.fasterxml.jackson.core:jackson-core:2.7.4" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-mapper-asl:1.9.13" />
+          <element id="library" level="project" name="Maven: org.codehaus.jackson:jackson-core-asl:1.9.13" />
           <element id="library" level="project" name="Maven: org.apache.ant:ant:1.7.0" />
           <element id="library" level="project" name="Maven: org.apache.ant:ant-launcher:1.7.0" />
           <element id="library" level="project" name="Maven: org.apache.poi:poi:3.14" />

@@ -15,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -82,37 +83,9 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public Boolean addUsers(File file) {
-        try {
-            List<BeanuserForm> formList = new ReadExcel().readExcel(file.getPath());
-            if (formList != null) {
-                for (BeanuserForm beanuserForm : formList) {
-                    System.out.println(beanuserForm.getNo() + "  " + beanuserForm.getName());
-                    Boolean aBoolean = addUser(beanuserForm);
-                    System.out.println(aBoolean);
-                    if (!aBoolean) {
-                        return false;
-                    }
-                }
-                return true;
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
-    }
-
-    @Override
-    public Boolean deleteUser(List<String> snoList, int branch) {
-        int flag = 1;
-        for (String sno : snoList) {
-            ViewJsAsEntity viewJsAsEntity = adminDao.findByNo(sno, branch);
-            int id = viewJsAsEntity.getsId();
-            if (!adminDao.deleteUser(id)) {
-                flag = 0;
-                break;
-            }
-        }
-        return flag == 1;
+    public Boolean deleteUser(String sno, int branch) {
+        ViewJsAsEntity viewJsAsEntity = adminDao.findByNo(sno, branch);
+        int id = viewJsAsEntity.getsId();
+        return adminDao.deleteUser(id);
     }
 }
