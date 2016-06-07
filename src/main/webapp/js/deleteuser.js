@@ -12,8 +12,7 @@ function delusers() {
             json[count] = items[i].innerHTML;
         }
     }
-    var url = window.location.href;
-    alert(url);
+    alert(json);
     $.ajax({
         type: "POST",
         url: "/view/admin/delete",

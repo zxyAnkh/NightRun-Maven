@@ -38,7 +38,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-//    @Cacheable(value = "mCache", key = "user")
+    @Cacheable(value = "adminServiceCache", key = "'user'")
     public List<ViewJsAsEntity> loadUser(String ano, Boolean isAll) {
         return adminDao.loadUser(ano, isAll);
     }

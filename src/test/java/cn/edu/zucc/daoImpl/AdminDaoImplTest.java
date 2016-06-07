@@ -2,6 +2,7 @@ package cn.edu.zucc.daoImpl;
 
 import cn.edu.zucc.dao.AdminDao;
 import cn.edu.zucc.entity.ViewJsAsEntity;
+import org.hibernate.Query;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -9,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 import static org.junit.Assert.*;
 
@@ -35,7 +38,16 @@ public class AdminDaoImplTest {
 
     @Test
     public void loadUser() throws Exception {
+        List<ViewJsAsEntity> list = adminDao.loadUser("admin",Boolean.FALSE);
+        for (ViewJsAsEntity viewJsAsEntity : list)
+            System.out.println(viewJsAsEntity.getSno());
+    }
 
+    @Test
+    public void loadUser2() throws Exception {
+        List<ViewJsAsEntity> list = adminDao.loadUser("admin",Boolean.FALSE);
+        for (ViewJsAsEntity viewJsAsEntity : list)
+            System.out.println(viewJsAsEntity.getSno());
     }
 
     @Test

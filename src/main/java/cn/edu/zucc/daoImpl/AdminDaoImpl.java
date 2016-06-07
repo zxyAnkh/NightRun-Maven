@@ -5,6 +5,7 @@ import cn.edu.zucc.entity.BeanadminEntity;
 import cn.edu.zucc.entity.BeanuserEntity;
 import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
+import com.googlecode.ehcache.annotations.TriggersRemove;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -39,6 +40,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         return (ViewJsAsEntity) query.uniqueResult();
     }
 
+    @TriggersRemove(cacheName = "adminDaoCache",removeAll = true)
     @Override
     public List<ViewJsAsEntity> loadUser(String ano, Boolean isAll) {
         String hql = "from ViewJsAsEntity where ano=?";
@@ -52,6 +54,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         return query.list();
     }
 
+    @TriggersRemove(cacheName = "adminDaoCache",removeAll = true)
     @Override
     public List<ViewJsRunEntity> loadRun(String ano, int branch, Boolean isAll) {
         String hql = "from ViewJsRunEntity";
@@ -60,6 +63,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         return query.list();
     }
 
+    @TriggersRemove(cacheName = "adminDaoCache",removeAll = true)
     @Override
     public List<ViewJsRunEntity> findRun(String type, String keyword, int branch, Boolean isAll) {
         String hql = "from ViewJsRunEntity";

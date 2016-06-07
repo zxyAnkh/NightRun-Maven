@@ -12,7 +12,15 @@
                   timeToLiveSeconds="600"
                   memoryStoreEvictionPolicy="LFU" />
 
-    <cache name="baseCache"
+    <cache name="adminDaoCache"
+           eternal="false"
+           maxElementsInMemory="500"
+           overflowToDisk="false"
+           diskPersistent="false"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="300"
+           memoryStoreEvictionPolicy="LFU" />
+    <cache name="adminServiceCache"
            eternal="false"
            maxElementsInMemory="500"
            overflowToDisk="false"
