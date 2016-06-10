@@ -1,17 +1,14 @@
 package cn.edu.zucc.controller;
 
 import cn.edu.zucc.entity.BeanadminEntity;
-import cn.edu.zucc.entity.BeanuserEntity;
 import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
 import cn.edu.zucc.form.BeanadminForm;
 import cn.edu.zucc.form.BeanuserForm;
-import cn.edu.zucc.form.DeleteUserForm;
 import cn.edu.zucc.handle.ReadExcel;
 import cn.edu.zucc.service.AdminService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,7 +24,6 @@ import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 

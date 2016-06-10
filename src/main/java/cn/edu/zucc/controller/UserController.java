@@ -5,9 +5,11 @@ import cn.edu.zucc.service.UserService;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -22,25 +24,26 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping("signin")
+    @RequestMapping("/signin")
     public String doLogin(String no, String pwd) {
         if (userService.doLogin(no, pwd))
             return "redirect:main";
         else
-            return "/user/signin";
+            return "user/signin";
     }
 
-    @RequestMapping("main")
-    public String main() {
+    @RequestMapping("/main")
+    public String main(String sno, Model model) {
         String no = "31301413";
-        Map map = new HashMap();
-        List<ViewJsRunEntity> list = userService.loadRun(no);
-        int count = 0;
-        for (ViewJsRunEntity viewJsRunEntity : list) {
-            map.put(++count, viewJsRunEntity);
-        }
-        JSONObject json = new JSONObject(map);
-        return null;
+        List<Map<String, String>> list = userService.loadRun(no);
+        model.addAttribute("list", list);
+        return "user/main";
+    }
+
+    @RequestMapping("/run")
+    public String run(String sno, String starttime, String endtime) {
+        userService.addRun(sno,starttime,endtime);
+        return "redirect:main";
     }
 
 }

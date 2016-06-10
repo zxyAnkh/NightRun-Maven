@@ -1,6 +1,8 @@
 package cn.edu.zucc.daoImpl;
 
 import cn.edu.zucc.dao.BaseDao;
+import cn.edu.zucc.entity.ViewJsAsEntity;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,4 +20,5 @@ public class BaseDaoImpl implements BaseDao{
     public Session getCurrentSession() {
         return sessionFactory.getCurrentSession();
     }
+
 }

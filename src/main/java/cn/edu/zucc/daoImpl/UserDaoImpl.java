@@ -1,7 +1,9 @@
 package cn.edu.zucc.daoImpl;
 
 import cn.edu.zucc.dao.UserDao;
+import cn.edu.zucc.entity.BeanrunEntity;
 import cn.edu.zucc.entity.BeanuserEntity;
+import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -34,5 +36,24 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
         Query query = session.createQuery(hql);
         query.setString(0,sno);
         return query.list();
+    }
+
+    @Override
+    public ViewJsAsEntity findByNo(String sno, int branch) {
+        String hql = "from ViewJsAsEntity where sno=? order by sno";
+        Session session = getCurrentSession();
+        Query query = session.createQuery(hql);
+        query.setString(0, sno);
+        return (ViewJsAsEntity) query.uniqueResult();
+    }
+
+    @Override
+    public Boolean addRun(BeanrunEntity beanrunEntity) throws Exception{
+        try {
+            getCurrentSession().save(beanrunEntity);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 }

@@ -33,7 +33,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
     // not found: true
     @Override
     public ViewJsAsEntity findByNo(String sno, int branch) {
-        String hql = "from ViewJsAsEntity where sno=?";
+        String hql = "from ViewJsAsEntity where sno=? order by sno";
         Session session = getCurrentSession();
         Query query = session.createQuery(hql);
         query.setString(0, sno);
@@ -49,7 +49,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         else
             hql += " and deltime is not null";
         Session session = getCurrentSession();
-        Query query = session.createQuery(hql);
+        Query query = session.createQuery(hql + " order by sno");
         query.setString(0, ano);
         return query.list();
     }
@@ -57,7 +57,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
     @TriggersRemove(cacheName = "adminDaoCache",removeAll = true)
     @Override
     public List<ViewJsRunEntity> loadRun(String ano, int branch, Boolean isAll) {
-        String hql = "from ViewJsRunEntity";
+        String hql = "from ViewJsRunEntity order by starttime";
         Session session = getCurrentSession();
         Query query = session.createQuery(hql);
         return query.list();

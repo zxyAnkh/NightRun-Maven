@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%--
   Created by IntelliJ IDEA.
   User: zxy
@@ -11,6 +13,16 @@
     <title>main</title>
 </head>
 <body>
-
+{<c:forEach var="item" items="${list}" varStatus="status">
+    <p>"<c:out value="${status.count}"/>":
+       {"sno":"<c:out value="${item.sno}"/>",
+        "sname":"<c:out value="${item.sname}"/>",
+        "meter":"<c:out value="${item.meter}"/>",
+        "time":"<c:out value="${item.time}"/>",
+        "starttime":"<c:out value="${item.starttime}"/>",
+        "endtime":"<c:out value="${item.endtime}"/>"}
+        <c:if test="${status.count < fn:length(list)}">,</c:if>
+    </p>
+</c:forEach>}
 </body>
 </html>

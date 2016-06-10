@@ -14,6 +14,7 @@
 <form action="/view/user/signin" method="post">
     <input type="text" name="no"/>
     <input type="password" name="pwd"/>
+    <input type="submit"/>
 </form>
 </body>
 </html>
