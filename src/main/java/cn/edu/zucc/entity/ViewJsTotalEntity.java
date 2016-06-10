@@ -12,6 +12,7 @@ public class ViewJsTotalEntity implements Serializable{
     private static final long serialVersionUID = 211L;
     private int sId;
     private String sno;
+    private String sname;
     private int sgrade;
     private long count;
     private Double summeter;
@@ -68,6 +69,16 @@ public class ViewJsTotalEntity implements Serializable{
     }
 
     @Basic
+    @Column(name = "sname")
+    public String getSname() {
+        return sname;
+    }
+
+    public void setSname(String sname) {
+        this.sname = sname;
+    }
+
+    @Basic
     @Column(name = "sumtime")
     public Long getSumtime() {
         return sumtime;
@@ -88,6 +99,7 @@ public class ViewJsTotalEntity implements Serializable{
         if (sgrade != that.sgrade) return false;
         if (count != that.count) return false;
         if (sno != null ? !sno.equals(that.sno) : that.sno != null) return false;
+        if (sname != null ? !sname.equals(that.sname) : that.sname != null) return false;
         if (summeter != null ? !summeter.equals(that.summeter) : that.summeter != null) return false;
         if (sumtime != null ? !sumtime.equals(that.sumtime) : that.sumtime != null) return false;
 
@@ -98,6 +110,7 @@ public class ViewJsTotalEntity implements Serializable{
     public int hashCode() {
         int result = sId;
         result = 31 * result + (sno != null ? sno.hashCode() : 0);
+        result = 31 * result + (sname != null ? sname.hashCode() : 0);
         result = 31 * result + sgrade;
         result = 31 * result + (int) (count ^ (count >>> 32));
         result = 31 * result + (summeter != null ? summeter.hashCode() : 0);

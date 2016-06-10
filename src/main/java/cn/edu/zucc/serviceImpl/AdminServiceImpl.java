@@ -1,10 +1,7 @@
 package cn.edu.zucc.serviceImpl;
 
 import cn.edu.zucc.dao.AdminDao;
-import cn.edu.zucc.entity.BeanadminEntity;
-import cn.edu.zucc.entity.BeanuserEntity;
-import cn.edu.zucc.entity.ViewJsAsEntity;
-import cn.edu.zucc.entity.ViewJsRunEntity;
+import cn.edu.zucc.entity.*;
 import cn.edu.zucc.form.BeanuserForm;
 import cn.edu.zucc.handle.ReadExcel;
 import cn.edu.zucc.service.AdminService;
@@ -43,21 +40,35 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public List<ViewJsRunEntity> loadRun(String ano, int branch, Boolean isAll) {
-        return adminDao.loadRun(ano, branch, isAll);
+    public List<ViewJsRunEntity> loadRun(String ano, int branch) {
+        return adminDao.loadRun(ano, branch);
     }
 
     @Override
-    public List<ViewJsRunEntity> findRun(String type, String keyword, int branch, Boolean isAll) {
+    public List<ViewJsRunEntity> findRun(String type, String keyword, int branch) {
         if (keyword != null && !"".equals(keyword)) {
-            return adminDao.findRun(type, keyword, branch, isAll);
+            return adminDao.findRun(type, keyword, branch);
         }
         return null;
     }
 
     @Override
-    public Boolean modify(BeanadminEntity beanadminEntity) {
-        return adminDao.modify(beanadminEntity);
+    public List<ViewJsAsEntity> findUser(String keyword, int branch) {
+        if(keyword != null && !"".equals(keyword))
+            return adminDao.findUser(keyword,branch);
+        return null;
+    }
+
+    @Override
+    public List<ViewJsTotalEntity> findTotal(String keyword, int branch) {
+        if(keyword != null && !"".equals(keyword))
+            return adminDao.findTotal(keyword,branch);
+        return null;
+    }
+
+    @Override
+    public Boolean modifyAdmin(BeanadminEntity beanadminEntity) {
+        return adminDao.modifyAdmin(beanadminEntity);
     }
 
     @Override

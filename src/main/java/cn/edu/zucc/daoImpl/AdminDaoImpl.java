@@ -1,10 +1,7 @@
 package cn.edu.zucc.daoImpl;
 
 import cn.edu.zucc.dao.AdminDao;
-import cn.edu.zucc.entity.BeanadminEntity;
-import cn.edu.zucc.entity.BeanuserEntity;
-import cn.edu.zucc.entity.ViewJsAsEntity;
-import cn.edu.zucc.entity.ViewJsRunEntity;
+import cn.edu.zucc.entity.*;
 import com.googlecode.ehcache.annotations.TriggersRemove;
 import org.hibernate.Query;
 import org.hibernate.Session;
@@ -56,7 +53,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
 
     @TriggersRemove(cacheName = "adminDaoCache",removeAll = true)
     @Override
-    public List<ViewJsRunEntity> loadRun(String ano, int branch, Boolean isAll) {
+    public List<ViewJsRunEntity> loadRun(String ano, int branch) {
         String hql = "from ViewJsRunEntity order by starttime";
         Session session = getCurrentSession();
         Query query = session.createQuery(hql);
@@ -65,7 +62,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
 
     @TriggersRemove(cacheName = "adminDaoCache",removeAll = true)
     @Override
-    public List<ViewJsRunEntity> findRun(String type, String keyword, int branch, Boolean isAll) {
+    public List<ViewJsRunEntity> findRun(String type, String keyword, int branch) {
         String hql = "from ViewJsRunEntity";
         if ("rkeyword".equals(type)) {
             hql += " where sno like '%" + keyword + "%' or sname like '%" + keyword + "%'";
@@ -79,7 +76,21 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
     }
 
     @Override
-    public Boolean modify(BeanadminEntity beanadminEntity) {
+    public List<ViewJsAsEntity> findUser(String keyword, int branch) {
+        String hql = "from ViewJsAsEntity where sno like '%" + keyword + "%' or sname like '%" + keyword + "%'";
+        Session session = getCurrentSession();
+        return session.createQuery(hql).list();
+    }
+
+    @Override
+    public List<ViewJsTotalEntity> findTotal(String keyword, int branch) {
+        String hql = "from ViewJsTotalEntity where sno like '%" + keyword + "%' or sname like '%" + keyword + "%'";
+        Session session = getCurrentSession();
+        return session.createQuery(hql).list();
+    }
+
+    @Override
+    public Boolean modifyAdmin(BeanadminEntity beanadminEntity) {
         String hql = "update BeanadminEntity set aname = '" + beanadminEntity.getAname() + "' ,apwd = '"
                 + beanadminEntity.getApwd() + "' where aId = " + beanadminEntity.getaId();
         int result = getCurrentSession().createQuery(hql).executeUpdate();

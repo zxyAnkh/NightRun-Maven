@@ -2,39 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c88cbc69-3369-47e0-845e-c3a248ebac08" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/entity/BeanrunEntity.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/webapp/view/user/run.jsp" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/cn/edu/zucc/controller/UserControllerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/cn/edu/zucc/serviceImpl/UserServiceImplTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/form/DeleteUserForm.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Run/WEB-INF/classes/cn/edu/zucc/controller/AdminController.class" afterPath="$PROJECT_DIR$/target/Run/WEB-INF/classes/cn/edu/zucc/controller/AdminController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Run/WEB-INF/classes/cn/edu/zucc/controller/UserController.class" afterPath="$PROJECT_DIR$/target/Run/WEB-INF/classes/cn/edu/zucc/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Run/WEB-INF/classes/cn/edu/zucc/daoImpl/AdminDaoImpl.class" afterPath="$PROJECT_DIR$/target/Run/WEB-INF/classes/cn/edu/zucc/daoImpl/AdminDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Run/WEB-INF/classes/cn/edu/zucc/service/UserService.class" afterPath="$PROJECT_DIR$/target/Run/WEB-INF/classes/cn/edu/zucc/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Run/WEB-INF/classes/cn/edu/zucc/serviceImpl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/Run/WEB-INF/classes/cn/edu/zucc/serviceImpl/UserServiceImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/edu/zucc/controller/AdminController.class" afterPath="$PROJECT_DIR$/target/classes/cn/edu/zucc/controller/AdminController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/edu/zucc/controller/UserController.class" afterPath="$PROJECT_DIR$/target/classes/cn/edu/zucc/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/edu/zucc/dao/UserDao.class" afterPath="$PROJECT_DIR$/target/classes/cn/edu/zucc/dao/UserDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/edu/zucc/daoImpl/AdminDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/cn/edu/zucc/daoImpl/AdminDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/edu/zucc/daoImpl/BaseDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/cn/edu/zucc/daoImpl/BaseDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/edu/zucc/daoImpl/UserDaoImpl.class" afterPath="$PROJECT_DIR$/target/classes/cn/edu/zucc/daoImpl/UserDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/edu/zucc/service/UserService.class" afterPath="$PROJECT_DIR$/target/classes/cn/edu/zucc/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/classes/cn/edu/zucc/serviceImpl/UserServiceImpl.class" afterPath="$PROJECT_DIR$/target/classes/cn/edu/zucc/serviceImpl/UserServiceImpl.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ReadMe.txt" afterPath="$PROJECT_DIR$/ReadMe.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Run.iml" afterPath="$PROJECT_DIR$/Run.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/controller/AdminController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/controller/AdminController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/controller/UserController.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/BaseDao.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/BaseDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/UserDao.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/UserDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/AdminDao.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/AdminDao.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/AdminDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/AdminDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/BaseDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/BaseDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/UserDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/UserDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/service/UserService.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/serviceImpl/UserServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/serviceImpl/UserServiceImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/view/user/main.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/view/user/main.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/view/user/signin.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/view/user/signin.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Run/view/user/main.jsp" afterPath="$PROJECT_DIR$/target/Run/view/user/main.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/Run/view/user/signin.jsp" afterPath="$PROJECT_DIR$/target/Run/view/user/signin.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/entity/ViewJsTotalEntity.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/entity/ViewJsTotalEntity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/service/AdminService.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/service/AdminService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/serviceImpl/AdminServiceImpl.java" afterPath="$PROJECT_DIR$/src/main/java/cn/edu/zucc/serviceImpl/AdminServiceImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/search.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/search.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/view/admin/search.jsp" afterPath="$PROJECT_DIR$/src/main/webapp/view/admin/search.jsp" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/cn/edu/zucc/serviceImpl/AdminServiceImplTest.java" afterPath="$PROJECT_DIR$/src/test/java/cn/edu/zucc/serviceImpl/AdminServiceImplTest.java" />
     </list>
     <ignored path="Run.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -65,34 +44,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/serviceImpl/UserServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="399">
-              <caret line="47" column="66" selection-start-line="47" selection-start-column="66" selection-end-line="47" selection-end-column="66" />
-              <folding>
-                <element signature="method#loadRun#0;class#UserServiceImpl#0" expanded="false" />
-                <element signature="method#addRun#0;class#UserServiceImpl#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="AdminDaoImpl.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/AdminDaoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+            <state relative-caret-position="253">
+              <caret line="68" column="42" selection-start-line="68" selection-start-column="42" selection-end-line="68" selection-end-column="42" />
               <folding>
                 <element signature="method#findByNo#0;class#AdminDaoImpl#0" expanded="false" />
                 <element signature="method#findByNo#1;class#AdminDaoImpl#0" expanded="false" />
-                <element signature="e#1372#1433#0" expanded="false" />
+                <element signature="e#1231#1292#0" expanded="false" />
                 <element signature="method#loadUser#0;class#AdminDaoImpl#0" expanded="false" />
-                <element signature="e#1899#1960#0" expanded="false" />
+                <element signature="e#1758#1819#0" expanded="false" />
                 <element signature="method#loadRun#0;class#AdminDaoImpl#0" expanded="false" />
-                <element signature="e#2256#2317#0" expanded="false" />
-                <element signature="method#findRun#0;class#AdminDaoImpl#0" expanded="false" />
-                <element signature="method#modify#0;class#AdminDaoImpl#0" expanded="false" />
+                <element signature="e#2100#2161#0" expanded="false" />
+                <element signature="method#modifyAdmin#0;class#AdminDaoImpl#0" expanded="false" />
                 <element signature="method#addUser#0;class#AdminDaoImpl#0" expanded="false" />
                 <element signature="method#deleteUser#0;class#AdminDaoImpl#0" expanded="false" />
               </folding>
@@ -100,47 +65,59 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDaoImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/UserDaoImpl.java">
+      <file leaf-file-name="AdminController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/controller/AdminController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="171">
-              <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+            <state relative-caret-position="361">
+              <caret line="202" column="57" selection-start-line="202" selection-start-column="57" selection-end-line="202" selection-end-column="57" />
               <folding>
-                <element signature="method#doLogin#0;class#UserDaoImpl#0" expanded="false" />
-                <element signature="method#loadRun#0;class#UserDaoImpl#0" expanded="false" />
-                <element signature="method#findByNo#0;class#UserDaoImpl#0" expanded="false" />
-                <element signature="method#addRun#0;class#UserDaoImpl#0" expanded="false" />
+                <element signature="e#1341#1357#0" expanded="false" />
+                <element signature="method#doSignOut#0;class#AdminController#0" expanded="false" />
+                <element signature="method#mainPage#0;class#AdminController#0" expanded="false" />
+                <element signature="method#modify#0;class#AdminController#0" expanded="false" />
+                <element signature="method#showUser#0;class#AdminController#0" expanded="false" />
+                <element signature="method#showAllUser#0;class#AdminController#0" expanded="false" />
+                <element signature="method#add#0;class#AdminController#0" expanded="false" />
+                <element signature="method#adds#0;class#AdminController#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/UserDao.java">
+      <file leaf-file-name="search.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/view/admin/search.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="133">
-              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-              <folding />
+            <state relative-caret-position="347">
+              <caret line="61" column="6" selection-start-line="61" selection-start-column="6" selection-end-line="61" selection-end-column="6" />
+              <folding>
+                <element signature="n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#table#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+                <element signature="n#table#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/controller/UserController.java">
+      <file leaf-file-name="search.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/js/search.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="358">
-              <caret line="43" column="69" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
+              <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="run.jsp" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/view/user/run.jsp">
+      <file leaf-file-name="AdminServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/serviceImpl/AdminServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="95">
-              <caret line="5" column="63" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
-              <folding />
+            <state relative-caret-position="167">
+              <caret line="49" column="59" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
+              <folding>
+                <element signature="method#doLogin#0;class#AdminServiceImpl#0" expanded="false" />
+                <element signature="method#addUser#0;class#AdminServiceImpl#0" expanded="false" />
+                <element signature="method#deleteUser#0;class#AdminServiceImpl#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -175,7 +152,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/css/buttons.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/view/admin/admin.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/form/BeanuserForm.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/buttons.css" />
@@ -192,40 +168,41 @@
         <option value="$PROJECT_DIR$/src/main/webapp/view/admin/usersAll.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/select.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/view/admin/main.jsp" />
-        <option value="$PROJECT_DIR$/src/main/webapp/js/search.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/view/admin/users.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/head.js" />
         <option value="$PROJECT_DIR$/src/main/webapp/view/admin/head.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.properties" />
-        <option value="$PROJECT_DIR$/src/test/java/cn/edu/zucc/serviceImpl/AdminServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cn/edu/zucc/daoImpl/AdminDaoImplTest.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/72a701a4-4c30-4272-b1a4-bff5591e2ce3/console.sql" />
         <option value="$PROJECT_DIR$/src/test/java/cn/edu/zucc/controller/AdminControllerTest.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/view/admin/search.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/ehcache.xml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/webapp/view/admin/delete.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/form/DeleteUserForm.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/controller/AdminController.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/js/deleteuser.js" />
         <option value="$PROJECT_DIR$/src/test/java/cn/edu/zucc/controller/UserControllerTest.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/view/user/signin.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/view/user/main.jsp" />
         <option value="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/service/AdminService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/test/java/cn/edu/zucc/serviceImpl/UserServiceImplTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/serviceImpl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/AdminDaoImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/AdminDao.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/serviceImpl/AdminServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/BaseDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/BaseDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/UserDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/UserDao.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/view/user/run.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/AdminDao.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/AdminDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/entity/ViewJsTotalEntity.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/service/AdminService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/controller/AdminController.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cn/edu/zucc/serviceImpl/AdminServiceImplTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cn/edu/zucc/serviceImpl/AdminServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/view/admin/search.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/js/search.js" />
       </list>
     </option>
   </component>
@@ -288,8 +265,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -425,6 +403,62 @@
               <option name="myItemId" value="webapp" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="view" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="admin" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Run" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Run" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Run" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Run" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="webapp" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -534,73 +568,12 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Run" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Run" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zucc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="daoImpl" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Run" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Run" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="zucc" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -636,7 +609,7 @@
       <recent name="E:\Workplace\intellij idea\Run\src\main" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserServiceImplTest.addRun">
+  <component name="RunManager" selected="Tomcat Server.Run">
     <configuration default="false" name="AdminControllerTest.showUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -675,32 +648,6 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="cn.edu.zucc.controller" />
       <option name="MAIN_CLASS_NAME" value="cn.edu.zucc.controller.AdminControllerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="UserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="cn.edu.zucc.controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <module name="Run" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="cn.edu.zucc.controller" />
-      <option name="MAIN_CLASS_NAME" value="cn.edu.zucc.controller.UserControllerTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -754,6 +701,32 @@
       <option name="PACKAGE_NAME" value="cn.edu.zucc.serviceImpl" />
       <option name="MAIN_CLASS_NAME" value="cn.edu.zucc.serviceImpl.UserServiceImplTest" />
       <option name="METHOD_NAME" value="addRun" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="AdminServiceImplTest.findUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cn.edu.zucc.serviceImpl.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="Run" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="cn.edu.zucc.serviceImpl" />
+      <option name="MAIN_CLASS_NAME" value="cn.edu.zucc.serviceImpl.AdminServiceImplTest" />
+      <option name="METHOD_NAME" value="findUser" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -1302,17 +1275,17 @@
       <item index="1" class="java.lang.String" itemvalue="Tomcat Server.Run" />
       <item index="2" class="java.lang.String" itemvalue="JUnit.AdminControllerTest.showUser" />
       <item index="3" class="java.lang.String" itemvalue="JUnit.AdminControllerTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.UserControllerTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.UserControllerTest.main" />
-      <item index="6" class="java.lang.String" itemvalue="JUnit.UserServiceImplTest.addRun" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.UserControllerTest.main" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.UserServiceImplTest.addRun" />
+      <item index="6" class="java.lang.String" itemvalue="JUnit.AdminServiceImplTest.findUser" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.UserServiceImplTest.addRun" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.AdminControllerTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.AdminControllerTest.showUser" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.UserControllerTest.main" />
-        <item index="4" class="java.lang.String" itemvalue="JUnit.UserControllerTest" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.AdminServiceImplTest.findUser" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.UserServiceImplTest.addRun" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.AdminControllerTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.AdminControllerTest.showUser" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.UserControllerTest.main" />
       </list>
     </recent_temporary>
   </component>
@@ -1347,7 +1320,10 @@
       <workItem from="1465274104376" duration="12075000" />
       <workItem from="1465301152890" duration="974000" />
       <workItem from="1465519603450" duration="3771000" />
-      <workItem from="1465525220321" duration="13218000" />
+      <workItem from="1465525220321" duration="13307000" />
+      <workItem from="1465553240947" duration="37000" />
+      <workItem from="1465553771611" duration="115000" />
+      <workItem from="1465553955921" duration="9414000" />
     </task>
     <task id="LOCAL-00001" summary="添加添加用户的模块(除了数据库insert)">
       <created>1464963800368</created>
@@ -1426,16 +1402,17 @@
       <option name="project" value="LOCAL" />
       <updated>1465522317730</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="完成用户的登录/显示跑步数据/添加跑步数据--开始写客户端  服务端暂停更新">
+      <created>1465540283294</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1465540283294</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AdminControllerTest - 2016.06.10 at 10h 32m 02s.xml">
-      <configuration name="AdminControllerTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AdminControllerTest - 2016.06.10 at 10h 32m 59s.xml">
-      <configuration name="AdminControllerTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="AdminControllerTest_showUser - 2016.06.07 at 14h 12m 17s.xml">
       <configuration name="AdminControllerTest.showUser" configurationId="JUnit" />
     </history-entry>
@@ -1451,6 +1428,12 @@
     <history-entry file="AdminDaoImplTest - 2016.06.07 at 14h 13m 46s.xml">
       <configuration name="AdminDaoImplTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="AdminServiceImplTest_findUser - 2016.06.10 at 21h 20m 25s.xml">
+      <configuration name="AdminServiceImplTest.findUser" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AdminServiceImplTest_findUser - 2016.06.10 at 21h 21m 56s.xml">
+      <configuration name="AdminServiceImplTest.findUser" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="UserControllerTest - 2016.06.10 at 10h 29m 19s.xml">
       <configuration name="UserControllerTest" configurationId="JUnit" />
     </history-entry>
@@ -1462,7 +1445,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115891000" />
+    <option name="totallyTimeSpent" value="125546000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1474,8 +1457,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="7" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.50907713" order="7" side_tool="true" content_ui="tabs" />
@@ -1498,7 +1481,7 @@
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32941177" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.22239032" sideWeight="0.5159664" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22239032" sideWeight="0.4840336" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22239032" sideWeight="0.4840336" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1537,11 +1520,13 @@
     <MESSAGE value="完善添加用户" />
     <MESSAGE value="基本完成 缓存ehcache的配置与实现" />
     <MESSAGE value="修复了ehcache配置的问题 完成了用户的删除" />
-    <option name="LAST_COMMIT_MESSAGE" value="修复了ehcache配置的问题 完成了用户的删除" />
+    <MESSAGE value="完成用户的登录/显示跑步数据/添加跑步数据--开始写客户端  服务端暂停更新" />
+    <MESSAGE value="完善各种搜索的功能 不过存在无法显示结果的bug LOL" />
+    <option name="LAST_COMMIT_MESSAGE" value="完善各种搜索的功能 不过存在无法显示结果的bug LOL" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1550,13 +1535,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/view/admin/adds.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/form/BeanuserForm.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
@@ -1589,7 +1567,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="330">
           <caret line="42" column="95" selection-start-line="42" selection-start-column="95" selection-end-line="42" selection-end-column="95" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1629,20 +1606,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/head.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/modify.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="9" column="1" selection-start-line="9" selection-start-column="1" selection-end-line="9" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/js/select.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="19">
@@ -1650,25 +1613,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/search.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="27" column="20" selection-start-line="27" selection-start-column="20" selection-end-line="27" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/view/admin/search.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="52" column="65" selection-start-line="52" selection-start-column="65" selection-end-line="52" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/ehcache.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
           <caret line="11" column="43" selection-start-line="11" selection-start-column="43" selection-end-line="11" selection-end-column="43" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1683,7 +1631,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="312">
           <caret line="272" column="57" selection-start-line="272" selection-start-column="57" selection-end-line="272" selection-end-column="57" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1694,25 +1641,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/view/admin/users.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="47" column="53" selection-start-line="47" selection-start-column="53" selection-end-line="47" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/deleteuser.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="17" column="25" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/view/admin/signin.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="27" column="72" selection-start-line="27" selection-start-column="72" selection-end-line="27" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1720,31 +1652,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="149">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/form/DeleteUserForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="11" column="38" selection-start-line="11" selection-start-column="38" selection-end-line="11" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/form/DeleteUserForm.java" />
     <entry file="file://$PROJECT_DIR$/src/main/webapp/view/admin/delete.jsp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/entity/ViewJsRunEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="20" column="26" selection-start-line="20" selection-start-column="17" selection-end-line="20" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1752,23 +1667,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="396">
           <caret line="35" column="41" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/view/admin/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="69" column="16" selection-start-line="69" selection-start-column="16" selection-end-line="69" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/userAdd.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="7" column="72" selection-start-line="7" selection-start-column="72" selection-end-line="7" selection-end-column="72" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1776,7 +1674,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1784,51 +1681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="171">
           <caret line="9" column="20" selection-start-line="9" selection-start-column="20" selection-end-line="9" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/view/user/main.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="121">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/controller/AdminController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="146" column="0" selection-start-line="146" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding>
-            <element signature="e#1296#1312#0" expanded="false" />
-            <element signature="method#doLogin#0;class#AdminController#0" expanded="false" />
-            <element signature="method#doSignOut#0;class#AdminController#0" expanded="false" />
-            <element signature="method#showUser#0;class#AdminController#0" expanded="false" />
-            <element signature="method#showAllUser#0;class#AdminController#0" expanded="false" />
-            <element signature="method#mainPage#0;class#AdminController#0" expanded="false" />
-            <element signature="method#search#0;class#AdminController#0" expanded="false" />
-            <element signature="method#modify#0;class#AdminController#0" expanded="false" />
-            <element signature="method#add#0;class#AdminController#0" expanded="false" />
-            <element signature="method#adds#0;class#AdminController#0" expanded="false" />
-            <element signature="method#deleteuser#0;class#AdminController#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="254">
-          <caret line="58" column="72" selection-start-line="58" selection-start-column="72" selection-end-line="58" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/entity/BeanrunEntity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1836,23 +1688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="190">
           <caret line="14" column="57" selection-start-line="14" selection-start-column="57" selection-end-line="14" selection-end-column="57" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cn/edu/zucc/serviceImpl/AdminServiceImplTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="20" column="14" selection-start-line="20" selection-start-column="14" selection-end-line="20" selection-end-column="14" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/service/AdminService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1860,7 +1695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="247">
           <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1872,32 +1706,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/serviceImpl/AdminServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="74" column="16" selection-start-line="74" selection-start-column="16" selection-end-line="74" selection-end-column="16" />
-          <folding>
-            <element signature="method#doLogin#0;class#AdminServiceImpl#0" expanded="false" />
-            <element signature="method#loadRun#0;class#AdminServiceImpl#0" expanded="false" />
-            <element signature="method#findRun#0;class#AdminServiceImpl#0" expanded="false" />
-            <element signature="method#deleteUser#0;class#AdminServiceImpl#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/AdminDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="14" column="51" selection-start-line="14" selection-start-column="51" selection-end-line="14" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/BaseDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="7" column="26" selection-start-line="7" selection-start-column="26" selection-end-line="7" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1906,30 +1718,11 @@
         <state relative-caret-position="171">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="method#doLogin#0;class#UserDaoImpl#0" expanded="false" />
             <element signature="method#loadRun#0;class#UserDaoImpl#0" expanded="false" />
             <element signature="method#findByNo#0;class#UserDaoImpl#0" expanded="false" />
             <element signature="method#addRun#0;class#UserDaoImpl#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/AdminDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-          <folding>
-            <element signature="method#findByNo#0;class#AdminDaoImpl#0" expanded="false" />
-            <element signature="method#findByNo#1;class#AdminDaoImpl#0" expanded="false" />
-            <element signature="e#1372#1433#0" expanded="false" />
-            <element signature="method#loadUser#0;class#AdminDaoImpl#0" expanded="false" />
-            <element signature="e#1899#1960#0" expanded="false" />
-            <element signature="method#loadRun#0;class#AdminDaoImpl#0" expanded="false" />
-            <element signature="e#2256#2317#0" expanded="false" />
-            <element signature="method#findRun#0;class#AdminDaoImpl#0" expanded="false" />
-            <element signature="method#modify#0;class#AdminDaoImpl#0" expanded="false" />
-            <element signature="method#addUser#0;class#AdminDaoImpl#0" expanded="false" />
-            <element signature="method#deleteUser#0;class#AdminDaoImpl#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1944,9 +1737,12 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/serviceImpl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
+        <state relative-caret-position="0">
           <caret line="47" column="66" selection-start-line="47" selection-start-column="66" selection-end-line="47" selection-end-column="66" />
           <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#640#641#0" expanded="false" />
+            <element signature="e#696#697#0" expanded="false" />
             <element signature="method#loadRun#0;class#UserServiceImpl#0" expanded="false" />
             <element signature="method#addRun#0;class#UserServiceImpl#0" expanded="false" />
           </folding>
@@ -1957,23 +1753,207 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="133">
           <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/view/user/run.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="11" column="7" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="43" column="69" selection-start-line="43" selection-start-column="69" selection-end-line="43" selection-end-column="69" />
+        <state relative-caret-position="190">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="91" column="8" selection-start-line="91" selection-start-column="8" selection-end-line="91" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/view/user/run.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/entity/ViewJsRunEntity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="5" column="63" selection-start-line="5" selection-start-column="63" selection-end-line="5" selection-end-column="63" />
+        <state relative-caret-position="209">
+          <caret line="13" column="20" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/entity/BeanrunEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="14" column="25" selection-start-line="14" selection-start-column="25" selection-end-line="14" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/service/AdminService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="18" column="66" selection-start-line="18" selection-start-column="66" selection-end-line="18" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/dao/AdminDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="16" column="66" selection-start-line="16" selection-start-column="66" selection-end-line="16" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/modify.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="266">
+          <caret line="14" column="59" selection-start-line="14" selection-start-column="59" selection-end-line="14" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/userAdd.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="9" column="81" selection-start-line="9" selection-start-column="81" selection-end-line="9" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/view/admin/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="52" column="83" selection-start-line="52" selection-start-column="83" selection-end-line="52" selection-end-column="83" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/view/user/main.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="311">
+          <caret line="23" column="53" selection-start-line="23" selection-start-column="53" selection-end-line="23" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/daoImpl/AdminDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="68" column="42" selection-start-line="68" selection-start-column="42" selection-end-line="68" selection-end-column="42" />
+          <folding>
+            <element signature="method#findByNo#0;class#AdminDaoImpl#0" expanded="false" />
+            <element signature="method#findByNo#1;class#AdminDaoImpl#0" expanded="false" />
+            <element signature="e#1231#1292#0" expanded="false" />
+            <element signature="method#loadUser#0;class#AdminDaoImpl#0" expanded="false" />
+            <element signature="e#1758#1819#0" expanded="false" />
+            <element signature="method#loadRun#0;class#AdminDaoImpl#0" expanded="false" />
+            <element signature="e#2100#2161#0" expanded="false" />
+            <element signature="method#modifyAdmin#0;class#AdminDaoImpl#0" expanded="false" />
+            <element signature="method#addUser#0;class#AdminDaoImpl#0" expanded="false" />
+            <element signature="method#deleteUser#0;class#AdminDaoImpl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/view/admin/users.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="349">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/entity/ViewJsTotalEntity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/head.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="4" column="3" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cn/edu/zucc/serviceImpl/AdminServiceImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="31" column="56" selection-start-line="31" selection-start-column="56" selection-end-line="31" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/serviceImpl/AdminServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="49" column="59" selection-start-line="49" selection-start-column="59" selection-end-line="49" selection-end-column="59" />
+          <folding>
+            <element signature="method#doLogin#0;class#AdminServiceImpl#0" expanded="false" />
+            <element signature="method#addUser#0;class#AdminServiceImpl#0" expanded="false" />
+            <element signature="method#deleteUser#0;class#AdminServiceImpl#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cn/edu/zucc/controller/AdminController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="202" column="57" selection-start-line="202" selection-start-column="57" selection-end-line="202" selection-end-column="57" />
+          <folding>
+            <element signature="e#1341#1357#0" expanded="false" />
+            <element signature="method#doSignOut#0;class#AdminController#0" expanded="false" />
+            <element signature="method#mainPage#0;class#AdminController#0" expanded="false" />
+            <element signature="method#modify#0;class#AdminController#0" expanded="false" />
+            <element signature="method#showUser#0;class#AdminController#0" expanded="false" />
+            <element signature="method#showAllUser#0;class#AdminController#0" expanded="false" />
+            <element signature="method#add#0;class#AdminController#0" expanded="false" />
+            <element signature="method#adds#0;class#AdminController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/deleteuser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="304">
+          <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/js/search.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="358">
+          <caret line="48" column="38" selection-start-line="48" selection-start-column="38" selection-end-line="48" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/view/admin/search.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="61" column="6" selection-start-line="61" selection-start-column="6" selection-end-line="61" selection-end-column="6" />
+          <folding>
+            <element signature="n#table#0;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#table#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+            <element signature="n#table#2;n#div#1;n#body#0;n#html#0;n#!!top" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>

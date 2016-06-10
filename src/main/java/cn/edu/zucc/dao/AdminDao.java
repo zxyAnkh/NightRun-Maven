@@ -1,9 +1,6 @@
 package cn.edu.zucc.dao;
 
-import cn.edu.zucc.entity.BeanadminEntity;
-import cn.edu.zucc.entity.BeanuserEntity;
-import cn.edu.zucc.entity.ViewJsAsEntity;
-import cn.edu.zucc.entity.ViewJsRunEntity;
+import cn.edu.zucc.entity.*;
 
 import java.util.List;
 
@@ -14,9 +11,11 @@ public interface AdminDao {
     BeanadminEntity findByNo(String ano);
     ViewJsAsEntity findByNo(String sno,int branch);
     List<ViewJsAsEntity> loadUser(String ano, Boolean isAll);
-    List<ViewJsRunEntity> loadRun(String ano, int branch, Boolean isAll);
-    List<ViewJsRunEntity> findRun(String type, String keyword, int branch, Boolean isAll);
-    Boolean modify(BeanadminEntity beanadminEntity);
+    List<ViewJsRunEntity> loadRun(String ano, int branch);
+    List<ViewJsRunEntity> findRun(String type, String keyword, int branch);
+    List<ViewJsAsEntity> findUser(String keyword, int branch);
+    List<ViewJsTotalEntity> findTotal(String keyword, int branch);
+    Boolean modifyAdmin(BeanadminEntity beanadminEntity);
     Boolean addUser(BeanuserEntity beanuserEntity) throws Exception;
     Boolean deleteUser(int id);
 }

@@ -1,5 +1,6 @@
 package cn.edu.zucc.serviceImpl;
 
+import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.service.AdminService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,7 +26,14 @@ public class AdminServiceImplTest {
     private AdminService adminService;
 
     @Test
-    public void deleteUser() throws Exception {
+    public void findUser(){
+        List<ViewJsAsEntity> list = adminService.findUser("1413",1);
+        for(ViewJsAsEntity viewJsAsEntity:list)
+            System.out.println(viewJsAsEntity.getSno());
+    }
+
+    @Test
+    public void findTotal(){
     }
 
 }

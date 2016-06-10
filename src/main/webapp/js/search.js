@@ -22,10 +22,33 @@ function timeChange() {
 }
 function find() {
     var type=document.getElementById("type").value;
-    if(type = "夜跑")
-        findRun()
+    if(type == "夜跑")
+        findRun();
+    else if(type == "统计")
+        findStatistics();
+    else if(type == "用户")
+        findUser();
 }
 function findRun() {
     var keyword = document.getElementById("ksearch").value;
     location.href = "search?type=rkeyword&keyword=" + keyword;
+}
+function findUser() {
+    var keyword = document.getElementById("ksearch").value;
+    location.href = "search?type=skeyword&keyword=" + keyword;
+}
+function findStatistics() {
+    var keyword = document.getElementById("ksearch").value;
+    location.href = "search?type=statistics&keyword=" + keyword;
+}
+function searchtype() {
+    var url = window.location.href;
+    var type = url.substring(url.lastIndexOf("?") + 1,url.lastIndexOf("&"));
+    if(type == "type=rkeyword" || type == "type=rtime"){
+        document.getElementById("runtable").classList = "table table-striped";
+    }else if(type == "type=skeyword"){
+        document.getElementById("usertable").classList = "table table-striped";
+    }else if(type == "type=statistics"){
+        document.getElementById("totaltable").classList = "table table-striped";
+    }
 }

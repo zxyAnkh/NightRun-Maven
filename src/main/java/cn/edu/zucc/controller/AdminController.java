@@ -3,6 +3,7 @@ package cn.edu.zucc.controller;
 import cn.edu.zucc.entity.BeanadminEntity;
 import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
+import cn.edu.zucc.entity.ViewJsTotalEntity;
 import cn.edu.zucc.form.BeanadminForm;
 import cn.edu.zucc.form.BeanuserForm;
 import cn.edu.zucc.handle.ReadExcel;
@@ -62,37 +63,13 @@ public class AdminController {
         return "admin/signin";
     }
 
-    @RequestMapping(value = "/users")
-    public String showUser(Model model, HttpSession httpSession) {
-        logger.info("users");
-        if (httpSession.getAttribute("beanadminEntity") != null) {
-            String ano = ((BeanadminEntity) httpSession.getAttribute("beanadminEntity")).getAno();
-            List<ViewJsAsEntity> viewJsAsEntityList = adminService.loadUser(ano, Boolean.FALSE);
-            model.addAttribute("viewJsAsEntityList", viewJsAsEntityList);
-            return "admin/users";
-        }
-        return "admin/signin";
-    }
-
-    @RequestMapping(value = "/usersAll")
-    public String showAllUser(Model model, HttpSession httpSession) {
-        logger.info("usersAll");
-        if (httpSession.getAttribute("beanadminEntity") != null) {
-            String ano = ((BeanadminEntity) httpSession.getAttribute("beanadminEntity")).getAno();
-            List<ViewJsAsEntity> viewJsAsEntities = adminService.loadUser(ano, Boolean.TRUE);
-            model.addAttribute("viewJsAsEntities", viewJsAsEntities);
-            return "admin/usersAll";
-        }
-        return "admin/signin";
-    }
-
     //由于登录后url仍为admin_login 所以不知道怎么跳转到这里 admin_login返回时添加redirect
     @RequestMapping(value = "/main")
     public String mainPage(Model model, HttpSession httpSession) {
         logger.info("mainPage");
         if (httpSession.getAttribute("beanadminEntity") != null) {
             String ano = ((BeanadminEntity) httpSession.getAttribute("beanadminEntity")).getAno();
-            List<ViewJsRunEntity> viewJsRunEntityList = adminService.loadRun(ano, 1, Boolean.TRUE);
+            List<ViewJsRunEntity> viewJsRunEntityList = adminService.loadRun(ano, 1);
             model.addAttribute("viewJsRunEntityList", viewJsRunEntityList);
             return "admin/main";
         }
@@ -104,10 +81,14 @@ public class AdminController {
         logger.info("mainPageFuzzyQuery");
         if (httpSession.getAttribute("beanadminEntity") != null) {
             if ("rkeyword".equals(type) || "rtime".equals(type)) {
-                List<ViewJsRunEntity> runSearchResult = adminService.findRun(type, keyword, 1, Boolean.FALSE);
+                List<ViewJsRunEntity> runSearchResult = adminService.findRun(type, keyword, 1);
                 model.addAttribute("runSearchResult", runSearchResult);
-            } else if ("skeyword".equals(type) || "stime".equals(type)) {
-
+            } else if ("skeyword".equals(type)) {
+                List<ViewJsAsEntity> viewJsAsEntities = adminService.findUser(keyword,1);
+                model.addAttribute("viewJsAsEntities",viewJsAsEntities);
+            }else if("statistics".equals(type)){
+                List<ViewJsTotalEntity> viewJsTotalEntities = adminService.findTotal(keyword,1);
+                model.addAttribute("viewJsTotalEntities",viewJsTotalEntities);
             }
             logger.info(keyword);
             return "admin/search";
@@ -130,12 +111,36 @@ public class AdminController {
                 if (!"".equals(beanadminForm.getNewpwd2()))
                     beanadminEntity.setApwd(beanadminForm.getNewpwd2());
                 beanadminEntity.setAname(beanadminForm.getName());
-                if (adminService.modify(beanadminEntity))
+                if (adminService.modifyAdmin(beanadminEntity))
                     return "redirect:main"; //修改完之后url为/modify 在线等 over hhhh
                 else {
                     return "admin/admin";
                 }
             }
+        }
+        return "admin/signin";
+    }
+
+    @RequestMapping(value = "/users")
+    public String showUser(Model model, HttpSession httpSession) {
+        logger.info("users");
+        if (httpSession.getAttribute("beanadminEntity") != null) {
+            String ano = ((BeanadminEntity) httpSession.getAttribute("beanadminEntity")).getAno();
+            List<ViewJsAsEntity> viewJsAsEntityList = adminService.loadUser(ano, Boolean.FALSE);
+            model.addAttribute("viewJsAsEntityList", viewJsAsEntityList);
+            return "admin/users";
+        }
+        return "admin/signin";
+    }
+
+    @RequestMapping(value = "/usersAll")
+    public String showAllUser(Model model, HttpSession httpSession) {
+        logger.info("usersAll");
+        if (httpSession.getAttribute("beanadminEntity") != null) {
+            String ano = ((BeanadminEntity) httpSession.getAttribute("beanadminEntity")).getAno();
+            List<ViewJsAsEntity> viewJsAsEntities = adminService.loadUser(ano, Boolean.TRUE);
+            model.addAttribute("viewJsAsEntities", viewJsAsEntities);
+            return "admin/usersAll";
         }
         return "admin/signin";
     }
