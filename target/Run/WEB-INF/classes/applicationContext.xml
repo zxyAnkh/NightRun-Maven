@@ -14,7 +14,20 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <context:component-scan base-package="cn.edu.zucc"/>
     <!--<mvc:annotation-driven/>-->
-    <mvc:annotation-driven validator="validator"/>
+    <mvc:annotation-driven validator="validator">
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.ByteArrayHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/javascript;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
     <mvc:resources mapping="/css/**" location="/css/"/>
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/fonts/**" location="/fonts/"/>
@@ -78,9 +91,9 @@
         <aop:pointcut id="txPointcut" expression="execution(* cn.edu.zucc.serviceImpl..*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="txPointcut"/>
     </aop:config>
-    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"></bean>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
     <!-- 缓存配置 -->
-    <!--<cache:annotation-driven cache-manager="cacheManager"/>-->
+    <cache:annotation-driven/>
     <!--<bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">-->
     <!--<property name="caches">-->
     <!--<set>-->
@@ -90,10 +103,11 @@
     <!--</bean>-->
     <!-- 若只想使用Spring自身提供的缓存器,则注释掉下面的两个关于Ehcache配置的bean,并启用上面的SimpleCacheManager即可 -->
     <!-- Spring提供的基于的Ehcache实现的缓存管理器 -->
-    <!--<bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">-->
-        <!--<property name="configLocation" value="ehcache.xml"/>-->
-    <!--</bean>-->
-    <!--<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">-->
-        <!--<property name="cacheManager" ref="cacheManagerFactory"/>-->
-    <!--</bean>-->
+    <bean id="cacheManagerFactory" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean" >
+        <property name="configLocation" value="classpath:ehcache.xml"/>
+        <property name="shared" value="true"/>
+    </bean>
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheCacheManager">
+        <property name="cacheManager" ref="cacheManagerFactory"/>
+    </bean>
 </beans>

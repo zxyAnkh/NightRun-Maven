@@ -5,20 +5,21 @@ function delusers() {
     var checkItems = document.getElementsByName("checkItem");
     var count = 0;
     var items = document.getElementsByName("item");
-    var json = {};
+    var str = "";
     for (var i = 0; i < checkItems.length; i++) {
         if (checkItems[i].checked) {
-            count++;
-            json[count] = items[i].innerHTML;
+            str+=items[i].innerHTML;
         }
     }
-    alert(json);
     $.ajax({
         type: "POST",
         url: "/view/admin/delete",
-        data: json, //组装参数
-        dataType: "json",
-        contentType:"application/json"
+        data: str, //组装参数
+        dataType: "text",
+        // contentType: "text/plain; charset=utf-8",
+        error:function () {
+            alert("delete falied");
+        }
     });
 }
 function restoreusers() {

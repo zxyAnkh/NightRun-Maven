@@ -5,7 +5,7 @@ import java.util.Date;
 /**
  * Created by zxy on 6/5/2016.
  */
-public class ViewRunEntity {
+public class ViewRunForm {
     private int sId;
     private int rId;
     private String sno;

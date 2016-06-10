@@ -29,13 +29,10 @@ public class AdminControllerTest {
 
     @Autowired
     private AdminService adminService;
-    @Autowired
-    private CacheManager cacheManager;
 
     @Test
     public void showUser(){
         List<ViewJsAsEntity> list = adminService.loadUser("admin",Boolean.FALSE);
-        System.out.println(cacheManager.getCache("adminServiceCache").get("user"));
         for(ViewJsAsEntity viewJsAsEntity : list){
             System.out.println(viewJsAsEntity.getSno());
         }
@@ -43,7 +40,6 @@ public class AdminControllerTest {
     @Test
     public void showUser2(){
         List<ViewJsAsEntity> list = adminService.loadUser("admin",Boolean.FALSE);
-        System.out.println(cacheManager.getCache("adminServiceCache").get("user"));
         for(ViewJsAsEntity viewJsAsEntity : list){
             System.out.println(viewJsAsEntity.getSno());
         }

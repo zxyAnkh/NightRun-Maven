@@ -9,8 +9,7 @@
                   overflowToDisk="false"
                   diskPersistent="false"
                   timeToIdleSeconds="0"
-                  timeToLiveSeconds="600"
-                  memoryStoreEvictionPolicy="LFU" />
+                  timeToLiveSeconds="600"/>
 
     <cache name="adminDaoCache"
            eternal="false"

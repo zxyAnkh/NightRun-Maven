@@ -50,7 +50,7 @@
     </script>
     <div class="btn-group btn-group-sm" role="group">
             <input type="text" class="form-control" placeholder="请输入学号或姓名" id="ksearch"
-                   onkeydown="if(event.keyCode == 13) find()">
+                   onkeydown="if(event.keyCode == 13) findRun()">
         </div>
     </div>
 </div>

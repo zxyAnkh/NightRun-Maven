@@ -38,13 +38,11 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    @Cacheable(value = "adminServiceCache", key = "'user'")
     public List<ViewJsAsEntity> loadUser(String ano, Boolean isAll) {
         return adminDao.loadUser(ano, isAll);
     }
 
     @Override
-//    @Cacheable(value = "mCache", key = "run")
     public List<ViewJsRunEntity> loadRun(String ano, int branch, Boolean isAll) {
         return adminDao.loadRun(ano, branch, isAll);
     }

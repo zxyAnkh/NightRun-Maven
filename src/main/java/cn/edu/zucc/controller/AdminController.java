@@ -6,6 +6,7 @@ import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
 import cn.edu.zucc.form.BeanadminForm;
 import cn.edu.zucc.form.BeanuserForm;
+import cn.edu.zucc.form.DeleteUserForm;
 import cn.edu.zucc.handle.ReadExcel;
 import cn.edu.zucc.service.AdminService;
 import org.apache.commons.logging.Log;
@@ -17,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -43,7 +45,7 @@ public class AdminController {
 
     private static final Log logger = LogFactory.getLog(AdminController.class);
 
-    @RequestMapping("/signin")
+    @RequestMapping(value = "/signin")
     public String doLogin(@Valid BeanadminEntity admin, Model model, BindingResult bindingResult, HttpSession httpSession) {
         logger.info("signin");
         BeanadminEntity beanadminEntity = adminService.doLogin(admin.getAno(), admin.getApwd());
@@ -58,13 +60,13 @@ public class AdminController {
             return "admin/signin";
     }
 
-    @RequestMapping("/signout")
+    @RequestMapping(value = "/signout")
     public String doSignOut(HttpSession httpSession) {
         httpSession.removeAttribute("beanadminEntity");
         return "admin/signin";
     }
 
-    @RequestMapping("/users")
+    @RequestMapping(value = "/users")
     public String showUser(Model model, HttpSession httpSession) {
         logger.info("users");
         if (httpSession.getAttribute("beanadminEntity") != null) {
@@ -76,7 +78,7 @@ public class AdminController {
         return "admin/signin";
     }
 
-    @RequestMapping("/usersAll")
+    @RequestMapping(value = "/usersAll")
     public String showAllUser(Model model, HttpSession httpSession) {
         logger.info("usersAll");
         if (httpSession.getAttribute("beanadminEntity") != null) {
@@ -89,7 +91,7 @@ public class AdminController {
     }
 
     //由于登录后url仍为admin_login 所以不知道怎么跳转到这里 admin_login返回时添加redirect
-    @RequestMapping("/main")
+    @RequestMapping(value = "/main")
     public String mainPage(Model model, HttpSession httpSession) {
         logger.info("mainPage");
         if (httpSession.getAttribute("beanadminEntity") != null) {
@@ -101,7 +103,7 @@ public class AdminController {
         return "admin/signin";
     }
 
-    @RequestMapping("/search")
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(@RequestParam("type") String type, @RequestParam("keyword") String keyword, Model model, HttpSession httpSession) {
         logger.info("mainPageFuzzyQuery");
         if (httpSession.getAttribute("beanadminEntity") != null) {
@@ -117,12 +119,12 @@ public class AdminController {
         return "admin/signin";
     }
 
-    @RequestMapping("/admin")
+    @RequestMapping(value = "/admin")
     public String admin() {
         return "/admin/admin";
     }
 
-    @RequestMapping("/modify")
+    @RequestMapping(value = "/modify")
     public String modify(HttpSession httpSession, BeanadminForm beanadminForm, Model model) {
         logger.info("modify");
         if (httpSession.getAttribute("beanadminEntity") != null) {
@@ -142,17 +144,17 @@ public class AdminController {
         return "admin/signin";
     }
 
-    @RequestMapping("/userAdd")
+    @RequestMapping(value = "/userAdd")
     public String userAdd() {
         return "/admin/userAdd";
     }
 
-    @RequestMapping("/usersAdd")
+    @RequestMapping(value = "/usersAdd")
     public String usersAdd() {
         return "/admin/usersAdd";
     }
 
-    @RequestMapping("/add")
+    @RequestMapping(value = "/add")
     public String add(BeanuserForm beanuserForm, HttpSession httpSession) {
         logger.info("add");
         if (httpSession.getAttribute("beanadminEntity") != null) {
@@ -165,7 +167,7 @@ public class AdminController {
         return "admin/signin";
     }
 
-    @RequestMapping("/adds")
+    @RequestMapping(value = "/adds")
     public String adds(HttpSession httpSession, @RequestParam("file") MultipartFile multipartFile) {
         logger.info("adds");
         if (httpSession.getAttribute("beanadminEntity") != null) {
@@ -191,16 +193,14 @@ public class AdminController {
         return "admin/signin";
     }
 
-    @RequestMapping("/delete")
-    public String deleteuser(HttpSession httpSession, @RequestBody JSONObject json) {
+    @RequestMapping(value = "/delete")
+    public String deleteuser(HttpSession httpSession, @RequestBody String snolist) {
         logger.info("deleteuser");
         if (httpSession.getAttribute("beanadminEntity") != null) {
             BeanadminEntity beanadminEntity = (BeanadminEntity) httpSession.getAttribute("beanadminEntity");
-            List<String> list = new ArrayList<String>();
-            for (int i = 1; i <= json.length(); i++) {
-                list.add(json.getString(String.valueOf(i)));
-                System.out.println(list.get(i - 1));
-//                adminService.deleteUser(list.get(i - 1), beanadminEntity.getAbranch());
+            for (int i = 0; i < snolist.length() - 1; i += 8) {
+                String str = snolist.substring(i, i + 8);
+                adminService.deleteUser(str, beanadminEntity.getAbranch());
             }
             return "redirect:users";
         }
