@@ -49,10 +49,6 @@
             todayHighlight: true
         });
     </script>
-    <div class="btn-group btn-group-sm" role="group">
-        <input type="text" class="form-control" placeholder="请输入学号或姓名" id="ksearch"
-               onkeydown="if(event.keyCode == 13) findRun()">
-    </div>
 </div>
 <div class="html-editor-align-center">
     <table class="table table-striped">

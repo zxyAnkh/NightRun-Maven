@@ -26,12 +26,11 @@
     <script type="text/javascript" src="../../js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
     <link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="../../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-    <script src="../../js/select.js" type="text/javascript"></script>
     <script src="../../js/search.js" type="text/javascript"></script>
 </head>
 <body>
 <%@include file="head.jsp" %>
-<div class="btn-toolbar" role="toolbar">
+<div class="btn-toolbar right" role="toolbar">
     <div class="btn-group btn-group-sm">
         <input id="stime" size="16" type="text" value="" readonly class="form_date" onchange="timeChange()"
                placeholder="起始时间">
@@ -50,22 +49,13 @@
             todayHighlight: true
         });
     </script>
-    <div class="btn-group btn-group-sm" role="group">
-        <select class="form-control" id="type">
-            <option>夜跑</option>
-            <option>用户</option>
-            <option>统计</option>
-        </select>
-        <input type="text" class="form-control" placeholder="请输入学号或姓名" id="ksearch"
-               onkeydown="if(event.keyCode == 13) find()">
-    </div>
 </div>
 </div>
 <div class="html-editor-align-center" onload="searchtype()">
-    <table class="table table-striped hidden" id="runtable">
+    <table class="table table-striped" id="runtable">
         <thead>
         <tr>
-            <th>#</th>
+            <th>夜跑查询结果</th>
             <th>学号</th>
             <th>姓名</th>
             <th>跑步用时</th>
@@ -90,13 +80,14 @@
         </c:forEach>
         </tbody>
     </table>
-    <table class="table table-striped hidden" id="usertable">
+    <table class="table table-striped" id="usertable">
         <thead>
         <tr>
-            <th>#</th>
+            <th>学生查询结果</th>
             <th>学号</th>
             <th>姓名</th>
             <th>年级</th>
+            <th>是否注销</th>
         </tr>
         </thead>
         <tbody>
@@ -107,15 +98,18 @@
                     <td>${result.sno}</td>
                     <td>${result.sname}</td>
                     <td>${result.sgrade}</td>
+                    <td><c:if test="${result.deltime == null}">否</c:if>
+                        <c:if test="${result.deltime != null}">是</c:if>
+                    </td>
                 </tr>
             </c:if>
         </c:forEach>
         </tbody>
     </table>
-    <table class="table table-striped hidden" id="totaltable">
+    <table class="table table-striped" id="totaltable">
         <thead>
         <tr>
-            <th>#</th>
+            <th>统计查询结果</th>
             <th>学号</th>
             <th>姓名</th>
             <th>年级</th>

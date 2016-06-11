@@ -89,6 +89,13 @@ public class AdminController {
             }else if("statistics".equals(type)){
                 List<ViewJsTotalEntity> viewJsTotalEntities = adminService.findTotal(keyword,1);
                 model.addAttribute("viewJsTotalEntities",viewJsTotalEntities);
+            }else if("all".equals(type)){
+                List<ViewJsRunEntity> runSearchResult = adminService.findRun("rkeyword", keyword, 1);
+                model.addAttribute("runSearchResult", runSearchResult);
+                List<ViewJsAsEntity> viewJsAsEntities = adminService.findUser(keyword,1);
+                model.addAttribute("viewJsAsEntities",viewJsAsEntities);
+                List<ViewJsTotalEntity> viewJsTotalEntities = adminService.findTotal(keyword,1);
+                model.addAttribute("viewJsTotalEntities",viewJsTotalEntities);
             }
             logger.info(keyword);
             return "admin/search";

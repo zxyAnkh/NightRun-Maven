@@ -22,10 +22,28 @@ function timeChange() {
 }
 function find() {
     var type=document.getElementById("type").value;
-    if(type = "夜跑")
-        findRun()
+    if(type == "夜跑")
+        findRun();
+    else if(type == "统计")
+        findStatistics();
+    else if(type == "用户")
+        findUser();
+    else if(type == "全部")
+        findAll();
 }
 function findRun() {
     var keyword = document.getElementById("ksearch").value;
     location.href = "search?type=rkeyword&keyword=" + keyword;
+}
+function findUser() {
+    var keyword = document.getElementById("ksearch").value;
+    location.href = "search?type=skeyword&keyword=" + keyword;
+}
+function findStatistics() {
+    var keyword = document.getElementById("ksearch").value;
+    location.href = "search?type=statistics&keyword=" + keyword;
+}
+function findAll(){
+    var keyword = document.getElementById("ksearch").value;
+    location.href = "search?type=all&keyword=" + keyword;
 }

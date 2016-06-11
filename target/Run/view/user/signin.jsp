@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Signin</title>
+    <title>城院夜跑系统</title>
 </head>
 <body>
 <form action="/view/user/signin" method="post">

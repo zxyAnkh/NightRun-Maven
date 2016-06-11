@@ -10,12 +10,13 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>main</title>
+    <title>城院夜跑系统</title>
 </head>
 <body>
 {<c:forEach var="item" items="${list}" varStatus="status">
     <p>"<c:out value="${status.count}"/>":
-       {"sno":"<c:out value="${item.sno}"/>",
+       {"sid":"<c:out value="${item.sid}"/>",
+        "sno":"<c:out value="${item.sno}"/>",
         "sname":"<c:out value="${item.sname}"/>",
         "meter":"<c:out value="${item.meter}"/>",
         "time":"<c:out value="${item.time}"/>",

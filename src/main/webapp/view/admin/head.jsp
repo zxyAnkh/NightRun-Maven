@@ -9,6 +9,7 @@
 <html>
 <head>
     <script type="text/javascript" src="../../js/head.js"></script>
+    <script type="text/javascript" src="../../js/search.js"></script>
 </head>
 <body onload="urlcheck()">
 <nav class="navbar navbar-default navbar-static-top">
@@ -28,6 +29,18 @@
                 <li id="home"><a href="/view/admin/main">首页</a></li>
                 <li id="notice"><a href="#">通知管理</a></li>
                 <li id="user"><a href="/view/admin/users">用户管理</a></li>
+            </ul>
+            <ul class="navbar-form navbar-left">
+                <div class="form-group">
+                    <select class="form-control" id="type">
+                        <option>全部</option>
+                        <option>夜跑</option>
+                        <option>用户</option>
+                        <option>统计</option>
+                    </select>
+                    <input type="text" class="form-control" placeholder="请输入学号或姓名" id="ksearch"
+                           onkeydown="if(event.keyCode == 13) find()">
+                </div>
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li id="admin"><a href="/view/admin/admin"> ${beanadminEntity.aname}</a></li>

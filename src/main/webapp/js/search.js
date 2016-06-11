@@ -28,6 +28,8 @@ function find() {
         findStatistics();
     else if(type == "用户")
         findUser();
+    else if(type == "全部")
+        findAll();
 }
 function findRun() {
     var keyword = document.getElementById("ksearch").value;
@@ -41,14 +43,7 @@ function findStatistics() {
     var keyword = document.getElementById("ksearch").value;
     location.href = "search?type=statistics&keyword=" + keyword;
 }
-function searchtype() {
-    var url = window.location.href;
-    var type = url.substring(url.lastIndexOf("?") + 1,url.lastIndexOf("&"));
-    if(type == "type=rkeyword" || type == "type=rtime"){
-        document.getElementById("runtable").classList = "table table-striped";
-    }else if(type == "type=skeyword"){
-        document.getElementById("usertable").classList = "table table-striped";
-    }else if(type == "type=statistics"){
-        document.getElementById("totaltable").classList = "table table-striped";
-    }
+function findAll(){
+    var keyword = document.getElementById("ksearch").value;
+    location.href = "search?type=all&keyword=" + keyword;
 }

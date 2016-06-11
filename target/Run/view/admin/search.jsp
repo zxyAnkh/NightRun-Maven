@@ -18,23 +18,24 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico">
     <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <script type="text/javascript" src="../../js/jquery-2.2.4.min.js" charset="UTF-8"></script>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="../../js/jquery-2.2.4.min.js" charset="UTF-8"></script>
     <script type="text/javascript" src="../../js/bootstrap.min.js"></script>
     <script type="text/javascript" src="../../js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
     <script type="text/javascript" src="../../js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
     <link href="../../css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="../../css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
-    <script src="../../js/select.js" type="text/javascript"></script>
     <script src="../../js/search.js" type="text/javascript"></script>
 </head>
 <body>
-<%@include file="head.jsp"%>
-<div class="btn-toolbar" role="toolbar">
+<%@include file="head.jsp" %>
+<div class="btn-toolbar right" role="toolbar">
     <div class="btn-group btn-group-sm">
-        <input id="stime" size="16" type="text" value="" readonly class="form_date" onchange="timeChange()" placeholder = "起始时间">
-        <input id="etime" size="16" type="text" value="" readonly class="form_date" onchange="timeChange()" placeholder = "终止时间">
+        <input id="stime" size="16" type="text" value="" readonly class="form_date" onchange="timeChange()"
+               placeholder="起始时间">
+        <input id="etime" size="16" type="text" value="" readonly class="form_date" onchange="timeChange()"
+               placeholder="终止时间">
     </div>
     <div class="btn-group btn-group-sm">
         <button id="time" type="button" onclick="timeQuery()" class="btn btn-primary disabled">查询</button>
@@ -48,13 +49,9 @@
             todayHighlight: true
         });
     </script>
-    <div class="btn-group btn-group-sm" role="group">
-            <input type="text" class="form-control" placeholder="请输入学号或姓名" id="ksearch"
-                   onkeydown="if(event.keyCode == 13) findRun()">
-        </div>
-    </div>
 </div>
-<div class="html-editor-align-center">
+</div>
+<div class="html-editor-align-center" onload="searchtype()">
     <table class="table table-striped" id="runtable">
         <thead>
         <tr>
@@ -78,6 +75,62 @@
                         <fmt:formatNumber type="number" value="${result.time%60}" minIntegerDigits="2"/>秒
                     </td>
                     <td>${result.starttime}</td>
+                </tr>
+            </c:if>
+        </c:forEach>
+        </tbody>
+    </table>
+    <table class="table table-striped" id="usertable">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>年级</th>
+            <th>是否注销</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${viewJsAsEntities}" var="result" varStatus="status">
+            <c:if test="${viewJsAsEntities != null}">
+                <tr>
+                    <td>${status.count}</td>
+                    <td>${result.sno}</td>
+                    <td>${result.sname}</td>
+                    <td>${result.sgrade}</td>
+                    <td><c:if test="${result.deltime == null}">否</c:if>
+                        <c:if test="${result.deltime != null}">是</c:if>
+                    </td>
+                </tr>
+            </c:if>
+        </c:forEach>
+        </tbody>
+    </table>
+    <table class="table table-striped" id="totaltable">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>学号</th>
+            <th>姓名</th>
+            <th>年级</th>
+            <th>跑步次数</th>
+            <th>跑步时长</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${viewJsTotalEntities}" var="result" varStatus="status">
+            <c:if test="${viewJsTotalEntities != null}">
+                <tr>
+                    <td>${status.count}</td>
+                    <td>${result.sno}</td>
+                    <td>${result.sname}</td>
+                    <td>${result.sgrade}</td>
+                    <td>${result.count}</td>
+                    <td>
+                        <fmt:formatNumber type="number" value="${(result.sumtime-result.sumtime%60)/60}"
+                                          maxFractionDigits="0"/>分
+                        <fmt:formatNumber type="number" value="${result.sumtime%60}" minIntegerDigits="2"/>秒
+                    </td>
                 </tr>
             </c:if>
         </c:forEach>
