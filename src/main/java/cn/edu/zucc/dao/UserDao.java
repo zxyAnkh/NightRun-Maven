@@ -13,6 +13,7 @@ import java.util.List;
 public interface UserDao {
     BeanuserEntity doLogin(String sno,String pwd);
     List<ViewJsRunEntity> loadRun(String sno);
+    Boolean modifyPwd(int id,String pwd) throws Exception;
     ViewJsAsEntity findByNo(String sno, int branch);
     Boolean addRun(BeanrunEntity beanrunEntity) throws Exception;
 }

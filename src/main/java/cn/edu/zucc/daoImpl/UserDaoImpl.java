@@ -17,16 +17,16 @@ import java.util.List;
  * Created by zxy on 5/14/2016.
  */
 @Repository("userDao")
-public class UserDaoImpl extends BaseDaoImpl implements UserDao{
+public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
     @Override
     public BeanuserEntity doLogin(String sno, String pwd) {
         String hql = "from BeanuserEntity where sno=? and spwd=? and deltime is null";
         Session session = getCurrentSession();
         Query query = session.createQuery(hql);
-        query.setString(0,sno);
-        query.setString(1,pwd);
-        return (BeanuserEntity)query.uniqueResult();
+        query.setString(0, sno);
+        query.setString(1, pwd);
+        return (BeanuserEntity) query.uniqueResult();
     }
 
     @Override
@@ -34,8 +34,14 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
         String hql = "from ViewJsRunEntity where sno=?";
         Session session = getCurrentSession();
         Query query = session.createQuery(hql);
-        query.setString(0,sno);
+        query.setString(0, sno);
         return query.list();
+    }
+
+    @Override
+    public Boolean modifyPwd(int id, String pwd) throws Exception {
+        String hql = "update BeanuserEntity set spwd = '" + pwd + "' where sId=" + id;
+        return getCurrentSession().createQuery(hql).executeUpdate() == 1;
     }
 
     @Override
@@ -48,7 +54,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao{
     }
 
     @Override
-    public Boolean addRun(BeanrunEntity beanrunEntity) throws Exception{
+    public Boolean addRun(BeanrunEntity beanrunEntity) throws Exception {
         try {
             getCurrentSession().save(beanrunEntity);
             return true;

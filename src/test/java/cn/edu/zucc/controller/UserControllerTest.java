@@ -29,11 +29,25 @@ public class UserControllerTest {
 
     @Test
     public void doLogin() throws Exception {
-        System.out.println(userService.doLogin("31301413","123456"));
+        System.out.println(userService.doLogin("31301413", "123456"));
     }
 
     @Test
     public void main() throws Exception {
+        List<Map<String, String>> viewJsRunEntityList = userService.loadRun("31301413");
+        for (Map<String, String> map : viewJsRunEntityList){
+            System.out.println(map.get("sno"));
+        }
+    }
+
+    @Test
+    public void run() throws Exception {
+        System.out.println(userService.addRun("31301413","2016-06-11 10:11:11","2016-06-11 10:11:11"));
+    }
+
+    @Test
+    public void modify() throws Exception {
+        System.out.println(userService.modifyPwd(1,"123456"));
     }
 
 }

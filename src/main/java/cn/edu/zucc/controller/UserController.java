@@ -42,7 +42,13 @@ public class UserController {
 
     @RequestMapping("/run")
     public String run(String sno, String starttime, String endtime) {
-        userService.addRun(sno,starttime,endtime);
+        userService.addRun(sno, starttime, endtime);
+        return "redirect:main";
+    }
+
+    @RequestMapping("/modify")
+    public String modify(int id, String pwd) {
+        userService.modifyPwd(id, pwd);
         return "redirect:main";
     }
 

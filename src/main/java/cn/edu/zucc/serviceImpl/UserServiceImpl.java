@@ -27,6 +27,16 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public Boolean modifyPwd(int id, String pwd){
+        try {
+            return userDao.modifyPwd(id,pwd);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Override
     public List<Map<String, String>> loadRun(String sno) {
         List<Map<String, String>> mapList = new ArrayList<Map<String, String>>();
         List<ViewJsRunEntity> list = userDao.loadRun(sno);

@@ -11,6 +11,7 @@ import java.util.Map;
  */
 public interface UserService {
     Boolean doLogin(String sno, String pwd);
+    Boolean modifyPwd(int id,String pwd);
     List<Map<String,String>> loadRun(String sno);
     Boolean addRun(String sno,String stime,String etime);
 }
