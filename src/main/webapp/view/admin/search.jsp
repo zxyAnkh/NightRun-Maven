@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html>
 <head>
     <title>城院夜跑系统</title>
@@ -55,7 +56,7 @@
     <table class="table table-striped" id="runtable">
         <thead>
         <tr>
-            <th>夜跑查询结果</th>
+            <th>夜跑：${fn:length(runSearchResult)}条记录</th>
             <th>学号</th>
             <th>姓名</th>
             <th>跑步用时</th>
@@ -83,7 +84,7 @@
     <table class="table table-striped" id="usertable">
         <thead>
         <tr>
-            <th>学生查询结果</th>
+            <th>学生：${fn:length(viewJsAsEntities)}条记录</th>
             <th>学号</th>
             <th>姓名</th>
             <th>年级</th>
@@ -109,7 +110,7 @@
     <table class="table table-striped" id="totaltable">
         <thead>
         <tr>
-            <th>统计查询结果</th>
+            <th>统计：${fn:length(viewJsTotalEntities)}条记录</th>
             <th>学号</th>
             <th>姓名</th>
             <th>年级</th>

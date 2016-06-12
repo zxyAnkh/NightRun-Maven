@@ -49,9 +49,7 @@
             todayHighlight: true
         });
     </script>
-    <div class="btn-group btn-group-sm" role="group">
-        <input type="text" class="form-control" placeholder="请输入学号或姓名" id="ksearch"
-               onkeydown="if(event.keyCode == 13) findRun()">
+    <div class="btn-group btn-group-sm"><a href="/view/admin/export">导出Excel</a>
     </div>
 </div>
 <div class="html-editor-align-center">

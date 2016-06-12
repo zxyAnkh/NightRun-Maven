@@ -49,6 +49,8 @@
             todayHighlight: true
         });
     </script>
+    <div class="btn-group btn-group-sm"><a href="/view/admin/export">导出Excel</a>
+    </div>
 </div>
 <div class="html-editor-align-center">
     <table class="table table-striped">

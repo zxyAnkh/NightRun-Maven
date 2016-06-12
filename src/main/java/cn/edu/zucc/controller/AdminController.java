@@ -7,6 +7,7 @@ import cn.edu.zucc.entity.ViewJsTotalEntity;
 import cn.edu.zucc.form.BeanadminForm;
 import cn.edu.zucc.form.BeanuserForm;
 import cn.edu.zucc.handle.ReadExcel;
+import cn.edu.zucc.handle.WriteExcel;
 import cn.edu.zucc.service.AdminService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -20,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -76,6 +77,29 @@ public class AdminController {
         return "admin/signin";
     }
 
+    @RequestMapping(value = "/export")
+    public String export(HttpSession httpSession, HttpServletResponse response) {
+        logger.info("export");
+        if (httpSession.getAttribute("beanadminEntity") != null) {
+            List<ViewJsRunEntity> viewJsRunEntityList = adminService.loadRun("admin",1);
+            String path = httpSession.getServletContext().getRealPath("/download/");
+            String fileName = new WriteExcel().createRunExcel(viewJsRunEntityList,path);
+            File file = new File(path,fileName + ".xls");
+            if(file.exists()){
+                response.setContentType("application/vnd.ms-excel;charset=utf-8");
+                response.addHeader("Content-Disposition","attachment;filename=" + fileName + ".xls");
+                try {
+                    FileInputStream fis = new FileInputStream(file);
+                    return "redirect:main";
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            return "redirect:main";
+        }
+        return "admin/signin";
+    }
+
     @RequestMapping(value = "/search", method = RequestMethod.GET)
     public String search(@RequestParam("type") String type, @RequestParam("keyword") String keyword, Model model, HttpSession httpSession) {
         logger.info("mainPageFuzzyQuery");
@@ -84,18 +108,18 @@ public class AdminController {
                 List<ViewJsRunEntity> runSearchResult = adminService.findRun(type, keyword, 1);
                 model.addAttribute("runSearchResult", runSearchResult);
             } else if ("skeyword".equals(type)) {
-                List<ViewJsAsEntity> viewJsAsEntities = adminService.findUser(keyword,1);
-                model.addAttribute("viewJsAsEntities",viewJsAsEntities);
-            }else if("statistics".equals(type)){
-                List<ViewJsTotalEntity> viewJsTotalEntities = adminService.findTotal(keyword,1);
-                model.addAttribute("viewJsTotalEntities",viewJsTotalEntities);
-            }else if("all".equals(type)){
+                List<ViewJsAsEntity> viewJsAsEntities = adminService.findUser(keyword, 1);
+                model.addAttribute("viewJsAsEntities", viewJsAsEntities);
+            } else if ("statistics".equals(type)) {
+                List<ViewJsTotalEntity> viewJsTotalEntities = adminService.findTotal(keyword, 1);
+                model.addAttribute("viewJsTotalEntities", viewJsTotalEntities);
+            } else if ("all".equals(type)) {
                 List<ViewJsRunEntity> runSearchResult = adminService.findRun("rkeyword", keyword, 1);
                 model.addAttribute("runSearchResult", runSearchResult);
-                List<ViewJsAsEntity> viewJsAsEntities = adminService.findUser(keyword,1);
-                model.addAttribute("viewJsAsEntities",viewJsAsEntities);
-                List<ViewJsTotalEntity> viewJsTotalEntities = adminService.findTotal(keyword,1);
-                model.addAttribute("viewJsTotalEntities",viewJsTotalEntities);
+                List<ViewJsAsEntity> viewJsAsEntities = adminService.findUser(keyword, 1);
+                model.addAttribute("viewJsAsEntities", viewJsAsEntities);
+                List<ViewJsTotalEntity> viewJsTotalEntities = adminService.findTotal(keyword, 1);
+                model.addAttribute("viewJsTotalEntities", viewJsTotalEntities);
             }
             logger.info(keyword);
             return "admin/search";
