@@ -3,16 +3,12 @@ package cn.edu.zucc.serviceImpl;
 import cn.edu.zucc.dao.AdminDao;
 import cn.edu.zucc.entity.*;
 import cn.edu.zucc.form.BeanuserForm;
-import cn.edu.zucc.handle.ReadExcel;
 import cn.edu.zucc.service.AdminService;
+import com.googlecode.ehcache.annotations.TriggersRemove;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -34,16 +30,19 @@ public class AdminServiceImpl implements AdminService {
             return null;
     }
 
+    @Cacheable(value = "adminServiceCache")
     @Override
     public List<ViewJsAsEntity> loadUser(String ano, Boolean isAll) {
         return adminDao.loadUser(ano, isAll);
     }
 
+    @Cacheable(value = "adminServiceCache")
     @Override
     public List<ViewJsRunEntity> loadRun(String ano, int branch) {
         return adminDao.loadRun(ano, branch);
     }
 
+    @Cacheable(value = "adminServiceCache")
     @Override
     public List<ViewJsRunEntity> findRun(String type, String keyword, int branch) {
         if (keyword != null && !"".equals(keyword)) {
@@ -52,6 +51,7 @@ public class AdminServiceImpl implements AdminService {
         return null;
     }
 
+    @Cacheable(value = "adminServiceCache")
     @Override
     public List<ViewJsAsEntity> findUser(String keyword, int branch) {
         if(keyword != null && !"".equals(keyword))
@@ -59,6 +59,7 @@ public class AdminServiceImpl implements AdminService {
         return null;
     }
 
+    @Cacheable(value = "adminServiceCache")
     @Override
     public List<ViewJsTotalEntity> findTotal(String keyword, int branch) {
         if(keyword != null && !"".equals(keyword))
@@ -66,11 +67,13 @@ public class AdminServiceImpl implements AdminService {
         return null;
     }
 
+    @TriggersRemove(cacheName = "adminServiceCache",removeAll = true)
     @Override
     public Boolean modifyAdmin(BeanadminEntity beanadminEntity) {
         return adminDao.modifyAdmin(beanadminEntity);
     }
 
+    @TriggersRemove(cacheName = "adminServiceCache",removeAll = true)
     @Override
     public Boolean addUser(BeanuserForm beanuserForm) {
         BeanuserEntity beanuserEntity = new BeanuserEntity();
@@ -91,6 +94,7 @@ public class AdminServiceImpl implements AdminService {
         return false;
     }
 
+    @TriggersRemove(cacheName = "adminServiceCache",removeAll = true)
     @Override
     public Boolean deleteUser(String sno, int branch) {
         ViewJsAsEntity viewJsAsEntity = adminDao.findByNo(sno, branch);

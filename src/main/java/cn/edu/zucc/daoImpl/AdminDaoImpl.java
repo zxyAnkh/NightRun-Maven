@@ -5,9 +5,7 @@ import cn.edu.zucc.entity.*;
 import com.googlecode.ehcache.annotations.TriggersRemove;
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.annotations.SQLInsert;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -37,7 +35,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         return (ViewJsAsEntity) query.uniqueResult();
     }
 
-    @TriggersRemove(cacheName = "adminDaoCache",removeAll = true)
+    @Cacheable(value = "adminDaoCache")
     @Override
     public List<ViewJsAsEntity> loadUser(String ano, Boolean isAll) {
         String hql = "from ViewJsAsEntity where ano=?";
@@ -51,7 +49,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         return query.list();
     }
 
-    @TriggersRemove(cacheName = "adminDaoCache",removeAll = true)
+    @Cacheable(value = "adminDaoCache")
     @Override
     public List<ViewJsRunEntity> loadRun(String ano, int branch) {
         String hql = "from ViewJsRunEntity order by starttime";
@@ -60,7 +58,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         return query.list();
     }
 
-    @TriggersRemove(cacheName = "adminDaoCache",removeAll = true)
+    @Cacheable(value = "adminDaoCache")
     @Override
     public List<ViewJsRunEntity> findRun(String type, String keyword, int branch) {
         String hql = "from ViewJsRunEntity";
@@ -75,6 +73,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         return query.list();
     }
 
+    @Cacheable(value = "adminDaoCache")
     @Override
     public List<ViewJsAsEntity> findUser(String keyword, int branch) {
         String hql = "from ViewJsAsEntity where sno like '%" + keyword + "%' or sname like '%" + keyword + "%'";
@@ -82,6 +81,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         return session.createQuery(hql).list();
     }
 
+    @Cacheable(value = "adminDaoCache")
     @Override
     public List<ViewJsTotalEntity> findTotal(String keyword, int branch) {
         String hql = "from ViewJsTotalEntity where sno like '%" + keyword + "%' or sname like '%" + keyword + "%'";
@@ -89,6 +89,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         return session.createQuery(hql).list();
     }
 
+    @TriggersRemove(cacheName = "adminDaoCache",removeAll = true)
     @Override
     public Boolean modifyAdmin(BeanadminEntity beanadminEntity) {
         String hql = "update BeanadminEntity set aname = '" + beanadminEntity.getAname() + "' ,apwd = '"
@@ -97,6 +98,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         return result == 1;
     }
 
+    @TriggersRemove(cacheName = "adminDaoCache",removeAll = true)
     @Override
     public Boolean addUser(BeanuserEntity beanuserEntity) throws Exception {
         try {
@@ -107,6 +109,7 @@ public class AdminDaoImpl extends BaseDaoImpl implements AdminDao {
         }
     }
 
+    @TriggersRemove(cacheName = "adminDaoCache",removeAll = true)
     @Override
     public Boolean deleteUser(int id) {
         String hql = "update BeanuserEntity set deltime = now() where sId = " + id;

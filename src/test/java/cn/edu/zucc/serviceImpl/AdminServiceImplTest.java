@@ -26,14 +26,37 @@ public class AdminServiceImplTest {
     private AdminService adminService;
 
     @Test
-    public void findUser(){
-        List<ViewJsAsEntity> list = adminService.findUser("1413",1);
-        for(ViewJsAsEntity viewJsAsEntity:list)
+    public void findUser() {
+        List<ViewJsAsEntity> list = adminService.findUser("1413", 1);
+        for (ViewJsAsEntity viewJsAsEntity : list)
             System.out.println(viewJsAsEntity.getSno());
     }
 
     @Test
-    public void findTotal(){
+    public void findUser2() {
+        List<ViewJsAsEntity> list = adminService.findUser("1413", 1);
+        for (ViewJsAsEntity viewJsAsEntity : list)
+            System.out.println(viewJsAsEntity.getSno());
     }
 
+    @Test
+    public void findUser3() {
+        List<ViewJsAsEntity> list = adminService.findUser("1413", 1);
+        for (ViewJsAsEntity viewJsAsEntity : list)
+            System.out.println(viewJsAsEntity.getSno());
+    }
+
+    @Test
+    public void findUser4() {
+        List<ViewJsAsEntity> list = adminService.findUser("1413", 1);
+        for (ViewJsAsEntity viewJsAsEntity : list)
+            System.out.println(viewJsAsEntity.getSno());
+    }
+
+    @Test
+    public void findUser5() {
+        List<ViewJsAsEntity> list = adminService.findUser("1413", 1);
+        for (ViewJsAsEntity viewJsAsEntity : list)
+            System.out.println(viewJsAsEntity.getSno());
+    }
 }

@@ -38,8 +38,6 @@ public class AdminController {
 
     @Autowired
     private AdminService adminService;
-//    @Autowired
-//    private CacheManager cacheManager;
 
     private static final Log logger = LogFactory.getLog(AdminController.class);
 
@@ -81,17 +79,28 @@ public class AdminController {
     public String export(HttpSession httpSession, HttpServletResponse response) {
         logger.info("export");
         if (httpSession.getAttribute("beanadminEntity") != null) {
-            List<ViewJsRunEntity> viewJsRunEntityList = adminService.loadRun("admin",1);
+            List<ViewJsRunEntity> viewJsRunEntityList = adminService.loadRun("admin", 1);
             String path = httpSession.getServletContext().getRealPath("/download/");
-            String fileName = new WriteExcel().createRunExcel(viewJsRunEntityList,path);
-            File file = new File(path,fileName + ".xls");
-            if(file.exists()){
+            String fileName = new WriteExcel().createRunExcel(viewJsRunEntityList, path);
+            File file = new File(path, fileName + ".xls");
+            if (file.exists()) {
                 response.setContentType("application/vnd.ms-excel;charset=utf-8");
-                response.addHeader("Content-Disposition","attachment;filename=" + fileName + ".xls");
+                response.addHeader("Content-Disposition", "attachment;filename=" + fileName + ".xls");
+                byte[] buffer = new byte[1024];
                 try {
                     FileInputStream fis = new FileInputStream(file);
+                    BufferedInputStream bis = new BufferedInputStream(fis);
+                    OutputStream os = response.getOutputStream();
+                    int i = bis.read(buffer);
+                    while (i != -1) {
+                        os.write(buffer, 0, i);
+                        i = bis.read(buffer);
+                    }
+                    os.flush();
                     return "redirect:main";
                 } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
             }

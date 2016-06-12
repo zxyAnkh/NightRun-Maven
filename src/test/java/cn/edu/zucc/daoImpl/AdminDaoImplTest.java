@@ -27,16 +27,6 @@ public class AdminDaoImplTest {
     private AdminDao adminDao;
 
     @Test
-    public void findByNo() throws Exception {
-
-    }
-
-    @Test
-    public void findByNo1() throws Exception {
-
-    }
-
-    @Test
     public void loadUser() throws Exception {
         List<ViewJsAsEntity> list = adminDao.loadUser("admin",Boolean.FALSE);
         for (ViewJsAsEntity viewJsAsEntity : list)
@@ -50,33 +40,4 @@ public class AdminDaoImplTest {
             System.out.println(viewJsAsEntity.getSno());
     }
 
-    @Test
-    public void loadRun() throws Exception {
-
-    }
-
-    @Test
-    public void findRun() throws Exception {
-
-    }
-
-    @Test
-    public void modify() throws Exception {
-
-    }
-
-    @Test
-    public void addUser() throws Exception {
-
-    }
-
-    @Test
-    public void deleteUser() throws Exception {
-        int id = 9;
-        if(adminDao.deleteUser(id)) {
-            System.out.println("delelte success");
-            ViewJsAsEntity viewJsAsEntity = adminDao.findByNo("31301002", 1);
-            System.out.println(viewJsAsEntity.getDeltime());
-        }
-    }
 }
