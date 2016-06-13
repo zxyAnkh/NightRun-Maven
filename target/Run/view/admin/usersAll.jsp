@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src="../../js/jquery-2.2.4.min.js" type="text/javascript"></script>
     <script src="../../js/select.js" type="text/javascript"></script>
+    <script src="../../js/deleteuser.js" type="text/javascript"></script>
 </head>
 <body>
 <%@include file="head.jsp"%>
@@ -36,7 +37,7 @@
         <c:forEach items="${viewJsAsEntities}" var="viewJsAsEntity" varStatus="status">
             <tr>
                 <td>${status.count}</td>
-                <td>${viewJsAsEntity.sno}</td>
+                <td  name="item">${viewJsAsEntity.sno}</td>
                 <td>${viewJsAsEntity.sname}</td>
                 <td>${viewJsAsEntity.sgrade}</td>
             </tr>

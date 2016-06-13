@@ -27,7 +27,7 @@ public class ViewController {
     @Autowired
     private ViewService viewService;
 
-    @RequestMapping(value = "/view/admin/main")
+    @RequestMapping(value = "/view/admin/main", method=RequestMethod.GET)
     public String mainPage(Model model, HttpSession httpSession) {
         if (httpSession.getAttribute("beanadminEntity") != null) {
             String ano = ((BeanadminEntity) httpSession.getAttribute("beanadminEntity")).getAno();

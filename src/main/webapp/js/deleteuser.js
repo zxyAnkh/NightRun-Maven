@@ -16,6 +16,9 @@ function delusers() {
         data: str, //组装参数
         dataType: "text",
         // contentType: "text/plain; charset=utf-8",
+        success:function () {
+            alert("delete success");
+        },
         error:function () {
             alert("delete falied");
         }
@@ -36,6 +39,9 @@ function resuser() {
         data: str, //组装参数
         dataType: "text",
         // contentType: "text/plain; charset=utf-8",
+        success:function () {
+            alert("delete success");
+        },
         error:function () {
             alert("restore falied");
         }

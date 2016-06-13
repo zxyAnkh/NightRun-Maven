@@ -33,17 +33,21 @@ function find() {
 }
 function findRun() {
     var keyword = document.getElementById("ksearch").value;
-    location.href = "search?type=rkeyword&keyword=" + keyword;
+    if(keyword!=null && ""!=(keyword))
+        location.href = "search?type=rkeyword&keyword=" + keyword;
 }
 function findUser() {
     var keyword = document.getElementById("ksearch").value;
-    location.href = "search?type=skeyword&keyword=" + keyword;
+    if(keyword!=null && ""!=(keyword))
+        location.href = "search?type=skeyword&keyword=" + keyword;
 }
 function findStatistics() {
     var keyword = document.getElementById("ksearch").value;
-    location.href = "search?type=statistics&keyword=" + keyword;
+    if(keyword!=null && ""!=(keyword))
+        location.href = "search?type=statistics&keyword=" + keyword;
 }
 function findAll(){
     var keyword = document.getElementById("ksearch").value;
-    location.href = "search?type=all&keyword=" + keyword;
+    if(keyword!=null && ""!=(keyword))
+        location.href = "search?type=all&keyword=" + keyword;
 }

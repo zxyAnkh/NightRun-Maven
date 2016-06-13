@@ -63,7 +63,7 @@ public class AdminController {
                     beanadminEntity.setApwd(beanadminForm.getNewpwd2());
                 beanadminEntity.setAname(beanadminForm.getName());
                 if (adminService.modifyAdmin(beanadminEntity))
-                    return "redirect:main"; //修改完之后url为/modify 在线等 over hhhh
+                    return "redirect:main";
                 else {
                     return "admin/admin";
                 }
