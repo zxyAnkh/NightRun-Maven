@@ -11,9 +11,25 @@
                   timeToIdleSeconds="0"
                   timeToLiveSeconds="600"/>
 
-    <cache name="adminDaoCache"
+    <cache name="runServiceCache"
            eternal="false"
-           maxElementsInMemory="500"
+           maxElementsInMemory="3000"
+           overflowToDisk="false"
+           diskPersistent="false"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="300"
+           memoryStoreEvictionPolicy="LFU" />
+    <cache name="userServiceCache"
+           eternal="false"
+           maxElementsInMemory="3000"
+           overflowToDisk="false"
+           diskPersistent="false"
+           timeToIdleSeconds="0"
+           timeToLiveSeconds="300"
+           memoryStoreEvictionPolicy="LFU" />
+    <cache name="viewServiceCache"
+           eternal="false"
+           maxElementsInMemory="5000"
            overflowToDisk="false"
            diskPersistent="false"
            timeToIdleSeconds="0"
@@ -21,7 +37,7 @@
            memoryStoreEvictionPolicy="LFU" />
     <cache name="adminServiceCache"
            eternal="false"
-           maxElementsInMemory="500"
+           maxElementsInMemory="3000"
            overflowToDisk="false"
            diskPersistent="false"
            timeToIdleSeconds="0"

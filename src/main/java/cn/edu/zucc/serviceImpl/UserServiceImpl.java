@@ -2,8 +2,12 @@ package cn.edu.zucc.serviceImpl;
 
 import cn.edu.zucc.dao.UserDao;
 import cn.edu.zucc.entity.BeanrunEntity;
+import cn.edu.zucc.entity.BeanuserEntity;
+import cn.edu.zucc.entity.ViewJsAsEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
+import cn.edu.zucc.form.BeanuserForm;
 import cn.edu.zucc.service.UserService;
+import com.googlecode.ehcache.annotations.TriggersRemove;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +30,7 @@ public class UserServiceImpl implements UserService {
         return userDao.doLogin(sno, pwd) != null;
     }
 
+    @TriggersRemove(cacheName = "userServiceCache",removeAll = true)
     @Override
     public Boolean modifyPwd(int id, String pwd){
         try {
@@ -36,43 +41,46 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    @TriggersRemove(cacheName = "userServiceCache",removeAll = true)
     @Override
-    public List<Map<String, String>> loadRun(String sno) {
-        List<Map<String, String>> mapList = new ArrayList<Map<String, String>>();
-        List<ViewJsRunEntity> list = userDao.loadRun(sno);
-        for (ViewJsRunEntity viewJsRunEntity : list) {
-            Map<String, String> map = new HashMap<String, String>();
-            map.put("sid", String.valueOf(viewJsRunEntity.getsId()));
-            map.put("sno", viewJsRunEntity.getSno());
-            map.put("sname", viewJsRunEntity.getSname());
-            map.put("meter", String.valueOf(viewJsRunEntity.getMeter()));
-            map.put("time", String.valueOf(viewJsRunEntity.getTime()));
-            map.put("starttime", String.valueOf(viewJsRunEntity.getStarttime()));
-            map.put("endtime", String.valueOf(viewJsRunEntity.getEndtime()));
-            mapList.add(map);
-        }
-        return mapList;
-    }
-
-    @Override
-    public Boolean addRun(String sno, String stime, String etime) {
+    public Boolean modifyDel(String sno, int branch){
+        ViewJsAsEntity viewJsAsEntity = userDao.findByNo(sno);
+        int id = viewJsAsEntity.getsId();
         try {
-            if (userDao.findByNo(sno, 1) != null) {
-                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-                Date sdate = sdf.parse(stime);
-                Date edate = sdf.parse(etime);
-                BeanrunEntity beanrunEntity = new BeanrunEntity();
-                beanrunEntity.setSno(sno);
-                beanrunEntity.setStarttime(sdate);
-                beanrunEntity.setEndtime(edate);
-                beanrunEntity.setMeter(2000.0);
-                return userDao.addRun(beanrunEntity);
-            }
-        } catch (ParseException e) {
-            e.printStackTrace();
+            return userDao.modifyDel(id);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
     }
+
+    @TriggersRemove(cacheName = "userServiceCache",removeAll = true)
+    @Override
+    public Boolean addUser(BeanuserForm beanuserForm) {
+        BeanuserEntity beanuserEntity = new BeanuserEntity();
+        beanuserEntity.setSno(beanuserForm.getNo());
+        beanuserEntity.setSname(beanuserForm.getName());
+        beanuserEntity.setSpwd("123456");
+        beanuserEntity.setSbranch(Integer.parseInt(beanuserForm.getNo().substring(4, 5)));
+        beanuserEntity.setSgrade(Integer.parseInt(beanuserForm.getNo().substring(1, 3)));
+        beanuserEntity.setAddtime(new Date());
+        try {
+            if (userDao.findByNo(beanuserEntity.getSno()) == null)
+                return userDao.addUser(beanuserEntity);
+            else
+                return false;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    @TriggersRemove(cacheName = "userServiceCache",removeAll = true)
+    @Override
+    public Boolean deleteUser(String sno, int branch) {
+        ViewJsAsEntity viewJsAsEntity = userDao.findByNo(sno);
+        int id = viewJsAsEntity.getsId();
+        return userDao.deleteUser(id);
+    }
+
 }

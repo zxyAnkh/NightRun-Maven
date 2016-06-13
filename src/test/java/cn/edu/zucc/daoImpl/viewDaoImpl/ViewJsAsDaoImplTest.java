@@ -1,9 +1,7 @@
-package cn.edu.zucc.daoImpl;
+package cn.edu.zucc.daoImpl.viewDaoImpl;
 
-import cn.edu.zucc.dao.AdminDao;
+import cn.edu.zucc.dao.viewDao.ViewJsAsDao;
 import cn.edu.zucc.entity.ViewJsAsEntity;
-import org.hibernate.Query;
-import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,27 +14,20 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Created by zxy on 6/6/2016.
+ * Created by zxy on 6/13/2016.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:applicationContext.xml")
 @Transactional
-public class AdminDaoImplTest {
+public class ViewJsAsDaoImplTest {
 
     @Autowired
-    private AdminDao adminDao;
+    private ViewJsAsDao viewJsAsDao;
 
     @Test
-    public void loadUser() throws Exception {
-        List<ViewJsAsEntity> list = adminDao.loadUser("admin",Boolean.FALSE);
-        for (ViewJsAsEntity viewJsAsEntity : list)
-            System.out.println(viewJsAsEntity.getSno());
-    }
-
-    @Test
-    public void loadUser2() throws Exception {
-        List<ViewJsAsEntity> list = adminDao.loadUser("admin",Boolean.FALSE);
-        for (ViewJsAsEntity viewJsAsEntity : list)
+    public void findUser() throws Exception {
+        List<ViewJsAsEntity> list = viewJsAsDao.findUser("1413");
+        for (ViewJsAsEntity viewJsAsEntity:list)
             System.out.println(viewJsAsEntity.getSno());
     }
 

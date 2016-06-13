@@ -64,18 +64,18 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${runSearchResult}" var="result" varStatus="status">
+        <c:forEach items="${runSearchResult}" var="runResult" varStatus="status">
             <c:if test="${runSearchResult != null}">
                 <tr>
                     <td>${status.count}</td>
-                    <td>${result.sno}</td>
-                    <td>${result.sname}</td>
+                    <td>${runResult.sno}</td>
+                    <td>${runResult.sname}</td>
                     <td>
-                        <fmt:formatNumber type="number" value="${(result.time-result.time%60)/60}"
+                        <fmt:formatNumber type="number" value="${(runResult.time-runResult.time%60)/60}"
                                           maxFractionDigits="0"/>分
-                        <fmt:formatNumber type="number" value="${result.time%60}" minIntegerDigits="2"/>秒
+                        <fmt:formatNumber type="number" value="${runResult.time%60}" minIntegerDigits="2"/>秒
                     </td>
-                    <td>${result.starttime}</td>
+                    <td>${runResult.starttime}</td>
                 </tr>
             </c:if>
         </c:forEach>
@@ -92,15 +92,15 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${viewJsAsEntities}" var="result" varStatus="status">
+        <c:forEach items="${viewJsAsEntities}" var="asResult" varStatus="status">
             <c:if test="${viewJsAsEntities != null}">
                 <tr>
                     <td>${status.count}</td>
-                    <td>${result.sno}</td>
-                    <td>${result.sname}</td>
-                    <td>${result.sgrade}</td>
-                    <td><c:if test="${result.deltime == null}">否</c:if>
-                        <c:if test="${result.deltime != null}">是</c:if>
+                    <td>${asResult.sno}</td>
+                    <td>${asResult.sname}</td>
+                    <td>${asResult.sgrade}</td>
+                    <td><c:if test="${asResult.deltime == null}">否</c:if>
+                        <c:if test="${asResult.deltime != null}">是</c:if>
                     </td>
                 </tr>
             </c:if>
@@ -119,18 +119,18 @@
         </tr>
         </thead>
         <tbody>
-        <c:forEach items="${viewJsTotalEntities}" var="result" varStatus="status">
+        <c:forEach items="${viewJsTotalEntities}" var="totalResult" varStatus="status">
             <c:if test="${viewJsTotalEntities != null}">
                 <tr>
                     <td>${status.count}</td>
-                    <td>${result.sno}</td>
-                    <td>${result.sname}</td>
-                    <td>${result.sgrade}</td>
-                    <td>${result.count}</td>
+                    <td>${totalResult.sno}</td>
+                    <td>${totalResult.sname}</td>
+                    <td>${totalResult.sgrade}</td>
+                    <td>${totalResult.count}</td>
                     <td>
-                        <fmt:formatNumber type="number" value="${(result.sumtime-result.sumtime%60)/60}"
+                        <fmt:formatNumber type="number" value="${(totalResult.sumtime-totalResult.sumtime%60)/60}"
                                           maxFractionDigits="0"/>分
-                        <fmt:formatNumber type="number" value="${result.sumtime%60}" minIntegerDigits="2"/>秒
+                        <fmt:formatNumber type="number" value="${totalResult.sumtime%60}" minIntegerDigits="2"/>秒
                     </td>
                 </tr>
             </c:if>

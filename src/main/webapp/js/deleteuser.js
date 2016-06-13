@@ -3,7 +3,6 @@
  */
 function delusers() {
     var checkItems = document.getElementsByName("checkItem");
-    var count = 0;
     var items = document.getElementsByName("item");
     var str = "";
     for (var i = 0; i < checkItems.length; i++) {
@@ -22,16 +21,23 @@ function delusers() {
         }
     });
 }
-function restoreusers() {
+function resuser() {
     var checkItems = document.getElementsByName("checkItem");
-    var count = 0;
     var items = document.getElementsByName("item");
-    var values = new Array();
+    var str = "";
     for (var i = 0; i < checkItems.length; i++) {
         if (checkItems[i].checked) {
-            values[count] = items[i].innerHTML;
-            count++;
+            str+=items[i].innerHTML;
         }
     }
-    alert(count + "      " + values[0]);
+    $.ajax({
+        type: "POST",
+        url: "/view/admin/restore",
+        data: str, //组装参数
+        dataType: "text",
+        // contentType: "text/plain; charset=utf-8",
+        error:function () {
+            alert("restore falied");
+        }
+    });
 }

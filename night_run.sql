@@ -71,7 +71,7 @@ CREATE TABLE `beanuser` (
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
--- View structure for view_js_as
+-- viewService structure for view_js_as
 -- ----------------------------
 DROP VIEW IF EXISTS `view_js_as`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`  VIEW `view_js_as` AS SELECT
@@ -91,7 +91,7 @@ WHERE
 AND beanadmin.abranch = 1 ;
 
 -- ----------------------------
--- View structure for view_js_run
+-- viewService structure for view_js_run
 -- ----------------------------
 DROP VIEW IF EXISTS `view_js_run`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `view_js_run` AS SELECT
@@ -113,7 +113,7 @@ WHERE
 	beanuser.sbranch = 1  and beanuser.sno=beanrun.sno  and beanuser.deltime is NULL ;
 
 -- ----------------------------
--- View structure for view_js_total
+-- viewService structure for view_js_total
 -- ----------------------------
 DROP VIEW IF EXISTS `view_js_total`;
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER  VIEW `view_js_total` AS SELECT

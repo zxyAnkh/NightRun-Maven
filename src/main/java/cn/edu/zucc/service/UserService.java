@@ -2,6 +2,7 @@ package cn.edu.zucc.service;
 
 import cn.edu.zucc.entity.BeanrunEntity;
 import cn.edu.zucc.entity.ViewJsRunEntity;
+import cn.edu.zucc.form.BeanuserForm;
 
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import java.util.Map;
 public interface UserService {
     Boolean doLogin(String sno, String pwd);
     Boolean modifyPwd(int id,String pwd);
-    List<Map<String,String>> loadRun(String sno);
-    Boolean addRun(String sno,String stime,String etime);
+    Boolean modifyDel(String sno,int branch);
+    Boolean addUser(BeanuserForm beanuserForm);
+    Boolean deleteUser(String sno,int branch);
 }

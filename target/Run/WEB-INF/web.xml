@@ -37,7 +37,7 @@
     </welcome-file-list>
     <!--<error-page>-->
     <!--<error-code>404</error-code>-->
-    <!--<location>/WEB-INF/view/error.jsp</location>-->
+    <!--<location>/WEB-INF/viewDao/error.jsp</location>-->
     <!--</error-page>-->
     <!-- 配置字符集 -->
     <filter>

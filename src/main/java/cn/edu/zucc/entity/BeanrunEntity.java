@@ -1,6 +1,7 @@
 package cn.edu.zucc.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -8,7 +9,8 @@ import java.util.Date;
  */
 @Entity
 @Table(name = "beanrun", schema = "night_run", catalog = "")
-public class BeanrunEntity {
+public class BeanrunEntity implements Serializable{
+    private static final long serialVersionUID = 3L;
     private int rId;
     private double meter;
     private Date starttime;
