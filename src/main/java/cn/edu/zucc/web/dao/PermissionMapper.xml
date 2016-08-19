@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.edu.zucc.web.dao.PermissionMapper" >
+  <resultMap id="BaseResultMap" type="cn.edu.zucc.web.model.Permission" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="permissionname" property="permissionname" jdbcType="VARCHAR" />
+    <result column="permissionsign" property="permissionsign" jdbcType="VARCHAR" />
+    <result column="desription" property="desription" jdbcType="VARCHAR" />
+  </resultMap>
+  <!-- 通过角色id 查询角色 拥有的权限 -->
+  <select id="selectPermissionsByRoleId" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    SELECT p.* FROM permission p LEFT JOIN role_permission rp ON rp.permission_id = p.id
+    WHERE rp.role_id =
+    #{id,jdbcType=INTEGER}
+  </select>
+</mapper>

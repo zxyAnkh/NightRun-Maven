@@ -25,8 +25,8 @@
         <module name="Run" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Run" target="1.6" />
+    <bytecodeTargetLevel target="1.9">
+      <module name="Run" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

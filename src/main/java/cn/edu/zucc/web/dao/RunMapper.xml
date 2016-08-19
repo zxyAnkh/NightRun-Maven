@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.zucc.web.dao.RunMapper">
+    <resultMap id="BaseResultMap" type="cn.edu.zucc.web.model.Run">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="meter" jdbcType="DOUBLE" property="meter"/>
+        <result column="starttime" jdbcType="TIMESTAMP" property="starttime"/>
+        <result column="endtime" jdbcType="TIMESTAMP" property="endtime"/>
+        <result column="userid" jdbcType="INTEGER" property="userid"/>
+    </resultMap>
+    <resultMap id="ViewRunMap" type="cn.edu.zucc.web.model.ViewRun">
+        <id column="uid" jdbcType="INTEGER" property="uid"/>
+        <id column="rid" jdbcType="INTEGER" property="rid"/>
+        <result column="userno" jdbcType="VARCHAR" property="userno"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="usergrade" jdbcType="INTEGER" property="usergrade"/>
+        <result column="userbranch" jdbcType="INTEGER" property="userbranch"/>
+        <result column="meter" jdbcType="DOUBLE" property="meter"/>
+        <result column="time" jdbcType="INTEGER" property="time"/>
+        <result column="starttime" jdbcType="TIMESTAMP" property="starttime"/>
+        <result column="endtime" jdbcType="TIMESTAMP" property="endtime"/>
+    </resultMap>
+    <resultMap id="ViewTotalMap" type="cn.edu.zucc.web.model.ViewTotal">
+        <id column="uid" jdbcType="INTEGER" property="uid"/>
+        <result column="userno" jdbcType="VARCHAR" property="userno"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="usergrade" jdbcType="INTEGER" property="usergrade"/>
+        <result column="userbranch" jdbcType="INTEGER" property="userbranch"/>
+        <result column="count" jdbcType="INTEGER" property="count"/>
+        <result column="summeter" jdbcType="DOUBLE" property="summeter"/>
+        <result column="sumtime" jdbcType="INTEGER" property="sumtime"/>
+    </resultMap>
+    <insert id="insert" parameterType="cn.edu.zucc.web.model.Run">
+    insert into run (meter, starttime,
+      endtime, userid)
+    values (#{meter,jdbcType=DOUBLE}, #{starttime,jdbcType=TIMESTAMP},
+      #{endtime,jdbcType=TIMESTAMP}, #{userid,jdbcType=INTEGER})
+  </insert>
+    <!-- 通过用户学号 查询用户夜跑记录 -->
+    <select id="selectRunsByUserid" resultMap="ViewRunMap" parameterType="java.lang.Integer">
+    SELECT user.id uid,run.id rid,user.userno,user.username,user.usergrade,
+	user.userbranch,run.meter,(UNIX_TIMESTAMP(run.endtime)-UNIX_TIMESTAMP(run.starttime)) time,run.starttime,run.endtime
+    FROM user,run
+    WHERE user.id=run.userid and user.deltime is null and user.id=#{userid,jdbcType=INTEGER}
+    ORDER BY run.starttime
+  </select>
+    <!-- 通过用户学号 查询用户总夜跑记录 -->
+    <select id="selectRunByUserid" resultMap="ViewTotalMap" parameterType="java.lang.Integer">
+    SELECT user.id uid,user.userno,`user`.username,`user`.usergrade,
+	user.userbranch,count(run.userid) count,sum(run.meter) summeter,
+	sum(UNIX_TIMESTAMP(run.endtime)-UNIX_TIMESTAMP(run.starttime)) sumtime
+    FROM user,run
+    WHERE user.id=run.userid and `user`.deltime is null and user.id=#{userid,jdbcType=INTEGER}
+    group by user.id
+    ORDER BY uid
+    </select>
+    <!-- 读取所有夜跑记录 -->
+    <select id="selectRuns" resultMap="ViewRunMap">
+      SELECT user.id uid,run.id rid,user.userno,user.username,user.usergrade,
+	user.userbranch,run.meter,(UNIX_TIMESTAMP(run.endtime)-UNIX_TIMESTAMP(run.starttime)) time,run.starttime,run.endtime
+    FROM user,run
+    WHERE user.id=run.userid and user.deltime is null
+    ORDER BY uid
+    </select>
+</mapper>
