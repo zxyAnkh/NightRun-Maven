@@ -1,6 +1,5 @@
 package cn.edu.zucc.web.controller;
 
-import cn.edu.zucc.core.util.PasswordHash;
 import cn.edu.zucc.web.model.Run;
 import cn.edu.zucc.web.model.User;
 import cn.edu.zucc.web.model.ViewRun;
@@ -15,25 +14,17 @@ import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.apache.shiro.session.Session;
-import org.apache.shiro.session.mgt.DefaultSessionContext;
-import org.apache.shiro.session.mgt.eis.SessionDAO;
 import org.apache.shiro.subject.Subject;
-import org.apache.shiro.subject.support.DefaultSubjectContext;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.serviceloader.ServiceFactoryBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -52,42 +43,6 @@ public class UserController {
     private UserService userService;
     @Autowired
     private RunService runService;
-
-    /**
-     * 用户登录
-     *
-     * @param user
-     * @param result
-     * @return
-     */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@Valid User user, BindingResult result, Model model, HttpSession httpSession) {
-        try {
-            logger.info("login post");
-            Subject subject = SecurityUtils.getSubject();
-            // 已登录则跳到首页
-            if (subject.isAuthenticated()) {
-                return "redirect:/ntr/page/index";
-            }
-            if (result.hasErrors()) {
-                model.addAttribute("error", "参数错误！");
-                return "login";
-            }
-            // 身份验证
-            logger.info(user.getPassword());
-            subject.login(new UsernamePasswordToken(user.getUserno(), user.getPassword()));
-            logger.info("login success");
-            // 验证成功在Session中保存用户信息
-            final User authUserInfo = userService.selectByUserno(user.getUserno());
-            httpSession.setAttribute("userInfo", authUserInfo);
-        } catch (AuthenticationException e) {
-            // 身份验证失败
-            logger.info("login error");
-            model.addAttribute("error", "用户名或密码错误 ！");
-            return "login";
-        }
-        return "redirect:/ntr/page/index";
-    }
 
     /**
     *  用户首页
@@ -124,22 +79,5 @@ public class UserController {
     @RequiresPermissions(value = PermissionSign.USER_UPDATE)
     public boolean update(@RequestParam User user){
         return userService.updateByRecord(user) == 1;
-    }
-
-
-    /**
-     * 用户登出
-     *
-     * @param session
-     * @return
-     */
-    @RequestMapping(value = "/logout")
-    public String logout(HttpSession session) {
-        logger.info("logout");
-        session.removeAttribute("userInfo");
-        // 登出操作
-        Subject subject = SecurityUtils.getSubject();
-        subject.logout();
-        return "redirect:/ntr/page/login";
     }
 }

@@ -1,6 +1,5 @@
 package cn.edu.zucc.web.controller;
 
-import cn.edu.zucc.core.feature.cache.redis.RedisCache;
 import cn.edu.zucc.core.util.PasswordHash;
 import cn.edu.zucc.core.util.ReadExcel;
 import cn.edu.zucc.web.form.UserForm;
@@ -10,10 +9,6 @@ import cn.edu.zucc.web.security.PermissionSign;
 import cn.edu.zucc.web.security.RoleSign;
 import cn.edu.zucc.web.service.RunService;
 import cn.edu.zucc.web.service.UserService;
-import cn.edu.zucc.web.transcoder.RunTranscoder;
-import cn.edu.zucc.web.transcoder.UserTranscoder;
-import cn.edu.zucc.web.transcoder.ViewRunTranscoder;
-import cn.edu.zucc.web.transcoder.ViewTotalTranscoder;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -28,7 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.text.SimpleDateFormat;
@@ -48,111 +42,7 @@ public class AdminController {
     private static final Log logger = LogFactory.getLog(UserController.class);
 
     @Autowired
-    private RunService runService;
-    @Autowired
     private UserService userService;
-    @Autowired
-    private RedisCache redisCache;
-
-    /**
-     * 四个序列化工具
-     */
-    private RunTranscoder runTranscoder = new RunTranscoder();
-    private UserTranscoder userTranscoder = new UserTranscoder();
-    private ViewRunTranscoder viewRunTranscoder = new ViewRunTranscoder();
-    private ViewTotalTranscoder viewTotalTranscoder = new ViewTotalTranscoder();
-
-    /**
-     * 管理员首页
-     *
-     * @return "admin/main"
-     */
-    @RequestMapping(value = "/main", method = {RequestMethod.GET, RequestMethod.POST})
-    @RequiresRoles(value = RoleSign.ADMIN)
-    public String mainGet(Model model, HttpSession httpSession) {
-        logger.info("/admin/mainget");
-        User user = (User) httpSession.getAttribute("userInfo");
-        List<ViewRun> viewRunList = null;
-        byte[] in = redisCache.getByte("viewRunList");
-        if (in == null) {
-            viewRunList = runService.selectRuns();
-            redisCache.cache("viewRunList", viewRunTranscoder.serialize(viewRunList), 60 * 24);
-        } else {
-            viewRunList = viewRunTranscoder.deserialize(in);
-        }
-        model.addAttribute("viewRunList", viewRunList);
-        return "admin/main";
-    }
-
-    /**
-     * 查询用户数据
-     *
-     * @param type
-     * @param keyword 查询关键词
-     * @return
-     */
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
-    @RequiresRoles(value = RoleSign.ADMIN)
-    public String search(@RequestParam("type") String type, @RequestParam("keyword") String keyword, Model model) {
-        logger.info("/admin/search");
-        if ("all".equals(type)) {
-            logger.info("search all");
-            List<User> result = userService.selectByKeyword(keyword);
-            model.addAttribute("searchResult", result);
-        } else if ("details".equals(type)) {
-            logger.info("search details");
-            List<ViewRun> result_list = runService.selectRunsByUserid(userService.selectByUserno(keyword).getId());
-            ViewTotal result_total = runService.selectRunByUserid(userService.selectByUserno(keyword).getId());
-            model.addAttribute("searchDetailsList", result_list);
-            model.addAttribute("searchDetailsTotal", result_total);
-        }
-        return "admin/search";
-    }
-
-
-    /**
-     * 查看活跃用户
-     *
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/users")
-    @RequiresRoles(value = RoleSign.ADMIN)
-    public String users(Model model) {
-        logger.info("/admin/users");
-        List<User> users = null;
-        byte[] in = redisCache.getByte("usersAList");
-        if (in == null) {
-            users = userService.selectActiveUsers();
-            redisCache.cache("usersAList", userTranscoder.serialize(users), 60 * 24);
-        } else {
-            users = userTranscoder.deserialize(in);
-        }
-        model.addAttribute("usersAList", users);
-        return "admin/users";
-    }
-
-    /**
-     * 查看注销用户
-     *
-     * @param model
-     * @return
-     */
-    @RequestMapping(value = "/usersAll")
-    @RequiresRoles(value = RoleSign.ADMIN)
-    public String usersAll(Model model) {
-        logger.info("/admin/usersAll");
-        List<User> users = null;
-        byte[] in = redisCache.getByte("usersNAList");
-        if (in == null) {
-            users = userService.selectNActiveUsers();
-            redisCache.cache("usersNAList", userTranscoder.serialize(users), 60 * 24);
-        } else {
-            users = userTranscoder.deserialize(in);
-        }
-        model.addAttribute("usersNAList", users);
-        return "admin/usersAll";
-    }
 
     /**
      * 单独添加用户 get
@@ -180,7 +70,6 @@ public class AdminController {
         logger.info("admin/userAdd post");
         if (userService.selectByUserno(userForm.getUserno()) == null) {
             userService.insert(userForm);
-            redisCache.delCache("usersAList");
         }
         return "redirect:users";
     }
@@ -236,7 +125,6 @@ public class AdminController {
                     System.out.println(userForm.getUserno());
                 }
             }
-            redisCache.delCache("usersAList");
             return "redirect:users";
         } catch (IOException e) {
             e.printStackTrace();
@@ -263,8 +151,6 @@ public class AdminController {
             if (userService.deleteByUserid(userService.selectByUserno(str).getId()) != 1)
                 flag = 0;
         }
-        redisCache.delCache("usersAList");
-        redisCache.delCache("usersNAList");
         return flag;
     }
 
@@ -286,8 +172,6 @@ public class AdminController {
             if (userService.updateDelByUserid(userService.selectByUserno(str).getId()) != 1)
                 flag = 0;
         }
-        redisCache.delCache("usersAList");
-        redisCache.delCache("usersNAList");
         return flag;
     }
 

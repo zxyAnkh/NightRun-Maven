@@ -30,7 +30,7 @@ function timeChange() {
 function find() {
     var keyword = document.getElementById("search").value;
     if (keyword != null && "" != (keyword))
-        location.href = "ntr/admin/search?type=all&keyword=" + keyword;
+        location.href = "ntr/admin/search?type=all&keyword=" + keyword + "&page=1";
 }
 
 /**
@@ -38,7 +38,7 @@ function find() {
  */
 function searchType() {
     var url = window.location.href;
-    var type = url.substring(url.lastIndexOf('?') + 1, url.lastIndexOf("&"));
+    var type = url.substring(url.lastIndexOf('?') + 1, url.lastIndexOf("keyword")-1);
     if("type=all" == type){
         document.getElementById("resultAll").innerHTML = "搜索结果<span class='divider' id='resultAllSpan'>/</span>";
         document.getElementById("resultAll").classList = "active";

@@ -44,7 +44,7 @@ public class PageController {
         logger.info("/page/index");
         Subject subject = SecurityUtils.getSubject();
         if(subject.hasRole("admin"))
-            return "redirect:/ntr/admin/main";
+            return "redirect:/ntr/admin/main?page=1";
         else if(subject.hasRole("user"))
             return "redirect:/ntr/user/main";
         return "login";

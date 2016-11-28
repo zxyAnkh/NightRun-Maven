@@ -55,7 +55,7 @@
                             <tr>
                                 <td>${status.count}</td>
                                 <td>
-                                    <a href="<%=basePath%>ntr/admin/search?type=details&keyword=${result.userno}">${result.userno}</a>
+                                    <a href="<%=basePath%>ntr/admin/search?type=details&keyword=${result.userno}&page=1">${result.userno}</a>
                                 </td>
                                 <td>${result.username}</td>
                                 <td>${result.usergrade}</td>

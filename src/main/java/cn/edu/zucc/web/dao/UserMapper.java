@@ -3,7 +3,9 @@ package cn.edu.zucc.web.dao;
 import cn.edu.zucc.core.generic.GenericDao;
 import cn.edu.zucc.web.model.User;
 import cn.edu.zucc.web.model.UserExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +14,7 @@ public interface UserMapper extends GenericDao<User, Integer> {
 
     /**
      * 通过用户id删除用户 软删除
+     *
      * @param id
      * @return
      */
@@ -19,6 +22,7 @@ public interface UserMapper extends GenericDao<User, Integer> {
 
     /**
      * 通过用户id恢复用户
+     *
      * @param id
      * @return
      */
@@ -26,6 +30,7 @@ public interface UserMapper extends GenericDao<User, Integer> {
 
     /**
      * 添加用户
+     *
      * @param record
      * @return
      */
@@ -33,13 +38,17 @@ public interface UserMapper extends GenericDao<User, Integer> {
 
     /**
      * 通过关键词模糊查询
+     *
      * @param keyword
      * @return
      */
     List<User> selectByKeyword(String keyword);
 
+    List<User> selectByKeywordPage(@Param("keyword") String keyword, @Param("start") int start, @Param("end") int end);
+
     /**
      * 更新用户信息
+     *
      * @param record
      * @return
      */
@@ -55,10 +64,12 @@ public interface UserMapper extends GenericDao<User, Integer> {
 
     /**
      * 通过学号获取密码
+     *
      * @param userno
      * @return
      */
     String selectPwdByUserno(String userno);
+
     /**
      * 根据用户名查询用户
      *
@@ -69,15 +80,17 @@ public interface UserMapper extends GenericDao<User, Integer> {
 
     /**
      * 获取活跃用户
+     *
      * @return
      */
-    List<User> selectActiveUsers();
+    List<User> selectActiveUsers(@Param("start") int start, @Param("end") int end);
 
     /**
      * 获取非活跃用户
+     *
      * @return
      */
-    List<User> selectNActiveUsers();
+    List<User> selectNActiveUsers(@Param("start") int start, @Param("end") int end);
 
 
 }

@@ -23,16 +23,16 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="ntr/admin/main">管理员端</a>
+            <a class="navbar-brand" href="ntr/admin/main?page=1">管理员端</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li id="home"><a href="ntr/admin/main">首页</a></li>
+                <li id="home"><a href="ntr/admin/main?page=1">首页</a></li>
                 <li class="dropdown" id="user">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="ahref">用户管理<span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="ntr/admin/users">查看活跃用户</a></li>
-                        <li><a href="ntr/admin/usersAll">查看注销用户</a></li>
+                        <li><a href="ntr/admin/users?page=1">查看活跃用户</a></li>
+                        <li><a href="ntr/admin/usersAll?page=1">查看注销用户</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="ntr/admin/userAdd">单独添加用户</a></li>
                         <li><a href="ntr/admin/usersAdd">批量添加用户</a></li>

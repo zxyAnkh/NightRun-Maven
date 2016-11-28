@@ -16,6 +16,12 @@
     from user
     where userno LIKE #{userno} OR username LIKE #{username}
   </select>
+    <select id="selectByKeywordPage" resultMap="BaseResultMap">
+        select *
+        from user
+        where userno LIKE #{keyword,jdbcType=VARCHAR} OR username LIKE #{keyword,jdbcType=VARCHAR}
+        limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
+    </select>
     <delete id="deleteByUserid" parameterType="java.lang.Integer">
     UPDATE user SET deltime = CURRENT_TIME
     WHERE id = #{id,jdbcType=INTEGER}
@@ -67,12 +73,13 @@
         FROM user,user_role
         WHERE user.id = user_role.user_id AND role_id = 2 and user.deltime is NULL
         ORDER BY user.userno
+        limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
     </select>
     <!-- 获取非活跃用户 -->
     <select id="selectNActiveUsers" resultMap="BaseResultMap">
         SELECT user.id,user.userno,user.username,user.userbranch,user.usergrade,user.addtime,user.deltime
         FROM user,user_role
-        WHERE user.id = user_role.user_id AND role_id = 2 and user.deltime is NOT NULL
-        ORDER BY user.userno
+        WHERE user.id = user_role.user_id AND role_id = 2
+        limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
     </select>
 </mapper>

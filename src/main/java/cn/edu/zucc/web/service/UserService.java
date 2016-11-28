@@ -74,15 +74,4 @@ public interface UserService extends GenericService<User, Integer> {
      */
     User selectByUserno(String userno);
 
-    /**
-     * 获取非活跃用户
-     * @return
-     */
-    List<User> selectNActiveUsers();
-
-    /**
-     * 获取所有活跃用户
-     * @return
-     */
-    List<User> selectActiveUsers();
 }

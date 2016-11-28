@@ -91,28 +91,4 @@ public class UserServiceImpl extends GenericServiceImpl<User, Integer> implement
         return userMapper.selectByUserno(userno);
     }
 
-    @Override
-    public List<User> selectNActiveUsers() {
-        List<User> list = userMapper.selectNActiveUsers();
-        List<User> result = new ArrayList<User>();
-        for (User user : list) {
-            user.setPassword(null);
-            result.add(user);
-        }
-        return result;
-    }
-
-    @Override
-    public List<User> selectActiveUsers() {
-        List<User> list = userMapper.selectActiveUsers();
-        List<User> result = new ArrayList<User>();
-        for (User user : list) {
-            if (user.getDeltime() == null) {
-                user.setPassword(null);
-                result.add(user);
-            }
-        }
-        return result;
-    }
-
 }

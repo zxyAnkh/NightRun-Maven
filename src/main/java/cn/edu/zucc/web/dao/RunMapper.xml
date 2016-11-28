@@ -54,6 +54,15 @@
     group by user.id
     ORDER BY uid
     </select>
+    <select id="selectRunByUserno" resultMap="ViewTotalMap" parameterType="java.lang.String">
+        SELECT user.id uid,user.userno,`user`.username,`user`.usergrade,
+        user.userbranch,count(run.userid) count,sum(run.meter) summeter,
+        sum(UNIX_TIMESTAMP(run.endtime)-UNIX_TIMESTAMP(run.starttime)) sumtime
+        FROM user,run
+        WHERE user.id=run.userid and `user`.deltime is null and user.userno=#{no,jdbcType=VARCHAR}
+        group by user.id
+        ORDER BY uid
+    </select>
     <!-- 读取所有夜跑记录 -->
     <select id="selectRuns" resultMap="ViewRunMap">
       SELECT user.id uid,run.id rid,user.userno,user.username,user.usergrade,
@@ -61,5 +70,28 @@
     FROM user,run
     WHERE user.id=run.userid and user.deltime is null
     ORDER BY uid
+    </select>
+    <select id="selectRunsByPage" resultMap="ViewRunMap">
+        SELECT user.id uid,run.id rid,user.userno,user.username,user.usergrade,
+        user.userbranch,run.meter,(UNIX_TIMESTAMP(run.endtime)-UNIX_TIMESTAMP(run.starttime)) time,run.starttime,run.endtime
+        FROM user,run
+        WHERE user.id=run.userid and user.deltime is null
+        ORDER BY uid
+        limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
+    </select>
+    <select id="selectRunsByUserNo" resultMap="ViewRunMap" parameterType="java.lang.String">
+        SELECT user.id uid,run.id rid,user.userno,user.username,user.usergrade,
+        user.userbranch,run.meter,(UNIX_TIMESTAMP(run.endtime)-UNIX_TIMESTAMP(run.starttime)) time,run.starttime,run.endtime
+        FROM user,run
+        WHERE user.id=run.userid and user.deltime is null and user.userno like #{no,jdbcType=VARCHAR}
+        ORDER BY uid
+    </select>
+    <select id="selectRunsByUserNoPage" resultMap="ViewRunMap">
+        SELECT user.id uid,run.id rid,user.userno,user.username,user.usergrade,
+        user.userbranch,run.meter,(UNIX_TIMESTAMP(run.endtime)-UNIX_TIMESTAMP(run.starttime)) time,run.starttime,run.endtime
+        FROM user,run
+        WHERE user.id=run.userid and user.deltime is null and user.userno like #{no,jdbcType=VARCHAR}
+        ORDER BY uid
+        limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
     </select>
 </mapper>
