@@ -1,6 +1,5 @@
 package cn.edu.zucc.web.service;
 
-import cn.edu.zucc.core.generic.GenericService;
 import cn.edu.zucc.web.model.Role;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
  * @author zxyAnkh
  * @since  2016-07-07
  */
-public interface RoleService extends GenericService<Role, Integer> {
+public interface RoleService {
     /**
      * 通过用户id 查询用户 拥有的角色
      *

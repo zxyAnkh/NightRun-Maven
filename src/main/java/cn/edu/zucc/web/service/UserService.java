@@ -1,8 +1,6 @@
 package cn.edu.zucc.web.service;
 
-import cn.edu.zucc.core.generic.GenericService;
 import cn.edu.zucc.web.form.UserForm;
-import cn.edu.zucc.web.form.UserInfoForm;
 import cn.edu.zucc.web.model.User;
 
 import java.util.List;
@@ -13,7 +11,7 @@ import java.util.List;
  * @author zxyAnkh
  * @since  2016-07-06
  */
-public interface UserService extends GenericService<User, Integer> {
+public interface UserService{
 
 
     /**

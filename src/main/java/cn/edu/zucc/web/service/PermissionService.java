@@ -1,6 +1,5 @@
 package cn.edu.zucc.web.service;
 
-import cn.edu.zucc.core.generic.GenericService;
 import cn.edu.zucc.web.model.Permission;
 
 import java.util.List;
@@ -11,7 +10,7 @@ import java.util.List;
  * @author zxyAnkh
  * @since  2016-07-07
  */
-public interface PermissionService extends GenericService<Permission, Integer> {
+public interface PermissionService{
 
     /**
      * 通过角色id 查询角色 拥有的权限

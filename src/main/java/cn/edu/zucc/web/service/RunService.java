@@ -1,10 +1,8 @@
 package cn.edu.zucc.web.service;
 
-import cn.edu.zucc.core.generic.GenericService;
 import cn.edu.zucc.web.model.Run;
 import cn.edu.zucc.web.model.ViewRun;
 import cn.edu.zucc.web.model.ViewTotal;
-import org.springframework.web.servlet.View;
 
 import java.util.List;
 
@@ -14,7 +12,7 @@ import java.util.List;
  * @author zxyAnkh
  * @since  2016-07-07
  */
-public interface RunService extends GenericService<Run,Integer>{
+public interface RunService{
 
     /**
      * 添加夜跑记录

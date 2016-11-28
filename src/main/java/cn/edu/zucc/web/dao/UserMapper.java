@@ -1,8 +1,6 @@
 package cn.edu.zucc.web.dao;
 
-import cn.edu.zucc.core.generic.GenericDao;
 import cn.edu.zucc.web.model.User;
-import cn.edu.zucc.web.model.UserExample;
 
 import java.util.List;
 
@@ -10,7 +8,7 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository("userMapper")
-public interface UserMapper extends GenericDao<User, Integer> {
+public interface UserMapper  {
 
     /**
      * 通过用户id删除用户 软删除

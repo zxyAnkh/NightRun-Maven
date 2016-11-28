@@ -1,11 +1,8 @@
 package cn.edu.zucc.web.service.Impl;
 
-import cn.edu.zucc.core.generic.GenericDao;
-import cn.edu.zucc.core.generic.GenericServiceImpl;
 import cn.edu.zucc.core.util.PasswordHash;
 import cn.edu.zucc.web.dao.UserMapper;
 import cn.edu.zucc.web.form.UserForm;
-import cn.edu.zucc.web.form.UserInfoForm;
 import cn.edu.zucc.web.model.User;
 import cn.edu.zucc.web.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,15 +18,10 @@ import java.util.List;
  * @since  2016-07-06
  */
 @Service("userService")
-public class UserServiceImpl extends GenericServiceImpl<User, Integer> implements UserService {
+public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
-
-    @Override
-    public GenericDao<User, Integer> getDao() {
-        return userMapper;
-    }
 
     @Override
     public int insert(UserForm record) {

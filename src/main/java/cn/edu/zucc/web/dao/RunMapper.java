@@ -5,13 +5,12 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import cn.edu.zucc.core.generic.GenericDao;
 import cn.edu.zucc.web.model.Run;
 import cn.edu.zucc.web.model.ViewRun;
 import cn.edu.zucc.web.model.ViewTotal;
 
 @Repository("runMapper")
-public interface RunMapper extends GenericDao<Run, Integer> {
+public interface RunMapper{
 
     /**
      * 添加夜跑记录

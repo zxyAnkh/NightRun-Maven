@@ -1,7 +1,5 @@
 package cn.edu.zucc.web.service.Impl;
 
-import cn.edu.zucc.core.generic.GenericDao;
-import cn.edu.zucc.core.generic.GenericServiceImpl;
 import cn.edu.zucc.web.dao.RunMapper;
 import cn.edu.zucc.web.model.Run;
 import cn.edu.zucc.web.model.ViewRun;
@@ -18,15 +16,10 @@ import java.util.List;
  * @since  2016-07-07
  */
 @Service("runService")
-public class RunServiceImpl extends GenericServiceImpl<Run, Integer> implements RunService{
+public class RunServiceImpl  implements RunService{
 
     @Autowired
     private RunMapper runMapper;
-
-    @Override
-    public GenericDao<Run, Integer> getDao() {
-        return runMapper;
-    }
 
     @Override
     public List<ViewRun> selectRunsByUserid(int userid) {

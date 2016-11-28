@@ -1,7 +1,5 @@
 package cn.edu.zucc.web.service.Impl;
 
-import cn.edu.zucc.core.generic.GenericDao;
-import cn.edu.zucc.core.generic.GenericServiceImpl;
 import cn.edu.zucc.web.dao.PermissionMapper;
 import cn.edu.zucc.web.model.Permission;
 import cn.edu.zucc.web.service.PermissionService;
@@ -16,15 +14,10 @@ import java.util.List;
  * @since  2016-07-07
  */
 @Service("permissionService")
-public class PermissionServiceImpl extends GenericServiceImpl<Permission,Integer> implements PermissionService{
+public class PermissionServiceImpl  implements PermissionService{
 
     @Autowired
     private PermissionMapper permissionMapper;
-
-    @Override
-    public GenericDao<Permission, Integer> getDao() {
-        return permissionMapper;
-    }
 
     @Override
     public List<Permission> selectPermissionsByRoleId(int roleId) {
