@@ -5,6 +5,7 @@
 function urlcheck() {
     var url = window.location.href;
     var urlend = url.substr(url.lastIndexOf('/') + 1);
+    urlend = urlend.substr(0,url.indexOf('?'));
     switch (urlend){
         case "main":
             document.getElementById("home").classList = "active";

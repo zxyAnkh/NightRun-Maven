@@ -45,36 +45,6 @@ public class AdminController {
     private UserService userService;
 
     /**
-     * 单独添加用户 get
-     *
-     * @return
-     */
-    @RequestMapping(value = "/userAdd", method = RequestMethod.GET)
-    @RequiresRoles(value = RoleSign.ADMIN)
-    @RequiresPermissions(value = PermissionSign.USER_CREATE)
-    public String userAdd() {
-        logger.info("admin/userAdd get");
-        return "admin/userAdd";
-    }
-
-    /**
-     * 单独添加用户 post
-     *
-     * @param userForm 用户表单数据
-     * @return
-     */
-    @RequestMapping(value = "/userAdd", method = RequestMethod.POST)
-    @RequiresRoles(value = RoleSign.ADMIN)
-    @RequiresPermissions(value = PermissionSign.USER_CREATE)
-    public String userAdd(UserForm userForm, HttpServletRequest request) {
-        logger.info("admin/userAdd post");
-        if (userService.selectByUserno(userForm.getUserno()) == null) {
-            userService.insert(userForm);
-        }
-        return "redirect:users";
-    }
-
-    /**
      * 判断用户是否已存在
      *
      * @param userno
@@ -86,93 +56,6 @@ public class AdminController {
     public String checkUser(@RequestBody String userno) {
         logger.info("admin/checkUser");
         return String.valueOf(userService.selectByUserno(userno) == null ? 1 : 0);
-    }
-
-    /**
-     * 批量添加用户 get
-     *
-     * @return
-     */
-    @RequestMapping(value = "/usersAdd", method = RequestMethod.GET)
-    @RequiresRoles(value = RoleSign.ADMIN)
-    @RequiresPermissions(value = PermissionSign.USER_CREATE)
-    public String usersAdd() {
-        return "admin/usersAdd";
-    }
-
-    /**
-     * 批量添加用户 post
-     *
-     * @param multipartFile 上传的excel文件
-     * @return
-     */
-    @RequestMapping(value = "/usersAdd", method = RequestMethod.POST)
-    @RequiresRoles(value = RoleSign.ADMIN)
-    @RequiresPermissions(value = PermissionSign.USER_CREATE)
-    public String usersAdd(HttpSession httpSession, @RequestParam("file") MultipartFile multipartFile) {
-        String path = httpSession.getServletContext().getRealPath("/app/upload");
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
-        String fileName = simpleDateFormat.format(new Date());
-        File file = new File(path, fileName + ".xls");
-        try {
-            multipartFile.transferTo(file);
-            List<UserForm> formList = new ReadExcel().readExcel(file.getPath());
-            if (formList != null) {
-                for (UserForm userForm : formList) {
-                    if (userService.selectByUserno(userForm.getUserno()) == null) {
-                        userService.insert(userForm);
-                    }
-                    System.out.println(userForm.getUserno());
-                }
-            }
-            return "redirect:users";
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return "redirect:users";
-    }
-
-    /**
-     * 删除用户
-     *
-     * @param usernos 用户编号字符串
-     * @return
-     */
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    @ResponseBody
-    @RequiresRoles(value = RoleSign.ADMIN)
-    @RequiresPermissions(value = PermissionSign.USER_DELETE)
-    public int deleteUser(@RequestBody String usernos) {
-        logger.info("/admin/delete");
-        int flag = 1;
-        for (int i = 0; i < usernos.length() - 1; i += 8) {
-            String str = usernos.substring(i, i + 8);
-            flag++;
-            if (userService.deleteByUserid(userService.selectByUserno(str).getId()) != 1)
-                flag = 0;
-        }
-        return flag;
-    }
-
-    /**
-     * 恢复用户
-     *
-     * @param usernos 用户编号字符串
-     * @return
-     */
-    @RequestMapping(value = "/restore", method = RequestMethod.POST)
-    @ResponseBody
-    @RequiresRoles(value = RoleSign.ADMIN)
-    @RequiresPermissions(value = PermissionSign.USER_RESTORE)
-    public int restoreUser(@RequestBody String usernos) {
-        int flag = 1;
-        for (int i = 0; i < usernos.length() - 1; i += 8) {
-            String str = usernos.substring(i, i + 8);
-            flag++;
-            if (userService.updateDelByUserid(userService.selectByUserno(str).getId()) != 1)
-                flag = 0;
-        }
-        return flag;
     }
 
     /**

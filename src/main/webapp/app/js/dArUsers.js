@@ -15,8 +15,7 @@ function delusers() {
         $.ajax({
             type: "DELETE",
             url: "/ntr/admin/delete",
-            data: str, //组装参数
-            dataType: "text"
+            data: str //组装参数
         });
     }
 }
@@ -31,10 +30,9 @@ function resuser() {
     }
     if (str != "") {
         $.ajax({
-            type: "POST",
+            type: "PUT",
             url: "/ntr/admin/restore",
-            data: str, //组装参数
-            dataType: "text"
+            data: str //组装参数
         });
     }
 }
