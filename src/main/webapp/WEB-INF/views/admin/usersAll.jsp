@@ -41,16 +41,34 @@
             <th>学号</th>
             <th>姓名</th>
             <th>年级</th>
+            <th>分院</th>
+            <th>是否注销</th>
         </tr>
         </thead>
         <tbody>
         <c:forEach items="${usersNAList}" var="user" varStatus="status">
-            <tr>
-                <td>${status.count}</td>
-                <td  name="item">${user.userno}</td>
-                <td>${user.username}</td>
-                <td>${user.usergrade}</td>
-            </tr>
+            <c:if test="${user.deltime == null}">
+                <tr>
+                    <td>${status.count}</td>
+                    <td>
+                        <a href="<%=basePath%>ntr/admin/search?type=details&keyword=${user.userno}&page=1">${user.userno}</a>
+                    </td>
+                    <td>${user.username}</td>
+                    <td>${user.usergrade}</td>
+                    <td><c:if test="${user.userbranch == 1}">计算</c:if></td>
+                    <td>否</td>
+                </tr>
+            </c:if>
+            <c:if test="${user.deltime != null}">
+                <tr class="danger">
+                    <td>${status.count}</td>
+                    <td>${user.userno}</td>
+                    <td>${user.username}</td>
+                    <td>${user.usergrade}</td>
+                    <td><c:if test="${user.userbranch == 1}">计算</c:if></td>
+                    <td>是</td>
+                </tr>
+            </c:if>
         </c:forEach>
         </tbody>
     </table>

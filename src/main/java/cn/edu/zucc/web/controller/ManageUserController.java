@@ -76,12 +76,11 @@ public class ManageUserController {
         return new ModelAndView(new RedirectView("users?page=1"));
     }
 
-    @RequestMapping(value = "/admin/delete", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/admin/delete", method = RequestMethod.POST)
     @ResponseBody
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.USER_DELETE)
     public String deleteUser(@RequestBody StudentNoPojo studentNoPojo) {
-        System.out.println(studentNoPojo == null);
         if (studentNoPojo != null) {
             for (String no : studentNoPojo.getNos()) {
                 managerUserService.deleteUser(no);
@@ -90,13 +89,15 @@ public class ManageUserController {
         return "";
     }
 
-    @RequestMapping(value = "/admin/restore", method = RequestMethod.PUT)
+    @RequestMapping(value = "/admin/restore", method = RequestMethod.POST)
     @ResponseBody
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.USER_RESTORE)
-    public String restoreUser(@RequestBody StudentNoPojo pojo) {
-        for (String no : pojo.getNos()) {
-            managerUserService.restoreUser(no);
+    public String restoreUser(@RequestBody StudentNoPojo studentNoPojo) {
+        if (studentNoPojo != null) {
+            for (String no : studentNoPojo.getNos()) {
+                managerUserService.restoreUser(no);
+            }
         }
         return "";
     }
