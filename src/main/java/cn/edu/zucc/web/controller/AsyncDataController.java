@@ -1,6 +1,8 @@
 package cn.edu.zucc.web.controller;
 
+import cn.edu.zucc.web.security.RoleSign;
 import cn.edu.zucc.web.service.AsyncDataService;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +19,7 @@ public class AsyncDataController {
     private AsyncDataService asyncDataService;
 
     @RequestMapping(value = "/user/async", method = RequestMethod.GET)
+    @RequiresRoles(value = RoleSign.USER)
     public String asyncData(@RequestParam("user") String userno) {
         if (null == userno || "".equals(userno)) {
             return "{}";

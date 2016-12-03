@@ -37,6 +37,7 @@ public class LoadRunDataController {
     }
 
     @RequestMapping(value = "/user/getData", method = RequestMethod.GET)
+    @RequiresRoles(value = RoleSign.USER)
     public String loadDataForUser(@RequestParam("no") String no) {
         if (null == no || "".equals(no)) {
             return "{\"runDataPojos\":\"\"}";

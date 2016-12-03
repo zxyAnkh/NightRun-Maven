@@ -58,18 +58,6 @@ public class UserController {
     }
 
     /**
-     * 用户添加跑步记录
-     * @param run
-     * @return
-     */
-    @RequestMapping(value = "/run", method = RequestMethod.POST)
-    @RequiresRoles(value = RoleSign.USER)
-    @RequiresPermissions(value = PermissionSign.RUN_CREATE)
-    public boolean run(@RequestParam Run run) {
-        return runService.insert(run) == 1;
-    }
-
-    /**
      * 用户更新个人密码
      * @param user
      * @return
