@@ -7,6 +7,8 @@
         <result column="starttime" jdbcType="TIMESTAMP" property="starttime"/>
         <result column="endtime" jdbcType="TIMESTAMP" property="endtime"/>
         <result column="userid" jdbcType="INTEGER" property="userid"/>
+        <result column="rowCreateTime" property="row_create_time" jdbcType="TIMESTAMP"/>
+        <result column="rowUpdateTime" property="row_update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
     <resultMap id="ViewRunMap" type="cn.edu.zucc.web.model.ViewRun">
         <id column="uid" jdbcType="INTEGER" property="uid"/>

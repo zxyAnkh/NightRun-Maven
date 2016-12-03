@@ -10,6 +10,8 @@
         <result column="usergrade" jdbcType="VARCHAR" property="usergrade"/>
         <result column="addtime" jdbcType="TIMESTAMP" property="addtime"/>
         <result column="deltime" jdbcType="TIMESTAMP" property="deltime"/>
+        <result column="rowCreateTime" property="row_create_time" jdbcType="TIMESTAMP"/>
+        <result column="rowUpdateTime" property="row_update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
     <select id="selectByKeyword" parameterType="java.lang.String" resultMap="BaseResultMap">
     select *

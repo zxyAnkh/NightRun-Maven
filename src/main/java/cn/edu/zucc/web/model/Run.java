@@ -14,6 +14,10 @@ public class Run implements Serializable {
 
     private Integer userid;
 
+    private Date rowCreateTime;
+
+    private Date rowUpdateTime;
+
     public Integer getId() {
         return id;
     }
@@ -52,5 +56,21 @@ public class Run implements Serializable {
 
     public void setUserid(Integer userid) {
         this.userid = userid;
+    }
+
+    public Date getRowCreateTime() {
+        return rowCreateTime;
+    }
+
+    public void setRowCreateTime(Date rowCreateTime) {
+        this.rowCreateTime = rowCreateTime;
+    }
+
+    public Date getRowUpdateTime() {
+        return rowUpdateTime;
+    }
+
+    public void setRowUpdateTime(Date rowUpdateTime) {
+        this.rowUpdateTime = rowUpdateTime;
     }
 }

@@ -37,8 +37,8 @@
                         <li><a href="ntr/admin/userAdd">单独添加用户</a></li>
                         <li><a href="ntr/admin/usersAdd">批量添加用户</a></li>
                         <li role="separator" class="divider"></li>
-                        <li id="liDel"><a href="ntr/admin/usersAll" onclick="delusers()">注销用户</a></li>
-                        <li id="liRes"><a href="ntr/admin/users" onclick="resuser()">恢复用户</a></li>
+                        <li id="liDel"><a href="ntr/admin/users?page=1" onclick="delusers()">注销用户</a></li>
+                        <li id="liRes"><a href="ntr/admin/usersAll?page=1" onclick="resuser()">恢复用户</a></li>
                     </ul>
                 </li>
             </ul>

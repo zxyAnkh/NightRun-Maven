@@ -5,34 +5,43 @@
 function delusers() {
     var checkItems = document.getElementsByName("checkItem");
     var items = document.getElementsByName("item");
-    var str = "";
+    var pojo = {};
+    pojo["studentNoPojo"] = [];
+    var len = 0;
     for (var i = 0; i < checkItems.length; i++) {
         if (checkItems[i].checked) {
-            str += items[i].innerHTML;
+            pojo["studentNoPojo"][len] = items[i].innerHTML;
+            len++;
         }
     }
-    if (str != "") {
+    console.log(pojo);
+    if (pojo["studentNoPojo"] != null) {
         $.ajax({
             type: "DELETE",
             url: "/ntr/admin/delete",
-            data: str //组装参数
+            contentType:"application/json;charset=UTF-8",
+            data: JSON.stringify(pojo) //组装参数
         });
     }
 }
 function resuser() {
     var checkItems = document.getElementsByName("checkItem");
     var items = document.getElementsByName("item");
-    var str = "";
+    var pojo = {};
+    pojo["pojo"] = [];
+    var len = 0;
     for (var i = 0; i < checkItems.length; i++) {
         if (checkItems[i].checked) {
-            str += items[i].innerHTML;
+            pojo["pojo"][len] = items[i].innerHTML;
+            len++;
         }
     }
-    if (str != "") {
+    if (pojo["pojo"] != null) {
         $.ajax({
-            type: "PUT",
+            type: "DELETE",
             url: "/ntr/admin/restore",
-            data: str //组装参数
+            contentType:"application/json;charset=utf-8",
+            data: pojo //组装参数
         });
     }
 }

@@ -80,9 +80,12 @@ public class ManageUserController {
     @ResponseBody
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.USER_DELETE)
-    public String deleteUser(@RequestBody StudentNoPojo pojo) {
-        for (String no : pojo.getNos()) {
-            managerUserService.deleteUser(no);
+    public String deleteUser(@RequestBody StudentNoPojo studentNoPojo) {
+        System.out.println(studentNoPojo == null);
+        if (studentNoPojo != null) {
+            for (String no : studentNoPojo.getNos()) {
+                managerUserService.deleteUser(no);
+            }
         }
         return "";
     }

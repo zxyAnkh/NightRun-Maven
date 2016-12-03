@@ -1,6 +1,7 @@
 package cn.edu.zucc.web.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Role implements Serializable {
     private Integer id;
@@ -10,6 +11,10 @@ public class Role implements Serializable {
     private String rolesign;
 
     private String description;
+
+    private Date rowCreateTime;
+
+    private Date rowUpdateTime;
 
     public Integer getId() {
         return id;
@@ -41,5 +46,21 @@ public class Role implements Serializable {
 
     public void setDescription(String description) {
         this.description = description == null ? null : description.trim();
+    }
+
+    public Date getRowCreateTime() {
+        return rowCreateTime;
+    }
+
+    public void setRowCreateTime(Date rowCreateTime) {
+        this.rowCreateTime = rowCreateTime;
+    }
+
+    public Date getRowUpdateTime() {
+        return rowUpdateTime;
+    }
+
+    public void setRowUpdateTime(Date rowUpdateTime) {
+        this.rowUpdateTime = rowUpdateTime;
     }
 }

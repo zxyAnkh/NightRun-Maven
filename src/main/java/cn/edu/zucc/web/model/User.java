@@ -20,6 +20,10 @@ public class User implements Serializable {
 
     private Date deltime;
 
+    private Date rowCreateTime;
+
+    private Date rowUpdateTime;
+
     public User(){}
 
     public User(String userno,String password){
@@ -89,5 +93,21 @@ public class User implements Serializable {
 
     public void setDeltime(Date deltime) {
         this.deltime = deltime;
+    }
+
+    public Date getRowCreateTime() {
+        return rowCreateTime;
+    }
+
+    public void setRowCreateTime(Date rowCreateTime) {
+        this.rowCreateTime = rowCreateTime;
+    }
+
+    public Date getRowUpdateTime() {
+        return rowUpdateTime;
+    }
+
+    public void setRowUpdateTime(Date rowUpdateTime) {
+        this.rowUpdateTime = rowUpdateTime;
     }
 }
