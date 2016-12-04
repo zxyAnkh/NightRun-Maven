@@ -66,12 +66,13 @@
         ORDER BY uid
     </select>
     <!-- 读取所有夜跑记录 -->
-    <select id="selectRuns" resultMap="ViewRunMap">
-      SELECT user.id uid,run.id rid,user.userno,user.username,user.usergrade,
-	user.userbranch,run.meter,(UNIX_TIMESTAMP(run.endtime)-UNIX_TIMESTAMP(run.starttime)) time,run.starttime,run.endtime
-    FROM user,run
-    WHERE user.id=run.userid and user.deltime is null
-    ORDER BY uid
+    <select id="selectTodayRuns" resultMap="ViewRunMap">
+        SELECT user.id uid,run.id rid,user.userno,user.username,user.usergrade,
+        user.userbranch,run.meter,(UNIX_TIMESTAMP(run.endtime)-UNIX_TIMESTAMP(run.starttime))
+        time,run.starttime,run.endtime
+        FROM user,run
+        WHERE user.id=run.userid and user.deltime is null and run.starttime &gt; current_date() and run.endtime &lt; date_add(current_date(),interval 1 day)
+        ORDER BY uid
     </select>
     <select id="selectRunsByPage" resultMap="ViewRunMap">
         SELECT user.id uid,run.id rid,user.userno,user.username,user.usergrade,

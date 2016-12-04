@@ -32,11 +32,6 @@ public class RunServiceImpl  implements RunService{
     }
 
     @Override
-    public List<ViewRun> selectRuns() {
-        return runMapper.selectRuns();
-    }
-
-    @Override
     public int insert(Run run) {
         return runMapper.insert(run);
     }

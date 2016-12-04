@@ -6,6 +6,8 @@ import cn.edu.zucc.web.json.StudentNoPojo;
 import cn.edu.zucc.web.security.PermissionSign;
 import cn.edu.zucc.web.security.RoleSign;
 import cn.edu.zucc.web.service.ManagerUserService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,8 @@ import java.util.List;
 @Controller("manageUserController")
 public class ManageUserController {
 
+    private static final Log logger = LogFactory.getLog(ManageUserController.class);
+
     @Autowired
     private ManagerUserService managerUserService;
 
@@ -42,6 +46,7 @@ public class ManageUserController {
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.USER_CREATE)
     public ModelAndView userAdd(UserForm userForm) {
+        logger.debug("Receive add user request, user = " + userForm.toString());
         managerUserService.insertUser(userForm);
         return new ModelAndView(new RedirectView("users?page=1"));
     }
@@ -57,6 +62,7 @@ public class ManageUserController {
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.USER_CREATE)
     public ModelAndView usersAdd(HttpSession httpSession, @RequestParam("file") MultipartFile multipartFile) {
+        logger.debug("Receive batch add user request.");
         String path = httpSession.getServletContext().getRealPath("/app/upload");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         String fileName = simpleDateFormat.format(new Date());
@@ -66,6 +72,7 @@ public class ManageUserController {
             List<UserForm> formList = new ReadExcel().readExcel(file.getPath());
             if (formList != null) {
                 for (UserForm userForm : formList) {
+                    logger.debug("Batch add user request, user = " + userForm.toString());
                     managerUserService.insertUser(userForm);
                 }
             }
@@ -81,8 +88,10 @@ public class ManageUserController {
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.USER_DELETE)
     public String deleteUser(@RequestBody StudentNoPojo studentNoPojo) {
+        logger.debug("Receive delete student request.");
         if (studentNoPojo != null) {
             for (String no : studentNoPojo.getNos()) {
+                logger.debug("Delete student request, student no = " + no);
                 managerUserService.deleteUser(no);
             }
         }
@@ -94,8 +103,10 @@ public class ManageUserController {
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.USER_RESTORE)
     public String restoreUser(@RequestBody StudentNoPojo studentNoPojo) {
+        logger.debug("Receive restore student request.");
         if (studentNoPojo != null) {
             for (String no : studentNoPojo.getNos()) {
+                logger.debug("Restore student request, student no = " + no);
                 managerUserService.restoreUser(no);
             }
         }

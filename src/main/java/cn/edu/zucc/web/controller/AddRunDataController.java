@@ -4,6 +4,8 @@ import cn.edu.zucc.web.json.RunDataPojo;
 import cn.edu.zucc.web.security.PermissionSign;
 import cn.edu.zucc.web.security.RoleSign;
 import cn.edu.zucc.web.service.AddRunDataService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller("addRunDataController")
 public class AddRunDataController {
 
+    private static final Log logger = LogFactory.getLog(AddRunDataController.class);
+
     @Autowired
     private AddRunDataService addRunDataService;
 
@@ -26,11 +30,10 @@ public class AddRunDataController {
     @RequiresRoles(value = RoleSign.USER)
     @RequiresPermissions(value = PermissionSign.RUN_CREATE)
     public String addRunData(@RequestBody RunDataPojo pojo) {
-        if (pojo != null) {
-            boolean bool = addRunDataService.insert(pojo);
-            return bool ? "SUCCEEDED" : "FAILURE";
-        }
-        return "FAILURE";
+        logger.debug("Receive add run data request, pojo = " + pojo.toString());
+        boolean bool = addRunDataService.insert(pojo);
+        logger.debug("Add run data " + bool);
+        return bool ? "SUCCEEDED" : "FAILURE";
     }
 
 }

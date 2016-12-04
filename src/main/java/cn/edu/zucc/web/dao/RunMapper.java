@@ -43,7 +43,7 @@ public interface RunMapper{
      *
      * @return
      */
-    List<ViewRun> selectRuns();
+    List<ViewRun> selectTodayRuns();
 
     List<ViewRun> selectRunsByPage(@Param("start") int start, @Param("end") int end);
 

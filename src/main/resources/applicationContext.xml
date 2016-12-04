@@ -23,6 +23,8 @@
     <!-- 自动扫描包 ,将带有注解的类 纳入spring容器管理 -->
     <context:component-scan base-package="cn.edu.zucc"/>
 
+    <import resource="classpath*:spring-quartz.xml"/>
+
     <!-- 引入配置文件 -->
     <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations">

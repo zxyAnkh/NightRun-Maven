@@ -68,4 +68,24 @@ public class RunDataPojo {
     public void setEtime(long etime) {
         this.etime = etime;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("id = ");
+        sb.append(id);
+        sb.append("; sno = ");
+        sb.append(sno);
+        sb.append("; name = ");
+        sb.append(name);
+        sb.append("; meter = ");
+        sb.append(meter);
+        sb.append("; time = ");
+        sb.append(time);
+        sb.append("; start time = ");
+        sb.append(stime);
+        sb.append("; end time = ");
+        sb.append(etime);
+        return sb.toString();
+    }
 }

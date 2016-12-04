@@ -102,6 +102,7 @@
         <commons.net.version>3.3</commons.net.version>
         <netty.version>4.1.1.Final</netty.version>
         <hibernate.validator.version>5.1.1.Final</hibernate.validator.version>
+        <quartz.version>2.2.1</quartz.version>
     </properties>
     <dependencies>
 
@@ -344,10 +345,17 @@
             <artifactId>shiro-web</artifactId>
             <version>${shiro.version}</version>
         </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.apache.shiro</groupId>-->
+            <!--<artifactId>shiro-quartz</artifactId>-->
+            <!--<version>${shiro.version}</version>-->
+        <!--</dependency>-->
+
+        <!-- quartz -->
         <dependency>
-            <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-quartz</artifactId>
-            <version>${shiro.version}</version>
+            <groupId>org.quartz-scheduler</groupId>
+            <artifactId>quartz</artifactId>
+            <version>${quartz.version}</version>
         </dependency>
 
         <!-- shiro-redis -->

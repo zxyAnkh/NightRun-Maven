@@ -24,4 +24,14 @@ public class UserForm {
     public void setUsername(String uername) {
         this.username = uername;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("student no = ");
+        sb.append(userno);
+        sb.append("; student name = ");
+        sb.append(username);
+        return sb.toString();
+    }
 }

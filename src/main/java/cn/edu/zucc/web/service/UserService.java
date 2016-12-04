@@ -22,13 +22,6 @@ public interface UserService{
     int deleteByUserid(int id);
 
     /**
-     * 通过用户id恢复用户
-     * @param id
-     * @return
-     */
-    int updateDelByUserid(int id);
-
-    /**
      * 新增用户
      * @param record
      * @return

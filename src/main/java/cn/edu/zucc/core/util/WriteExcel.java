@@ -34,12 +34,15 @@ public class WriteExcel {
         cell.setCellValue("姓名");
         cell.setCellStyle(style);
         cell = row.createCell(2);
-        cell.setCellValue("开始时间");
+        cell.setCellValue("分院");
         cell.setCellStyle(style);
         cell = row.createCell(3);
-        cell.setCellValue("结束时间");
+        cell.setCellValue("开始时间");
         cell.setCellStyle(style);
         cell = row.createCell(4);
+        cell.setCellValue("结束时间");
+        cell.setCellStyle(style);
+        cell = row.createCell(5);
         cell.setCellValue("用时");
         cell.setCellStyle(style);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -48,10 +51,11 @@ public class WriteExcel {
             ViewRun viewRun = list.get(i);
             row.createCell(0).setCellValue(viewRun.getUserno());
             row.createCell(1).setCellValue(viewRun.getUsername());
-            row.createCell(2).setCellValue(sdf.format(viewRun.getStarttime()));
-            row.createCell(3).setCellValue(sdf.format(viewRun.getEndtime()));
+            row.createCell(2).setCellValue(viewRun.getUserbranch());
+            row.createCell(3).setCellValue(sdf.format(viewRun.getStarttime()));
+            row.createCell(4).setCellValue(sdf.format(viewRun.getEndtime()));
             String time = String.valueOf((viewRun.getTime() - viewRun.getTime() % 60) / 60 + "m" + viewRun.getTime() % 60 + "s");
-            row.createCell(4).setCellValue(time);
+            row.createCell(5).setCellValue(time);
         }
         sdf = new SimpleDateFormat("yyyyMMddHHmmss");
         String fileName = sdf.format(new Date());

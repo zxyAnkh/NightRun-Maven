@@ -36,9 +36,4 @@ public interface RunService{
      */
     ViewTotal selectRunByUserid(int userid);
 
-    /**
-     * 读取所有夜跑记录
-     * @return
-     */
-    List<ViewRun> selectRuns();
 }

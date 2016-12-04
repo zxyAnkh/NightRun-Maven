@@ -1,0 +1,40 @@
+package cn.edu.zucc.web.service.Impl;
+
+import cn.edu.zucc.core.util.WriteExcel;
+import cn.edu.zucc.web.dao.RunMapper;
+import cn.edu.zucc.web.model.ViewRun;
+import cn.edu.zucc.web.service.ExportStatisticsExcelService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+/**
+ * Created by zxy on 12/4/2016.
+ */
+@Service("exportStatisticsExcelService")
+public class ExportStatisticsExcelServiceImpl implements ExportStatisticsExcelService {
+
+    @Autowired
+    private RunMapper runMapper;
+
+    @Override
+    public boolean selectAndExport() {
+        String path = getPath();
+        List<ViewRun> list = runMapper.selectTodayRuns();
+        WriteExcel writeExcel = new WriteExcel();
+        String file = writeExcel.createRunExcel(list, path);
+        return file != null && !"".equals(file);
+    }
+
+    private String getPath() {
+        String os = System.getProperty("os.name");
+        if ("Windows 10".equals(os) || "Windows 7".equals(os)) {
+            return "D;\\Run Data\\";
+        } else {
+            String currentUser = System.getProperty("user.name");
+            return "/home/" + currentUser + "/";
+        }
+    }
+
+}

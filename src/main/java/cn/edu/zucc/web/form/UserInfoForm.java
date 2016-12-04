@@ -51,4 +51,20 @@ public class UserInfoForm {
     public void setNewpassword2(String newpassword2) {
         this.newpassword2 = newpassword2;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("user no = ");
+        sb.append(userno);
+        sb.append("; user name = ");
+        sb.append(username);
+        sb.append("; old password = ");
+        sb.append(oldpassword);
+        sb.append("; new password = ");
+        sb.append(newpassword1);
+        sb.append("; new password = ");
+        sb.append(newpassword2);
+        return sb.toString();
+    }
 }

@@ -46,11 +46,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int updateDelByUserid(int id) {
-        return userMapper.updateDelByUserid(id);
-    }
-
-    @Override
     public List<User> selectByKeyword(String keyword) {
         return userMapper.selectByKeyword("%" + keyword + "%");
     }

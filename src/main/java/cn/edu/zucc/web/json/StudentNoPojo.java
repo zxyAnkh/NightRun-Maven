@@ -16,4 +16,15 @@ public class StudentNoPojo {
     public void setNos(List<String> nos) {
         this.nos = nos;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (String no : nos) {
+            sb.append("no");
+            sb.append(no);
+            sb.append(";");
+        }
+        return sb.toString();
+    }
 }

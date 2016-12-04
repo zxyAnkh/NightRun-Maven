@@ -3,6 +3,8 @@ package cn.edu.zucc.web.controller;
 import cn.edu.zucc.web.model.User;
 import cn.edu.zucc.web.security.RoleSign;
 import cn.edu.zucc.web.service.LoadUserDataService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,12 +22,15 @@ import java.util.List;
 @Controller("loadUserDataController")
 public class LoadUserDataController {
 
+    private static final Log logger = LogFactory.getLog(LoadUserDataController.class);
+
     @Autowired
     private LoadUserDataService loadUserDataService;
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)
     public ModelAndView users(Model model, @RequestParam("page") int page) {
+        logger.debug("Receive load user data request, page = " + page);
         if (page <= 0) {
             return new ModelAndView("admin/users?page=1");
         }
@@ -38,6 +43,7 @@ public class LoadUserDataController {
     @RequestMapping(value = "/admin/usersAll", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)
     public ModelAndView usersAll(Model model, @RequestParam("page") int page) {
+        logger.debug("Receive load all user data request, page = " + page);
         if (page <= 0) {
             return new ModelAndView("admin/usersAll?page=1");
         }

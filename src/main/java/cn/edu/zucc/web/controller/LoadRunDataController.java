@@ -3,6 +3,8 @@ package cn.edu.zucc.web.controller;
 import cn.edu.zucc.web.model.ViewRun;
 import cn.edu.zucc.web.security.RoleSign;
 import cn.edu.zucc.web.service.LoadRunDataService;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +23,15 @@ import java.util.List;
 @Controller("loadRunDataController")
 public class LoadRunDataController {
 
+    private static final Log logger = LogFactory.getLog(LoadRunDataController.class);
+
     @Autowired
     private LoadRunDataService loadRunDataService;
 
     @RequestMapping(value = "/admin/main", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)
     public ModelAndView loadDataForAdmin(Model model, @RequestParam("page") int page) {
+        logger.debug("Receive load data request, page = " + page);
         if (page <= 0) {
             return new ModelAndView("admin/main?page=1");
         }
@@ -39,6 +44,7 @@ public class LoadRunDataController {
     @RequestMapping(value = "/user/getData", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.USER)
     public String loadDataForUser(@RequestParam("no") String no) {
+        logger.debug("Receive load data request, student no  = " + no);
         if (null == no || "".equals(no)) {
             return "{\"runDataPojos\":\"\"}";
         }
