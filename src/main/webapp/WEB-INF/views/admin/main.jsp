@@ -26,6 +26,7 @@
     <script type="text/javascript" src="<%=basePath%>app/js/jquery-2.2.4.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="<%=basePath%>app/js/page.js"></script>
 </head>
 <body>
 <%@include file="head.jsp" %>
@@ -60,6 +61,20 @@
                 </tbody>
             </table>
         </div>
+        <nav>
+            <ul class="pagination">
+                <li><a href="/ntr/admin/main?page=1">&laquo;</a></li>
+                <li><a href="/ntr/admin/main?page=1">1</a></li>
+                <li><a href="/ntr/admin/main?page=2">2</a></li>
+                <li><a href="/ntr/admin/main?page=3">3</a></li>
+                <li><a href="/ntr/admin/main?page=4">4</a></li>
+                <li><a href="/ntr/admin/main?page=5">5</a></li>
+                <div class="form-group">
+                <input id="pageinput" type="text" class="form-control" placeholder=""
+                       onkeydown="if(event.keyCode == 13) page()">
+                </div>
+            </ul>
+        </nav>
         <div class="span2"></div>
     </div>
 </div>

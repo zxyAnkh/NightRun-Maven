@@ -30,6 +30,7 @@
     <link href="http://cdn.bootcss.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="<%=basePath%>app/js/select.js" type="text/javascript"></script>
     <script src="<%=basePath%>app/js/dArUsers.js" type="text/javascript"></script>
+    <script type="text/javascript" src="<%=basePath%>app/js/page.js"></script>
 </head>
 <body>
 <%@include file="head.jsp"%>
@@ -56,6 +57,20 @@
         </c:forEach>
         </tbody>
     </table>
+    <nav>
+        <ul class="pagination">
+            <li><a href="/ntr/admin/main?page=1">&laquo;</a></li>
+            <li><a href="/ntr/admin/main?page=1">1</a></li>
+            <li><a href="/ntr/admin/main?page=2">2</a></li>
+            <li><a href="/ntr/admin/main?page=3">3</a></li>
+            <li><a href="/ntr/admin/main?page=4">4</a></li>
+            <li><a href="/ntr/admin/main?page=5">5</a></li>
+            <div class="form-group">
+                <input id="pageinput" type="text" class="form-control" placeholder=""
+                       onkeydown="if(event.keyCode == 13) page()">
+            </div>
+        </ul>
+    </nav>
 </div>
 </body>
 </html>
