@@ -13,6 +13,9 @@ function page() {
             case "main":
                 location.href = "ntr/admin/main?page=" + p;
                 break;
+            case "excels":
+                location.href = "ntr/admin/excels?page=" + p;
+                break;
             case "users":
                 location.href = "ntr/admin/users?page=" + p;
                 break;

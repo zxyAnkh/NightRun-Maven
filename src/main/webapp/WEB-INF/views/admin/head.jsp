@@ -27,7 +27,13 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
-                <li id="home"><a href="ntr/admin/main?page=1">首页</a></li>
+                <li id="home" class="dropdown">
+                    <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="mhref">首页<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="ntr/admin/main?page=1">返回首页</a></li>
+                        <li><a href="ntr/admin/excels?page=1">查看统计资料</a></li>
+                    </ul>
+                </li>
                 <li class="dropdown" id="user">
                     <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="ahref">用户管理<span class="caret"></span></a>
                     <ul class="dropdown-menu">

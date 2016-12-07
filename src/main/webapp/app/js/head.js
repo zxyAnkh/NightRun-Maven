@@ -12,6 +12,11 @@ function urlcheck() {
             document.getElementById("liDel").classList = "disabled";
             document.getElementById("liRes").classList = "disabled";
             break;
+        case "excels":
+            document.getElementById("home").classList = "active";
+            document.getElementById("liDel").classList = "disabled";
+            document.getElementById("liRes").classList = "disabled";
+            break;
         case "users":
             document.getElementById("user").classList = "active";
             document.getElementById("liRes").classList = "disabled";
