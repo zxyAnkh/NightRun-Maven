@@ -30,7 +30,7 @@ public class ExportStatisticsExcelServiceImpl implements ExportStatisticsExcelSe
     private String getPath() {
         String os = System.getProperty("os.name");
         if ("Windows 10".equals(os) || "Windows 7".equals(os)) {
-            return "D;\\Run Data\\";
+            return "D:\\Run Data\\";
         } else {
             String currentUser = System.getProperty("user.name");
             return "/home/" + currentUser + "/";
