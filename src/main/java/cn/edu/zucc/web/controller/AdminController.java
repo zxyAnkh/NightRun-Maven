@@ -1,13 +1,10 @@
 package cn.edu.zucc.web.controller;
 
 import cn.edu.zucc.core.util.PasswordHash;
-import cn.edu.zucc.core.util.ReadExcel;
-import cn.edu.zucc.web.form.UserForm;
 import cn.edu.zucc.web.form.UserInfoForm;
 import cn.edu.zucc.web.model.*;
 import cn.edu.zucc.web.security.PermissionSign;
 import cn.edu.zucc.web.security.RoleSign;
-import cn.edu.zucc.web.service.RunService;
 import cn.edu.zucc.web.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -17,17 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.io.File;
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
 
 /**
  * 管理员页面处理

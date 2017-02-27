@@ -19,17 +19,5 @@
     <title>城院夜跑系统</title>
 </head>
 <body>
-{<c:forEach var="item" items="${userRunList}" varStatus="status">
-    <p>"<c:out value="${status.count}"/>":
-        {"id":"<c:out value="${item.uid}"/>",
-        "no":"<c:out value="${item.userno}"/>",
-        "name":"<c:out value="${item.username}"/>",
-        "meter":"<c:out value="${item.meter}"/>",
-        "time":"<c:out value="${item.time}"/>",
-        "starttime":"<c:out value="${item.starttime}"/>",
-        "endtime":"<c:out value="${item.endtime}"/>"}
-        <c:if test="${status.count <fn:length(userRunList)}">,</c:if>
-    </p>
-</c:forEach>}
 </body>
 </html>

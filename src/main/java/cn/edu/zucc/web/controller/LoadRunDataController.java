@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -43,10 +44,10 @@ public class LoadRunDataController {
 
     @RequestMapping(value = "/user/getData", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.USER)
-    public String loadDataForUser(@RequestParam("no") String no) {
+    public @ResponseBody String loadDataForUser(@RequestParam("no") String no) {
         logger.debug("Receive load data request, student no  = " + no);
         if (null == no || "".equals(no)) {
-            return "{\"runDataPojos\":\"\"}";
+            return "{\"data\":\"\"}";
         }
         return loadRunDataService.getRunDataByUserNo(no);
     }

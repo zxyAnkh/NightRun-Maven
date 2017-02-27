@@ -24,9 +24,10 @@ public class User implements Serializable {
 
     private Date rowUpdateTime;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(String userno,String password){
+    public User(String userno, String password) {
         this.userno = userno;
         this.password = password;
     }
@@ -109,5 +110,9 @@ public class User implements Serializable {
 
     public void setRowUpdateTime(Date rowUpdateTime) {
         this.rowUpdateTime = rowUpdateTime;
+    }
+
+    public String getInfo() {
+        return "no=" + userno + ",name=" + username;
     }
 }

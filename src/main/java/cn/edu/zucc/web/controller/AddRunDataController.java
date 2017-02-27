@@ -33,7 +33,7 @@ public class AddRunDataController {
         logger.debug("Receive add run data request, pojo = " + pojo.toString());
         boolean bool = addRunDataService.insert(pojo);
         logger.debug("Add run data " + bool);
-        return bool ? "SUCCEEDED" : "FAILURE";
+        return bool ? "{\"result\":true}" :  "{\"result\":false}";
     }
 
 }

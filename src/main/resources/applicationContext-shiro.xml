@@ -19,6 +19,7 @@
                 /assets/** = anon
                 <!-- 登录页允许访问 -->
                 /ntr/user/login = anon
+                /ntr/user/getData = anon
                 <!-- 其他资源需要认证 -->
                 /** = authc
             </value>

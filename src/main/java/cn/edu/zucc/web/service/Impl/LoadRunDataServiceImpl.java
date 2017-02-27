@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by zxy on 11/19/2016.
@@ -36,6 +38,7 @@ public class LoadRunDataServiceImpl implements LoadRunDataService {
         Gson gson = new Gson();
         List<ViewRun> viewRuns = runMapper.selectRunsByUserNo(no);
         List<RunDataPojo> runDataPojos = new ArrayList<RunDataPojo>();
+        Map<String, List<RunDataPojo>> map = new HashMap<String, List<RunDataPojo>>();
         if (viewRuns != null) {
             for (ViewRun viewRun : viewRuns) {
                 RunDataPojo pojo = new RunDataPojo();
@@ -49,6 +52,7 @@ public class LoadRunDataServiceImpl implements LoadRunDataService {
                 runDataPojos.add(pojo);
             }
         }
-        return gson.toJson(runDataPojos);
+        map.put("data", runDataPojos);
+        return gson.toJson(map);
     }
 }

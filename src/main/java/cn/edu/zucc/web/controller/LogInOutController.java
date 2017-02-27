@@ -2,7 +2,6 @@ package cn.edu.zucc.web.controller;
 
 import cn.edu.zucc.web.model.User;
 import cn.edu.zucc.web.service.LogInService;
-import cn.edu.zucc.web.service.UserService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;

@@ -103,9 +103,16 @@
         <netty.version>4.1.1.Final</netty.version>
         <hibernate.validator.version>5.1.1.Final</hibernate.validator.version>
         <quartz.version>2.2.1</quartz.version>
+        <urlrewirtefilter.version>4.0.3</urlrewirtefilter.version>
     </properties>
     <dependencies>
 
+        <!-- url rewrite filter-->
+        <dependency>
+            <groupId>org.tuckey</groupId>
+            <artifactId>urlrewritefilter</artifactId>
+            <version>${urlrewirtefilter.version}</version>
+        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
