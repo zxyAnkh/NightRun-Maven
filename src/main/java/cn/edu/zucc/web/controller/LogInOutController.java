@@ -36,7 +36,7 @@ public class LogInOutController {
     public ModelAndView login(@Valid User user, BindingResult result, Model model, HttpSession httpSession) {
         try {
             Subject subject = SecurityUtils.getSubject();
-            logger.debug("user " + user.getUsername() + " try to log in.");
+            logger.info("user " + user.getUsername() + " try to log in.");
             if (subject.isAuthenticated()) {
                 return new ModelAndView(new RedirectView("/ntr/page/index"));
             }

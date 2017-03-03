@@ -46,7 +46,7 @@ public class ManageUserController {
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.USER_CREATE)
     public ModelAndView userAdd(UserForm userForm) {
-        logger.debug("Receive add user request, user = " + userForm.toString());
+        logger.info("Receive add user request, user = " + userForm.toString());
         managerUserService.insertUser(userForm);
         return new ModelAndView(new RedirectView("users?page=1"));
     }
@@ -62,7 +62,7 @@ public class ManageUserController {
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.USER_CREATE)
     public ModelAndView usersAdd(HttpSession httpSession, @RequestParam("file") MultipartFile multipartFile) {
-        logger.debug("Receive batch add user request.");
+        logger.info("Receive batch add user request.");
         String path = httpSession.getServletContext().getRealPath("/app/upload");
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
         String fileName = simpleDateFormat.format(new Date());
@@ -72,7 +72,7 @@ public class ManageUserController {
             List<UserForm> formList = new ReadExcel().readExcel(file.getPath());
             if (formList != null) {
                 for (UserForm userForm : formList) {
-                    logger.debug("Batch add user request, user = " + userForm.toString());
+                    logger.info("Batch add user request, user = " + userForm.toString());
                     managerUserService.insertUser(userForm);
                 }
             }
@@ -88,10 +88,10 @@ public class ManageUserController {
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.USER_DELETE)
     public String deleteUser(@RequestBody StudentNoPojo studentNoPojo) {
-        logger.debug("Receive delete student request.");
+        logger.info("Receive delete student request.");
         if (studentNoPojo != null) {
             for (String no : studentNoPojo.getNos()) {
-                logger.debug("Delete student request, student no = " + no);
+                logger.info("Delete student request, student no = " + no);
                 managerUserService.deleteUser(no);
             }
         }
@@ -103,10 +103,10 @@ public class ManageUserController {
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.USER_RESTORE)
     public String restoreUser(@RequestBody StudentNoPojo studentNoPojo) {
-        logger.debug("Receive restore student request.");
+        logger.info("Receive restore student request.");
         if (studentNoPojo != null) {
             for (String no : studentNoPojo.getNos()) {
-                logger.debug("Restore student request, student no = " + no);
+                logger.info("Restore student request, student no = " + no);
                 managerUserService.restoreUser(no);
             }
         }

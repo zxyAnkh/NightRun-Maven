@@ -30,7 +30,7 @@ public class LoadUserDataController {
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)
     public ModelAndView users(Model model, @RequestParam("page") int page) {
-        logger.debug("Receive load user data request, page = " + page);
+        logger.info("Receive load user data request, page = " + page);
         if (page <= 0) {
             return new ModelAndView("admin/users?page=1");
         }
@@ -43,7 +43,7 @@ public class LoadUserDataController {
     @RequestMapping(value = "/admin/usersAll", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)
     public ModelAndView usersAll(Model model, @RequestParam("page") int page) {
-        logger.debug("Receive load all user data request, page = " + page);
+        logger.info("Receive load all user data request, page = " + page);
         if (page <= 0) {
             return new ModelAndView("admin/usersAll?page=1");
         }

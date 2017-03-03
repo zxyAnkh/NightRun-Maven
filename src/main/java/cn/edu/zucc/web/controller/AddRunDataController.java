@@ -30,9 +30,9 @@ public class AddRunDataController {
     @RequiresRoles(value = RoleSign.USER)
     @RequiresPermissions(value = PermissionSign.RUN_CREATE)
     public String addRunData(@RequestBody RunDataPojo pojo) {
-        logger.debug("Receive add run data request, pojo = " + pojo.toString());
+        logger.info("Receive add run data request, pojo = " + pojo.toString());
         boolean bool = addRunDataService.insert(pojo);
-        logger.debug("Add run data " + bool);
+        logger.info("Add run data " + bool);
         return bool ? "{\"result\":true}" :  "{\"result\":false}";
     }
 

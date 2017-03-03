@@ -31,7 +31,7 @@ public class DownloadExcelController {
     @RequestMapping(value = "/admin/excels", method = RequestMethod.GET)
     @RequiresRoles(RoleSign.ADMIN)
     public ModelAndView loadExcels(Model model, @RequestParam("page") int page) {
-        logger.debug("Receive load excel list request.");
+        logger.info("Receive load excel list request.");
         if (page <= 0) {
             return new ModelAndView("admin/excels?page=1");
         }

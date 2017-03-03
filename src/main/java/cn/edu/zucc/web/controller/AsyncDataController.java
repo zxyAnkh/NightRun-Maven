@@ -25,7 +25,7 @@ public class AsyncDataController {
     @RequestMapping(value = "/user/async", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.USER)
     public String asyncData(@RequestParam("user") String userno) {
-        logger.debug("Receive async data request, student no = " + userno);
+        logger.info("Receive async data request, student no = " + userno);
         if (null == userno || "".equals(userno)) {
             return "{}";
         }

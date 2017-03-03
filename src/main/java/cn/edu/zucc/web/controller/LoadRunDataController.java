@@ -32,7 +32,7 @@ public class LoadRunDataController {
     @RequestMapping(value = "/admin/main", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)
     public ModelAndView loadDataForAdmin(Model model, @RequestParam("page") int page) {
-        logger.debug("Receive load data request, page = " + page);
+        logger.info("Receive load data request, page = " + page);
         if (page <= 0) {
             return new ModelAndView("admin/main?page=1");
         }
@@ -45,7 +45,7 @@ public class LoadRunDataController {
     @RequestMapping(value = "/user/getData", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.USER)
     public @ResponseBody String loadDataForUser(@RequestParam("no") String no) {
-        logger.debug("Receive load data request, student no  = " + no);
+        logger.info("Receive load data request, student no  = " + no);
         if (null == no || "".equals(no)) {
             return "{\"data\":\"\"}";
         }

@@ -1,6 +1,7 @@
 package cn.edu.zucc.web.service;
 
 import cn.edu.zucc.web.form.UserForm;
+import cn.edu.zucc.web.json.UserPwdPojo;
 import cn.edu.zucc.web.model.User;
 
 import java.util.List;
@@ -41,6 +42,13 @@ public interface UserService{
      * @return
      */
     int updateByRecord(User record);
+
+    /**
+     * 更新用户密码
+     * @param recode
+     * @return
+     */
+    int updateUserPassword(UserPwdPojo recode);
 
 
     /**
