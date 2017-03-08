@@ -12,6 +12,25 @@
     String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
 %>
 <html>
+<script>
+    function pagenavigator(){
+        $.ajax({
+            type: "POST",
+            url: '/ntr/admin/getUsersPage',
+            contentType:"application/json;charset=UTF-8",
+            success:function(data){
+                data = JSON.parse(data);
+                var page = data['page'];
+                var pagenav = $("#pagenav");
+                for(var i = 1; i <= page;i++){
+                    var li = '<li><a href="/ntr/admin/users?page='+i+'">'+i+'</a></li>';
+                    pagenav.append(li);
+                }
+                pagenav.append('<div class="form-group"><input id="pageinput" type="text" class="form-control" placeholder="" onkeydown="if(event.keyCode == 13) page()"></div>');
+            }
+        });
+    }
+</script>
 <head>
     <base href="<%=basePath%>">
     <title>城院夜跑系统</title>
@@ -32,7 +51,7 @@
     <script src="<%=basePath%>app/js/dArUsers.js" type="text/javascript"></script>
     <script type="text/javascript" src="<%=basePath%>app/js/page.js"></script>
 </head>
-<body>
+<body onload="pagenavigator()">
 <%@include file="head.jsp"%>
 <div class="html-editor-align-center">
     <table class="table table-striped" id="usertable">
@@ -58,17 +77,7 @@
         </tbody>
     </table>
     <nav>
-        <ul class="pagination">
-            <li><a href="/ntr/admin/main?page=1">&laquo;</a></li>
-            <li><a href="/ntr/admin/main?page=1">1</a></li>
-            <li><a href="/ntr/admin/main?page=2">2</a></li>
-            <li><a href="/ntr/admin/main?page=3">3</a></li>
-            <li><a href="/ntr/admin/main?page=4">4</a></li>
-            <li><a href="/ntr/admin/main?page=5">5</a></li>
-            <div class="form-group">
-                <input id="pageinput" type="text" class="form-control" placeholder=""
-                       onkeydown="if(event.keyCode == 13) page()">
-            </div>
+        <ul class="pagination" id="pagenav">
         </ul>
     </nav>
 </div>

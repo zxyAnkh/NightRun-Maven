@@ -56,6 +56,7 @@ public class LogInOutController {
 
     @RequestMapping(value = "/user/logout")
     public ModelAndView logout(HttpSession session) {
+        logger.info(session.getAttribute("userInfo").toString() + " trying to log out.");
         session.removeAttribute("userInfo");
         Subject subject = SecurityUtils.getSubject();
         subject.logout();

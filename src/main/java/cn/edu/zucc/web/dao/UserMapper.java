@@ -13,31 +13,31 @@ public interface UserMapper  {
     /**
      * 通过用户id删除用户 软删除
      *
-     * @param id
-     * @return
+     * @param id 用户Id
+     * @return 操作影响的数据库行数
      */
     int deleteByUserid(int id);
 
     /**
      * 通过用户id恢复用户
      *
-     * @param id
-     * @return
+     * @param id 用户Id
+     * @return 操作影响的数据库行数
      */
     int updateDelByUserid(int id);
 
     /**
      * 添加用户
      *
-     * @param record
-     * @return
+     * @param record 用户数据
+     * @return 操作影响的数据库行数
      */
     int insert(User record);
 
     /**
      * 通过关键词模糊查询
      *
-     * @param keyword
+     * @param keyword 关键词
      * @return
      */
     List<User> selectByKeyword(String keyword);
@@ -47,15 +47,15 @@ public interface UserMapper  {
     /**
      * 更新用户信息
      *
-     * @param record
-     * @return
+     * @param record 用户数据
+     * @return 操作影响的数据库行数
      */
     int updateByRecord(User record);
 
     /**
      * 用户登录验证查询
      *
-     * @param record
+     * @param record 用户数据
      * @return
      */
     User authentication(@Param("record") User record);
@@ -63,15 +63,15 @@ public interface UserMapper  {
     /**
      * 通过学号获取密码
      *
-     * @param userno
+     * @param userno 用户学号
      * @return
      */
     String selectPwdByUserno(String userno);
 
     /**
-     * 根据用户名查询用户
+     * 根据用户学号查询用户
      *
-     * @param userno
+     * @param userno 用户学号
      * @return
      */
     User selectByUserno(String userno);
@@ -79,16 +79,19 @@ public interface UserMapper  {
     /**
      * 获取活跃用户
      *
-     * @return
+     * @return 活跃用户列表
      */
     List<User> selectActiveUsers(@Param("start") int start, @Param("end") int end);
 
     /**
      * 获取非活跃用户
      *
-     * @return
+     * @return 非活跃用户列表
      */
     List<User> selectNActiveUsers(@Param("start") int start, @Param("end") int end);
 
+    Integer getAllUserLength();
+
+    Integer getActiveUserLength();
 
 }

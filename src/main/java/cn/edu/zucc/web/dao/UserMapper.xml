@@ -84,4 +84,13 @@
         WHERE user.id = user_role.user_id AND role_id = 2
         limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
     </select>
+    <select id="getAllUserLength" resultType="java.lang.Integer">
+        select count(id)
+        from user
+    </select>
+    <select id="getActiveUserLength" resultType="java.lang.Integer">
+        select count(id)
+        from user
+        where deltime is NULL
+    </select>
 </mapper>

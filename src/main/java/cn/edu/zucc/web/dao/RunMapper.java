@@ -28,6 +28,12 @@ public interface RunMapper{
      */
     ViewTotal selectRunByUserid(int userid);
 
+    /**
+     * 获取数据长度
+     * @return
+     */
+    Integer getDataLength();
+
     ViewTotal selectRunByUserno(String no);
 
     /**

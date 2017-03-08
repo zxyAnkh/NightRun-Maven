@@ -42,6 +42,21 @@ public class LoadRunDataController {
         return new ModelAndView("admin/main");
     }
 
+    @RequestMapping(value = "/admin/getRunPage")
+    @RequiresRoles(value = RoleSign.ADMIN)
+    public @ResponseBody String getRunPage(){
+        Integer page = loadRunDataService.getPage();
+        if(page == null){
+            page = 1;
+        }
+        if(page <= 50){
+            page = 1;
+        }else{
+            page /= 50;
+        }
+        return "{\"page\":"+page+"}";
+    }
+
     @RequestMapping(value = "/user/getData", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.USER)
     public @ResponseBody String loadDataForUser(@RequestParam("no") String no) {

@@ -12,7 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import java.time.Instant;
+import java.util.Date;
 
 /**
  * Created by zxy on 12/3/2016.
@@ -29,7 +33,12 @@ public class AddRunDataController {
     @ResponseBody
     @RequiresRoles(value = RoleSign.USER)
     @RequiresPermissions(value = PermissionSign.RUN_CREATE)
-    public String addRunData(@RequestBody RunDataPojo pojo) {
+    public String addRunData(@RequestParam("sno") String sno, @RequestParam("meter") String meter, @RequestParam("stime") String stime, @RequestParam("etime") String etime) {
+        RunDataPojo pojo = new RunDataPojo();
+        pojo.setSno(sno);
+        pojo.setMeter(Double.parseDouble(meter));
+        pojo.setStime(Long.parseLong(stime));
+        pojo.setEtime(Long.parseLong(etime));
         logger.info("Receive add run data request, pojo = " + pojo.toString());
         boolean bool = addRunDataService.insert(pojo);
         logger.info("Add run data " + bool);

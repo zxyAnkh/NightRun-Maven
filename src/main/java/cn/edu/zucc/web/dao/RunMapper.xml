@@ -97,4 +97,8 @@
         ORDER BY uid
         limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
     </select>
+    <select id="getDataLength" resultType="java.lang.Integer">
+      select count(id)
+      from run
+    </select>
 </mapper>

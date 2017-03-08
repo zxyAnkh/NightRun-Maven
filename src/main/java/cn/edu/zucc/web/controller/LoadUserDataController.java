@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -53,4 +54,33 @@ public class LoadUserDataController {
         return new ModelAndView("admin/usersAll");
     }
 
+    @RequestMapping("/admin/getUsersPage")
+    @RequiresRoles(value = RoleSign.ADMIN)
+    public @ResponseBody String getUsersPage(){
+        Integer page = loadUserDataService.getActiveUserLength();
+        if(page == null){
+            page = 1;
+        }
+        if(page <= 50){
+            page = 1;
+        }else{
+            page /= 50;
+        }
+        return "{\"page\":"+page+"}";
+    }
+
+    @RequestMapping("/admin/getUsersAllPage")
+    @RequiresRoles(value = RoleSign.ADMIN)
+    public @ResponseBody String getUsersAllPage(){
+        Integer page = loadUserDataService.getAllUserLength();
+        if(page == null){
+            page = 1;
+        }
+        if(page <= 50){
+            page = 1;
+        }else{
+            page /= 50;
+        }
+        return "{\"page\":"+page+"}";
+    }
 }

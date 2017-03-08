@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
+ * 读取用户数据Service实现
  * Created by zxy on 11/28/2016.
  */
 @Service("loadUserDataService")
@@ -32,5 +33,15 @@ public class LoadUserDataServiceImpl implements LoadUserDataService {
             }
             return users;
         }
+    }
+
+    @Override
+    public Integer getAllUserLength() {
+        return userMapper.getAllUserLength();
+    }
+
+    @Override
+    public Integer getActiveUserLength() {
+        return userMapper.getActiveUserLength();
     }
 }

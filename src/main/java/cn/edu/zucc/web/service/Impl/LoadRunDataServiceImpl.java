@@ -31,6 +31,11 @@ public class LoadRunDataServiceImpl implements LoadRunDataService {
     }
 
     @Override
+    public Integer getPage() {
+        return runMapper.getDataLength();
+    }
+
+    @Override
     public String getRunDataByUserNo(String no) {
         if (no == null || "".equals(no)) {
             return "{\"runDataPojos\":\"\"}";
