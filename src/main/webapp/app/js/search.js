@@ -21,7 +21,7 @@ function timeChange() {
     var etime = document.getElementById("etime").value;
     if (stime != "" && etime != "" && (Date.parse(etime) - Date.parse(stime) ) >= 0) {
         document.getElementById("time").disabled = false;
-        document.getElementById("time").classList = "btn btn-primary";
+        document.getElementById("time").setAttribute('class', "btn btn-primary");
     }
 }
 /**
@@ -41,12 +41,12 @@ function searchType() {
     var type = url.substring(url.lastIndexOf('?') + 1, url.lastIndexOf("keyword")-1);
     if("type=all" == type){
         document.getElementById("resultAll").innerHTML = "搜索结果<span class='divider' id='resultAllSpan'>/</span>";
-        document.getElementById("resultAll").classList = "active";
-        document.getElementById("searchTable").classList = "table table-striped";
+        document.getElementById("resultAll").setAttribute("class", "active");
+        document.getElementById("searchTable").setAttribute("class", "table table-striped");
     }else if("type=details" == type){
         document.getElementById("resultAll").innerHTML = "<a href='javascript :;' onClick='javascript :history.back(-1);'>搜索结果</a><span class='divider' id='resultAllSpan'>/</span>";
-        document.getElementById("resultAllSpan").classList = "divider";
-        document.getElementById("resultDetails").classList = "active";
-        document.getElementById("detailsTable").classList = "table table-striped";
+        document.getElementById("resultAllSpan").setAttribute("class", "divider");
+        document.getElementById("resultDetails").setAttribute("class", "active");
+        document.getElementById("detailsTable").setAttribute("class", "table table-striped");
     }
 }

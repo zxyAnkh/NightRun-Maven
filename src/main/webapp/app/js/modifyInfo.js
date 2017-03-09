@@ -20,11 +20,12 @@ function check() {
     new2.addEventListener("input", checkPwd(old.value, new1.value, new2.value), false);
 
     if (name_flag && pwd_flag)
-        document.getElementById("submit").classList = "btn btn-primary";
+        document.getElementById("submit").setAttribute("class","btn btn-primary");
+
 }
 
 function checkName(name) {
-    if (name != "")
+    if (name !== "")
         name_flag = true;
     else
         name_flag = false;

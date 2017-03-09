@@ -18,10 +18,10 @@ function check() {
     checkUserNo(no);
     checkUserrName(name);
     if (userno_flag && username_flag) {
-        document.getElementById("submit").classList = "btn btn-primary";
+        document.getElementById("submit").setAttribute("class", "btn btn-primary");
     }
     else {
-        document.getElementById("submit").classList = "btn btn-primary disabled";
+        document.getElementById("submit").setAttribute("class", "btn btn-primary disabled");
     }
 }
 
@@ -54,6 +54,6 @@ function checkUserrName(username) {
 }
 
 function showInfo(target, Infos) {
-    document.getElementById(target).classList = "";
+    document.getElementById(target).setAttribute("class", "");
     document.getElementById(target).innerHTML = Infos;
 }
