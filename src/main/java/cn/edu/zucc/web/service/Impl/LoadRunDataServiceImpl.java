@@ -5,9 +5,9 @@ import cn.edu.zucc.web.json.RunDataPojo;
 import cn.edu.zucc.web.model.ViewRun;
 import cn.edu.zucc.web.service.LoadRunDataService;
 import com.google.gson.Gson;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -19,7 +19,7 @@ import java.util.Map;
 @Service("loadRunDataServiceImpl")
 public class LoadRunDataServiceImpl implements LoadRunDataService {
 
-    @Autowired
+    @Resource
     private RunMapper runMapper;
 
     @Override

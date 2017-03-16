@@ -8,18 +8,19 @@
         <result column="password" jdbcType="VARCHAR" property="password"/>
         <result column="userbranch" jdbcType="VARCHAR" property="userbranch"/>
         <result column="usergrade" jdbcType="VARCHAR" property="usergrade"/>
+        <result column="phoneuid" jdbcType="VARCHAR" property="phoneuid"/>
         <result column="addtime" jdbcType="TIMESTAMP" property="addtime"/>
         <result column="deltime" jdbcType="TIMESTAMP" property="deltime"/>
         <result column="rowCreateTime" property="row_create_time" jdbcType="TIMESTAMP"/>
         <result column="rowUpdateTime" property="row_update_time" jdbcType="TIMESTAMP"/>
     </resultMap>
     <select id="selectByKeyword" parameterType="java.lang.String" resultMap="BaseResultMap">
-    select *
+    select id, userno, username, userbranch, usergrade
     from user
     where userno LIKE #{userno} OR username LIKE #{username}
   </select>
     <select id="selectByKeywordPage" resultMap="BaseResultMap">
-        select *
+        select id, userno, username, userbranch, usergrade
         from user
         where userno LIKE #{keyword,jdbcType=VARCHAR} OR username LIKE #{keyword,jdbcType=VARCHAR}
         limit #{start,jdbcType=INTEGER},#{end,jdbcType=INTEGER}
@@ -53,7 +54,7 @@
     </update>
     <!-- 用户登录验证查询 -->
     <select id="authentication" parameterType="map" resultMap="BaseResultMap">
-        select *
+        select userno, username,phoneuid
         from user
         where userno = #{record.userno} and password = #{record.password}
     </select>
@@ -65,7 +66,7 @@
   </select>
     <!-- 根据用户名查询用户 -->
     <select id="selectByUserno" parameterType="java.lang.String" resultMap="BaseResultMap">
-        select *
+        select id, userno, username, userbranch, usergrade, phoneuid
         from user
         where userno = #{record.userno}
     </select>
@@ -92,5 +93,13 @@
         select count(id)
         from user
         where deltime is NULL
+    </select>
+    <update id="updatePhoneUID">
+        update user set phoneuid=#{phoneuid,jdbcType=VARCHAR} where user.userno=#{no,jdbcType=VARCHAR}
+    </update>
+    <select id="getPhoneUID" resultType="java.lang.String">
+        select user.phoneuid
+        from user
+        where user.userno=#{no,jdbcType=VARCHAR}
     </select>
 </mapper>

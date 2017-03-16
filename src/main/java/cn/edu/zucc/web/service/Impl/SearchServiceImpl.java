@@ -6,9 +6,9 @@ import cn.edu.zucc.web.model.User;
 import cn.edu.zucc.web.model.ViewRun;
 import cn.edu.zucc.web.model.ViewTotal;
 import cn.edu.zucc.web.service.SearchService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +18,9 @@ import java.util.List;
 @Service("searchService")
 public class SearchServiceImpl implements SearchService {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
-    @Autowired
+    @Resource
     private RunMapper runMapper;
 
     @Override

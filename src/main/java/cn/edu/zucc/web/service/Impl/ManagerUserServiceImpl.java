@@ -4,8 +4,9 @@ import cn.edu.zucc.web.dao.UserMapper;
 import cn.edu.zucc.web.form.UserForm;
 import cn.edu.zucc.web.model.User;
 import cn.edu.zucc.web.service.ManagerUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * Created by zxy on 11/29/2016.
@@ -13,7 +14,7 @@ import org.springframework.stereotype.Service;
 @Service("managerUserService")
 public class ManagerUserServiceImpl implements ManagerUserService {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     @Override

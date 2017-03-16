@@ -4,9 +4,9 @@ import cn.edu.zucc.core.util.WriteExcel;
 import cn.edu.zucc.web.dao.RunMapper;
 import cn.edu.zucc.web.model.ViewRun;
 import cn.edu.zucc.web.service.ExportStatisticsExcelService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -15,7 +15,7 @@ import java.util.List;
 @Service("exportStatisticsExcelService")
 public class ExportStatisticsExcelServiceImpl implements ExportStatisticsExcelService {
 
-    @Autowired
+    @Resource
     private RunMapper runMapper;
 
     @Override

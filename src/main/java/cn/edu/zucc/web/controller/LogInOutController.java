@@ -2,6 +2,7 @@ package cn.edu.zucc.web.controller;
 
 import cn.edu.zucc.web.model.User;
 import cn.edu.zucc.web.service.LogInService;
+import cn.edu.zucc.web.service.PhoneUIDService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.SecurityUtils;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
@@ -29,14 +31,16 @@ public class LogInOutController {
 
     private static final Log logger = LogFactory.getLog(LogInOutController.class);
 
-    @Autowired
+    @Resource
     private LogInService logInService;
+    @Resource
+    private PhoneUIDService phoneUIDService;
 
-    @RequestMapping(value = "/user/login",method = RequestMethod.POST)
+    @RequestMapping(value = "/user/login", method = RequestMethod.POST)
     public ModelAndView login(@Valid User user, BindingResult result, Model model, HttpSession httpSession) {
         try {
             Subject subject = SecurityUtils.getSubject();
-            logger.info("user " + user.getUsername() + " try to log in.");
+            logger.info("user " + user.toString() + " try to log in.");
             if (subject.isAuthenticated()) {
                 return new ModelAndView(new RedirectView("/ntr/page/index"));
             }
@@ -46,6 +50,9 @@ public class LogInOutController {
             }
             subject.login(new UsernamePasswordToken(user.getUserno(), user.getPassword()));
             final User authUserInfo = logInService.selectByUserno(user.getUserno());
+            if (user.getPhoneuid() != null && !"".equalsIgnoreCase(user.getPhoneuid())) {
+                phoneUIDService.updatePhoneUID(authUserInfo.getUserno(), user.getPhoneuid());
+            }
             httpSession.setAttribute("userInfo", authUserInfo);
         } catch (AuthenticationException e) {
             model.addAttribute("error", "用户名或密码错误 ！");

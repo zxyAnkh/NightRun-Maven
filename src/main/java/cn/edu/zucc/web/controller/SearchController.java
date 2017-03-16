@@ -6,7 +6,6 @@ import cn.edu.zucc.web.model.ViewTotal;
 import cn.edu.zucc.web.security.RoleSign;
 import cn.edu.zucc.web.service.SearchService;
 import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,16 +13,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
- *
  * Created by zxy on 11/20/2016.
  */
 @Controller("searchController")
 public class SearchController {
 
-    @Autowired
+    @Resource
     private SearchService searchService;
 
     @RequestMapping(value = "/admin/search", method = RequestMethod.GET)

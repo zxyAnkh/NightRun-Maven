@@ -6,7 +6,6 @@ import cn.edu.zucc.web.service.LoadUserDataService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -25,7 +25,7 @@ public class LoadUserDataController {
 
     private static final Log logger = LogFactory.getLog(LoadUserDataController.class);
 
-    @Autowired
+    @Resource
     private LoadUserDataService loadUserDataService;
 
     @RequestMapping(value = "/admin/users", method = RequestMethod.GET)
@@ -56,31 +56,35 @@ public class LoadUserDataController {
 
     @RequestMapping("/admin/getUsersPage")
     @RequiresRoles(value = RoleSign.ADMIN)
-    public @ResponseBody String getUsersPage(){
+    public
+    @ResponseBody
+    String getUsersPage() {
         Integer page = loadUserDataService.getActiveUserLength();
-        if(page == null){
+        if (page == null) {
             page = 1;
         }
-        if(page <= 50){
+        if (page <= 50) {
             page = 1;
-        }else{
+        } else {
             page /= 50;
         }
-        return "{\"page\":"+page+"}";
+        return "{\"page\":" + page + "}";
     }
 
     @RequestMapping("/admin/getUsersAllPage")
     @RequiresRoles(value = RoleSign.ADMIN)
-    public @ResponseBody String getUsersAllPage(){
+    public
+    @ResponseBody
+    String getUsersAllPage() {
         Integer page = loadUserDataService.getAllUserLength();
-        if(page == null){
+        if (page == null) {
             page = 1;
         }
-        if(page <= 50){
+        if (page <= 50) {
             page = 1;
-        }else{
+        } else {
             page /= 50;
         }
-        return "{\"page\":"+page+"}";
+        return "{\"page\":" + page + "}";
     }
 }

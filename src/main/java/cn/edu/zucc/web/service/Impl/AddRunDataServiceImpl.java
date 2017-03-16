@@ -5,9 +5,9 @@ import cn.edu.zucc.web.dao.UserMapper;
 import cn.edu.zucc.web.json.RunDataPojo;
 import cn.edu.zucc.web.model.Run;
 import cn.edu.zucc.web.service.AddRunDataService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -17,9 +17,9 @@ import java.util.Date;
 @Service("addRunDataService")
 public class AddRunDataServiceImpl implements AddRunDataService {
 
-    @Autowired
+    @Resource
     private RunMapper runMapper;
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     @Override

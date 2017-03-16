@@ -10,13 +10,13 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.io.File;
 import java.io.IOException;
@@ -32,7 +32,7 @@ public class ManageUserController {
 
     private static final Log logger = LogFactory.getLog(ManageUserController.class);
 
-    @Autowired
+    @Resource
     private ManagerUserService managerUserService;
 
     @RequestMapping(value = "/admin/userAdd", method = RequestMethod.GET)

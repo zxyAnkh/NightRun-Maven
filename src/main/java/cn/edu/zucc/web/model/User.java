@@ -16,6 +16,8 @@ public class User implements Serializable {
 
     private String usergrade;
 
+    private String phoneuid;
+
     private Date addtime;
 
     private Date deltime;
@@ -114,5 +116,30 @@ public class User implements Serializable {
 
     public String getInfo() {
         return "no=" + userno + ",name=" + username;
+    }
+
+    public String getPhoneuid() {
+        return phoneuid;
+    }
+
+    public void setPhoneuid(String phoneuid) {
+        this.phoneuid = phoneuid;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", userno='" + userno + '\'' +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", userbranch='" + userbranch + '\'' +
+                ", usergrade='" + usergrade + '\'' +
+                ", phoneuid='" + phoneuid + '\'' +
+                ", addtime=" + addtime +
+                ", deltime=" + deltime +
+                ", rowCreateTime=" + rowCreateTime +
+                ", rowUpdateTime=" + rowUpdateTime +
+                '}';
     }
 }

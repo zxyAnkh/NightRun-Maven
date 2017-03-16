@@ -5,9 +5,9 @@ import cn.edu.zucc.web.model.Run;
 import cn.edu.zucc.web.model.ViewRun;
 import cn.edu.zucc.web.model.ViewTotal;
 import cn.edu.zucc.web.service.RunService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -18,7 +18,7 @@ import java.util.List;
 @Service("runService")
 public class RunServiceImpl  implements RunService{
 
-    @Autowired
+    @Resource
     private RunMapper runMapper;
 
     @Override

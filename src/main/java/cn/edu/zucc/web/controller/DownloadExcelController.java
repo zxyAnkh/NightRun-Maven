@@ -5,7 +5,6 @@ import cn.edu.zucc.web.service.DownloadExcelService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 import java.util.List;
@@ -25,7 +25,7 @@ public class DownloadExcelController {
 
     private static final Log logger = LogFactory.getLog(DownloadExcelController.class);
 
-    @Autowired
+    @Resource
     private DownloadExcelService downloadExcelService;
 
     @RequestMapping(value = "/admin/excels", method = RequestMethod.GET)

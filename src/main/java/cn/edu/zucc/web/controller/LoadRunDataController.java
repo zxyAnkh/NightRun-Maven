@@ -6,7 +6,6 @@ import cn.edu.zucc.web.service.LoadRunDataService;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresRoles;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,10 +14,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
- *
  * Created by zxy on 11/19/2016.
  */
 @Controller("loadRunDataController")
@@ -26,7 +25,7 @@ public class LoadRunDataController {
 
     private static final Log logger = LogFactory.getLog(LoadRunDataController.class);
 
-    @Autowired
+    @Resource
     private LoadRunDataService loadRunDataService;
 
     @RequestMapping(value = "/admin/main", method = RequestMethod.GET)
@@ -44,22 +43,26 @@ public class LoadRunDataController {
 
     @RequestMapping(value = "/admin/getRunPage")
     @RequiresRoles(value = RoleSign.ADMIN)
-    public @ResponseBody String getRunPage(){
+    public
+    @ResponseBody
+    String getRunPage() {
         Integer page = loadRunDataService.getPage();
-        if(page == null){
+        if (page == null) {
             page = 1;
         }
-        if(page <= 50){
+        if (page <= 50) {
             page = 1;
-        }else{
+        } else {
             page /= 50;
         }
-        return "{\"page\":"+page+"}";
+        return "{\"page\":" + page + "}";
     }
 
     @RequestMapping(value = "/user/getData", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.USER)
-    public @ResponseBody String loadDataForUser(@RequestParam("no") String no) {
+    public
+    @ResponseBody
+    String loadDataForUser(@RequestParam("no") String no) {
         logger.info("Receive load data request, student no  = " + no);
         if (null == no || "".equals(no)) {
             return "{\"data\":\"\"}";

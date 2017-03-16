@@ -3,9 +3,9 @@ package cn.edu.zucc.web.service.Impl;
 import cn.edu.zucc.web.dao.PermissionMapper;
 import cn.edu.zucc.web.model.Permission;
 import cn.edu.zucc.web.service.PermissionService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -16,7 +16,7 @@ import java.util.List;
 @Service("permissionService")
 public class PermissionServiceImpl  implements PermissionService{
 
-    @Autowired
+    @Resource
     private PermissionMapper permissionMapper;
 
     @Override

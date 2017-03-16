@@ -3,9 +3,9 @@ package cn.edu.zucc.web.service.Impl;
 import cn.edu.zucc.web.dao.UserMapper;
 import cn.edu.zucc.web.model.User;
 import cn.edu.zucc.web.service.LoadUserDataService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -15,7 +15,7 @@ import java.util.List;
 @Service("loadUserDataService")
 public class LoadUserDataServiceImpl implements LoadUserDataService {
 
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     @Override

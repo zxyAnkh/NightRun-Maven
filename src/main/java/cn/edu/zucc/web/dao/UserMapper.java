@@ -94,4 +94,8 @@ public interface UserMapper  {
 
     Integer getActiveUserLength();
 
+    Integer updatePhoneUID(@Param("no") String no, @Param("phoneuid") String phoneuid);
+
+    String getPhoneUID(@Param("no") String no);
+
 }

@@ -7,9 +7,9 @@ import cn.edu.zucc.web.model.ViewRun;
 import cn.edu.zucc.web.model.ViewTotal;
 import cn.edu.zucc.web.service.AsyncDataService;
 import com.google.gson.Gson;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.Resource;
 import java.util.List;
 
 /**
@@ -19,9 +19,9 @@ import java.util.List;
 @Service("asyncDataSerivce")
 public class AsyncDataServiceImpl implements AsyncDataService {
 
-    @Autowired
+    @Resource
     private RunMapper runMapper;
-    @Autowired
+    @Resource
     private UserMapper userMapper;
 
     @Override
