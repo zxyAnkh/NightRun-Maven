@@ -16,28 +16,16 @@ Date: 2016-07-14 11:17:45
 SET FOREIGN_KEY_CHECKS=0;
 
 -- ----------------------------
--- Table structure for log
--- ----------------------------
-DROP TABLE IF EXISTS `log`;
-CREATE TABLE `log` (
-  `log_id` int(11) NOT NULL AUTO_INCREMENT,
-  `log_table` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `log_dml` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  `log_key_id` int(11) DEFAULT NULL,
-  `log_date` datetime DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  `log_username` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
-  PRIMARY KEY (`log_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
 -- Table structure for permission
 -- ----------------------------
 DROP TABLE IF EXISTS `permission`;
 CREATE TABLE `permission` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `permissionname` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
-  `permissionsign` varchar(128) CHARACTER SET utf8 DEFAULT NULL,
-  `desription` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `permissionname` varchar(20) DEFAULT NULL,
+  `permissionsign` varchar(128) DEFAULT NULL,
+  `desription` varchar(255) DEFAULT NULL,
+  `row_create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `row_update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
@@ -47,9 +35,11 @@ CREATE TABLE `permission` (
 DROP TABLE IF EXISTS `role`;
 CREATE TABLE `role` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `rolename` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
-  `rolesign` varchar(128) CHARACTER SET utf8 DEFAULT NULL,
-  `description` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  `rolename` varchar(20) DEFAULT NULL,
+  `rolesign` varchar(128) DEFAULT NULL,
+  `description` varchar(255) DEFAULT NULL,
+  `row_create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `row_update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
@@ -74,8 +64,10 @@ CREATE TABLE `run` (
   `starttime` datetime NOT NULL,
   `endtime` datetime NOT NULL,
   `userid` int(8) NOT NULL,
+  `row_create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `row_update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for user
@@ -88,10 +80,13 @@ CREATE TABLE `user` (
   `password` varchar(128) NOT NULL DEFAULT 'e10adc3949ba59abbe56e057f20f883e',
   `userbranch` varchar(1) DEFAULT NULL,
   `usergrade` varchar(2) DEFAULT NULL,
+  `phoneuid` varchar(45) NOT NULL,
   `addtime` datetime NOT NULL,
   `deltime` datetime DEFAULT NULL,
+  `row_create_time` datetime DEFAULT CURRENT_TIMESTAMP,
+  `row_update_time` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Table structure for user_role
@@ -102,7 +97,7 @@ CREATE TABLE `user_role` (
   `user_id` int(11) DEFAULT NULL,
   `role_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Procedure structure for prc_user_insert
