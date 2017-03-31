@@ -58,11 +58,10 @@ public class LoadRunDataController {
         return "{\"page\":" + page + "}";
     }
 
-    @RequestMapping(value = "/user/getData", method = RequestMethod.GET)
+    @RequestMapping(value = "/user/loadRunData", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.USER)
-    public
     @ResponseBody
-    String loadDataForUser(@RequestParam("no") String no) {
+    public String loadDataForUser(@RequestParam("no") String no) {
         logger.info("Receive load data request, student no  = " + no);
         if (null == no || "".equals(no)) {
             return "{\"data\":\"\"}";

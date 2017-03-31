@@ -1,5 +1,6 @@
 package cn.edu.zucc.web.controller;
 
+import cn.edu.zucc.web.json.AddRunRequest;
 import cn.edu.zucc.web.json.RunDataPojo;
 import cn.edu.zucc.web.security.PermissionSign;
 import cn.edu.zucc.web.security.RoleSign;
@@ -10,8 +11,8 @@ import org.apache.commons.logging.LogFactory;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -33,15 +34,15 @@ public class AddRunDataController {
     @ResponseBody
     @RequiresRoles(value = RoleSign.USER)
     @RequiresPermissions(value = PermissionSign.RUN_CREATE)
-    public String addRunData(@RequestParam("sno") String sno, @RequestParam("meter") String meter, @RequestParam("stime") String stime, @RequestParam("etime") String etime, @RequestParam("phoneuid") String uid) {
-        String phoneuid = phoneUIDService.getPhoneUID(sno);
-        if (phoneuid != null && uid != null && phoneuid.equals(uid)) {
+    public String addRunData(@RequestBody AddRunRequest json) {
+        String phoneuid = phoneUIDService.getPhoneUID(json.getNo());
+        if (json.getPhoneuid() != null && phoneuid != null && phoneuid.equals(json.getPhoneuid())) {
             RunDataPojo pojo = new RunDataPojo();
-            pojo.setSno(sno);
-            pojo.setMeter(Double.parseDouble(meter));
-            pojo.setStime(Long.parseLong(stime));
-            pojo.setEtime(Long.parseLong(etime));
-            logger.info("Receive add run data request, pojo = " + pojo.toString());
+            pojo.setSno(json.getNo());
+            pojo.setMeter(Double.parseDouble(json.getMeter()));
+            pojo.setStime(Long.parseLong(json.getStarttime()));
+            pojo.setEtime(Long.parseLong(json.getEndtime()));
+            logger.info("Receive add run data request, pojo = " + json.toString());
             boolean bool = addRunDataService.insert(pojo);
             logger.info("Add run data " + bool);
             return bool ? "{\"result\":true}" : "{\"result\":false}";

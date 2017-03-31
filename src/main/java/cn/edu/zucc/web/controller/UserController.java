@@ -1,5 +1,6 @@
 package cn.edu.zucc.web.controller;
 
+import cn.edu.zucc.web.json.UpdateUserDataRequest;
 import cn.edu.zucc.web.json.UserPwdPojo;
 import cn.edu.zucc.web.security.PermissionSign;
 import cn.edu.zucc.web.security.RoleSign;
@@ -12,10 +13,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -52,28 +50,25 @@ public class UserController {
     /**
      * 用户更新个人密码
      *
-     * @param userno
-     * @param oldpwd
-     * @param newpwd
      * @return
      */
     @RequestMapping(value = "/update", method = RequestMethod.POST)
     @RequiresRoles(value = RoleSign.USER)
     @RequiresPermissions(value = PermissionSign.USER_UPDATE)
     @ResponseBody
-    public String update(@RequestParam("no") String userno, @RequestParam("oldpwd") String oldpwd, @RequestParam("newpwd") String newpwd, @RequestParam("phoneuid") String uid, HttpSession session) {
-        if (userno == null || "".equals(userno)) {
+    public String update(@RequestBody UpdateUserDataRequest json, HttpSession session) {
+        if (json.getNo() == null || "".equals(json.getNo())) {
             return "{\"result\":false}";
         }
-        if (oldpwd == null || "".equals(oldpwd)) {
+        if (json.getOldpwd() == null || "".equals(json.getOldpwd())) {
             return "{\"result\":false}";
         }
-        if (newpwd == null || "".equals(newpwd)) {
+        if (json.getNewpwd() == null || "".equals(json.getNewpwd())) {
             return "{\"result\":false}";
         }
-        String phoneuid = phoneUIDService.getPhoneUID(userno);
-        if (phoneuid != null && uid != null && phoneuid.equals(uid)) {
-            UserPwdPojo user = new UserPwdPojo(userno, oldpwd, newpwd);
+        String phoneuid = phoneUIDService.getPhoneUID(json.getNo());
+        if (phoneuid != null && json.getPhoneuid() != null && phoneuid.equals(json.getPhoneuid())) {
+            UserPwdPojo user = new UserPwdPojo(json.getNo(), json.getOldpwd(), json.getNewpwd());
             logger.info("Receive update user personal information request, user = " + user.toString());
             if (userService.updateUserPassword(user) == 1) {
                 session.removeAttribute("userInfo");
