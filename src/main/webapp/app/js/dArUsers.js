@@ -14,7 +14,7 @@ function delusers() {
             len++;
         }
     }
-    if (pojo["nos"] != null) {
+    if (pojo["nos"] !== null) {
         $.ajax({
             type: "POST",
             url: "/ntr/admin/delete",
@@ -35,7 +35,7 @@ function resuser() {
             len++;
         }
     }
-    if (pojo["nos"] != null) {
+    if (pojo["nos"] !== null) {
         $.ajax({
             type: "POST",
             url: "/ntr/admin/restore",

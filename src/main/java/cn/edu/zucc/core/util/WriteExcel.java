@@ -1,5 +1,6 @@
 package cn.edu.zucc.core.util;
 
+import cn.edu.zucc.web.common.Branch;
 import cn.edu.zucc.web.model.ViewRun;
 import org.apache.poi.xssf.usermodel.*;
 
@@ -51,7 +52,7 @@ public class WriteExcel {
             ViewRun viewRun = list.get(i);
             row.createCell(0).setCellValue(viewRun.getUserno());
             row.createCell(1).setCellValue(viewRun.getUsername());
-            row.createCell(2).setCellValue(viewRun.getUserbranch());
+            row.createCell(2).setCellValue(Branch.getBranch(viewRun.getUserbranch()));
             row.createCell(3).setCellValue(sdf.format(viewRun.getStarttime()));
             row.createCell(4).setCellValue(sdf.format(viewRun.getEndtime()));
             String time = String.valueOf((viewRun.getTime() - viewRun.getTime() % 60) / 60 + "m" + viewRun.getTime() % 60 + "s");

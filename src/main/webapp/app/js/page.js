@@ -4,7 +4,7 @@
 
 function page() {
     var p = document.getElementById("pageinput").value;
-    if (p != null && "" != (p)) {
+    if (p !== null && "" !== (p)) {
         var url = window.location.href;
         var urlend = url.substr(url.lastIndexOf('/') + 1);
         var u = urlend.substr(0,urlend.lastIndexOf('&'));

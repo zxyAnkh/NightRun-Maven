@@ -31,16 +31,16 @@ function checkName(name) {
         name_flag = false;
 }
 function checkPwd(old, new1, new2) {
-    if (old == "") {
+    if (old === "") {
         pwd_flag = false;
-    } else if (old != "") {
-        if (new1 == "" && new2 == "") {
+    } else if (old !== "") {
+        if (new1 === "" && new2 === "") {
             pwd_flag = true;
-        } else if (old == new1 || old == new2) {
+        } else if (old === new1 || old === new2) {
             pwd_flag = false;
-        } else if (new1 != new2 && (new1 == "" || new2 == "")) {
+        } else if (new1 !== new2 && (new1 === "" || new2 === "")) {
             pwd_flag = false;
-        } else if (new1 != "" && new1 == new2)
+        } else if (new1 !== "" && new1 === new2)
             pwd_flag = true;
     }
 }

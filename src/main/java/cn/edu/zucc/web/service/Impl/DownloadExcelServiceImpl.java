@@ -18,10 +18,10 @@ public class DownloadExcelServiceImpl implements DownloadExcelService {
         String path = getPath();
         File file = new File(path);
         List<String> result = new ArrayList<String>();
-        if(!file.exists()){
+        if (file.exists()) {
             String[] files = file.list();
             if (files != null && files.length != 0) {
-                for (int i = start; i < start + offset; i++) {
+                for (int i = start; i < start + offset && i < files.length; i++) {
                     if (files[i] != null && !"".equals(files[i])) {
                         result.add(files[i]);
                     } else {
@@ -42,7 +42,7 @@ public class DownloadExcelServiceImpl implements DownloadExcelService {
     private String getPath() {
         String os = System.getProperty("os.name");
         if ("Windows 10".equals(os) || "Windows 7".equals(os)) {
-            return "D;\\Run Data\\";
+            return "E:\\Run Data\\";
         } else {
             String currentUser = System.getProperty("user.name");
             return "/home/" + currentUser + "/";

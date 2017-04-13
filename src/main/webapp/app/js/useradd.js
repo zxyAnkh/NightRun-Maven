@@ -33,7 +33,7 @@ function checkUserNo(userno) {
             data: userno, //组装参数
             dataType: "text",
             success: function (data) {
-                if (data == "1"){
+                if (data === "1") {
                     userno_flag = true;
                     showInfo("userno_notice", userno_can);
                 }

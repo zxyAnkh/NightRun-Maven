@@ -19,7 +19,7 @@ function timeQuery() {
 function timeChange() {
     var stime = document.getElementById("stime").value;
     var etime = document.getElementById("etime").value;
-    if (stime != "" && etime != "" && (Date.parse(etime) - Date.parse(stime) ) >= 0) {
+    if (stime !== "" && etime !== "" && (Date.parse(etime) - Date.parse(stime) ) >= 0) {
         document.getElementById("time").disabled = false;
         document.getElementById("time").setAttribute('class', "btn btn-primary");
     }
@@ -29,7 +29,7 @@ function timeChange() {
  */
 function find() {
     var keyword = document.getElementById("search").value;
-    if (keyword != null && "" != (keyword))
+    if (keyword !== null && "" !== (keyword))
         location.href = "ntr/admin/search?type=all&keyword=" + keyword + "&page=1";
 }
 
@@ -39,11 +39,11 @@ function find() {
 function searchType() {
     var url = window.location.href;
     var type = url.substring(url.lastIndexOf('?') + 1, url.lastIndexOf("keyword")-1);
-    if("type=all" == type){
+    if ("type=all" === type) {
         document.getElementById("resultAll").innerHTML = "搜索结果<span class='divider' id='resultAllSpan'>/</span>";
         document.getElementById("resultAll").setAttribute("class", "active");
         document.getElementById("searchTable").setAttribute("class", "table table-striped");
-    }else if("type=details" == type){
+    } else if ("type=details" === type) {
         document.getElementById("resultAll").innerHTML = "<a href='javascript :;' onClick='javascript :history.back(-1);'>搜索结果</a><span class='divider' id='resultAllSpan'>/</span>";
         document.getElementById("resultAllSpan").setAttribute("class", "divider");
         document.getElementById("resultDetails").setAttribute("class", "active");

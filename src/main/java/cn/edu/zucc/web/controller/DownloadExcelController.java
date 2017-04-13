@@ -47,19 +47,26 @@ public class DownloadExcelController {
         String fileName = downloadExcelService.getFilePath(name);
         File file = new File(fileName);
         if (file.exists()) {
+            logger.info("1");
             response.setContentType("application/vnd.ms-excel;charset=utf-8");
-            response.addHeader("Content-Disposition", "attachment;filename=" + fileName + ".xls");
+            response.addHeader("Content-Disposition", "attachment;filename=" + name);
             byte[] buffer = new byte[1024];
+            logger.info("2");
             try {
                 FileInputStream fis = new FileInputStream(file);
                 BufferedInputStream bis = new BufferedInputStream(fis);
                 OutputStream os = response.getOutputStream();
                 int i = bis.read(buffer);
+                logger.info("3");
                 while (i != -1) {
                     os.write(buffer, 0, i);
                     i = bis.read(buffer);
                 }
+                logger.info("4");
                 os.flush();
+                os.close();
+                fis.close();
+                bis.close();
                 return new ModelAndView("admin/excels?page=1");
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
