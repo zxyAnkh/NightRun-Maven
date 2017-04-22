@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
@@ -27,6 +28,23 @@ public class DownloadExcelController {
 
     @Resource
     private DownloadExcelService downloadExcelService;
+
+    @RequestMapping(value = "/admin/getExcelPages", method = RequestMethod.GET)
+    @RequiresRoles(value = RoleSign.ADMIN)
+    public
+    @ResponseBody
+    String getRunPage() {
+        Integer page = downloadExcelService.getPage();
+        if (page == null) {
+            page = 1;
+        }
+        if (page <= 50) {
+            page = 1;
+        } else {
+            page /= 50;
+        }
+        return "{\"page\":" + page + "}";
+    }
 
     @RequestMapping(value = "/admin/excels", method = RequestMethod.GET)
     @RequiresRoles(RoleSign.ADMIN)

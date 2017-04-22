@@ -39,6 +39,7 @@ function find() {
 function searchType() {
     var url = window.location.href;
     var type = url.substring(url.lastIndexOf('?') + 1, url.lastIndexOf("keyword")-1);
+    var keyword = url.substring(url.lastIndexOf("keyword") + 8);
     if ("type=all" === type) {
         document.getElementById("resultAll").innerHTML = "搜索结果<span class='divider' id='resultAllSpan'>/</span>";
         document.getElementById("resultAll").setAttribute("class", "active");
@@ -49,4 +50,53 @@ function searchType() {
         document.getElementById("resultDetails").setAttribute("class", "active");
         document.getElementById("detailsTable").setAttribute("class", "table table-striped");
     }
+    searchPage(type, keyword);
+}
+
+function searchPage(type, keyword) {
+    $.ajax({
+        type: "GET",
+        url: "/ntr/admin/getSearchPage?" + type + "&keyword=" + keyword,
+        contentType: "application/json;charset=UTF-8",
+        success: function (data) {
+            var url = window.location.href;
+            var currPage = url.substring(url.indexOf('?') + 1).substring(url.substring(url.indexOf('?') + 1).indexOf('=') + 1);
+            data = JSON.parse(data);
+            var page = data['page'];
+            var options = {
+                alignment: 'center',
+                currentPage: currPage,
+                totalPages: page,
+                numberOfPages: 5,
+                pageUrl: function (t, p, current) {
+                    if (t === 'fist') {
+                        if (current !== 1) {
+                            return "/ntr/admin/search?" + type + "&keyword=" + keyword;
+                        }
+                    } else if (t === 'last') {
+                        if (current !== page) {
+                            return "/ntr/admin/search?" + type + "&keyword=" + keyword;
+                        }
+                    } else if (t === 'prev') {
+                        if (current === 1) {
+                            return "/ntr/admin/search?" + type + "&keyword=" + keyword + "&page=" + 1;
+                        } else {
+                            p = current - 1;
+                            return "/ntr/admin/search?" + type + "&keyword=" + keyword + "&page=" + p;
+                        }
+                    } else if (t === 'next') {
+                        if (current === page) {
+                            return "/ntr/admin/search?" + type + "&keyword=" + keyword + "&page=" + page;
+                        } else {
+                            p = current + 1;
+                            return "/ntr/admin/search?" + type + "&keyword=" + keyword + "&page=" + p;
+                        }
+                    } else {
+                        return "/ntr/admin/search?" + type + "&keyword=" + keyword + "&page=" + p;
+                    }
+                }
+            };
+            $('#navigator').bootstrapPaginator(options);
+        }
+    });
 }

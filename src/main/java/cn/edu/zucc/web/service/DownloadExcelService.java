@@ -11,4 +11,6 @@ public interface DownloadExcelService {
 
     String getFilePath(String name);
 
+    Integer getPage();
+
 }

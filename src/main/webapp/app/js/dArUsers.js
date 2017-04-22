@@ -31,6 +31,7 @@ function resuser() {
     var len = 0;
     for (var i = 0; i < checkItems.length; i++) {
         if (checkItems[i].checked) {
+            console.log(items[i]);
             pojo["nos"][len] = items[i].innerHTML;
             len++;
         }

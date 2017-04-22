@@ -106,13 +106,6 @@
         <urlrewirtefilter.version>4.0.3</urlrewirtefilter.version>
     </properties>
     <dependencies>
-
-        <!-- url rewrite filter-->
-        <dependency>
-            <groupId>org.tuckey</groupId>
-            <artifactId>urlrewritefilter</artifactId>
-            <version>${urlrewirtefilter.version}</version>
-        </dependency>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>

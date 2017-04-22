@@ -16,18 +16,23 @@
 <script>
     function pagenavigator(){
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: '/ntr/admin/getRunPage',
             contentType:"application/json;charset=UTF-8",
             success:function(data){
+                var url = window.location.href;
+                var currPage = url.substring(url.indexOf('?') + 1).substring(url.substring(url.indexOf('?') + 1).indexOf('=') + 1);
                 data = JSON.parse(data);
                 var page = data['page'];
-                var pagenav = $("#pagenav");
-                for(var i = 1; i <= page;i++){
-                    var li = '<li><a href="/ntr/admin/main?page='+i+'">'+i+'</a></li>';
-                    pagenav.append(li);
-                }
-                pagenav.append('<div class="form-group"><input id="pageinput" type="text" class="form-control" placeholder="" onkeydown="if(event.keyCode == 13) page()"></div>');
+                var options = {
+                    currentPage: currPage,
+                    totalPages: page,
+                    numberOfPages: 5,
+                    pageUrl: function (type, page, current) {
+                        return "/ntr/admin/main?page=" + page;
+                    }
+                };
+                $('#navigator').bootstrapPaginator(options);
             }
         });
     }
@@ -46,6 +51,7 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>app/js/page.js"></script>
+    <script type="text/javascript" src="<%=basePath%>app/js/bootstrap-paginator.js"></script>
 </head>
 <body onload="pagenavigator()">
 <%@include file="head.jsp" %>
@@ -80,11 +86,12 @@
                 </tbody>
             </table>
         </div>
-        <nav>
-            <ul class="pagination" id="pagenav">
-            </ul>
-        </nav>
-        <div class="span2"></div>
+        <div class="span2" id="navigator">
+            <nav>
+                <ul class="pagination" id="pagenav">
+                </ul>
+            </nav>
+        </div>
     </div>
 </div>
 </body>

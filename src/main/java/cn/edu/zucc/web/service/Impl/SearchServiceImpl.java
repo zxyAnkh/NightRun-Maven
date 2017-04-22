@@ -47,4 +47,20 @@ public class SearchServiceImpl implements SearchService {
     public ViewTotal selectRunByUserno(String keyword) {
         return runMapper.selectRunByUserno(keyword);
     }
+
+    @Override
+    public Integer getPageAll(String keyword) {
+        if (null == keyword || "".equals(keyword)) {
+            return 0;
+        }
+        return userMapper.selectByKeywordPage("%" + keyword + "%", 0, Integer.MAX_VALUE).size();
+    }
+
+    @Override
+    public Integer getPageDetails(String keyword) {
+        if (null == keyword || "".equals(keyword)) {
+            return 0;
+        }
+        return runMapper.selectRunsByUserNoPage(keyword, 0, Integer.MAX_VALUE).size() + 1;
+    }
 }

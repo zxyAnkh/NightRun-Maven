@@ -15,4 +15,8 @@ public interface SearchService {
     List<ViewRun> selectRunsByUserno(String keyword, int start, int size);
 
     ViewTotal selectRunByUserno(String keyword);
+
+    Integer getPageAll(String keyword);
+
+    Integer getPageDetails(String keyword);
 }

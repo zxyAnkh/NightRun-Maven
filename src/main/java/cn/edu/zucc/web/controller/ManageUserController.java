@@ -45,10 +45,10 @@ public class ManageUserController {
     @RequestMapping(value = "/admin/userAdd", method = RequestMethod.POST)
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.USER_CREATE)
-    public ModelAndView userAdd(UserForm userForm) {
+    @ResponseBody
+    public Integer userAdd(@RequestBody UserForm userForm) {
         logger.info("Receive add user request, user = " + userForm.toString());
-        managerUserService.insertUser(userForm);
-        return new ModelAndView(new RedirectView("users?page=1"));
+        return managerUserService.insertUser(userForm) ? 1 : 0;
     }
 
     @RequestMapping(value = "/admin/usersAdd", method = RequestMethod.GET)

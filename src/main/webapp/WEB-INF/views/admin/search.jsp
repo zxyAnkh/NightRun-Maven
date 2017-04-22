@@ -27,6 +27,7 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>app/js/page.js"></script>
+    <script type="text/javascript" src="<%=basePath%>app/js/bootstrap-paginator.js"></script>
 </head>
 <body onload="searchType()">
 <%@include file="head.jsp" %>
@@ -132,23 +133,13 @@
                     </tbody>
                 </table>
             </c:if>
-            <c:if test="${searchDetailsTotal == null}"><div class="alert alert-danger hidden" role="alert" id="noresult">没有相关搜索结果</div></c:if>
+            <c:if test="${searchDetailsTotal == null}">
+                <div class="alert alert-danger hidden" role="alert" id="noresult">没有相关搜索结果</div>
+            </c:if>
         </div>
-        <nav>
-            <ul class="pagination">
-                <li><a href="/ntr/admin/main?page=1">&laquo;</a></li>
-                <li><a href="/ntr/admin/main?page=1">1</a></li>
-                <li><a href="/ntr/admin/main?page=2">2</a></li>
-                <li><a href="/ntr/admin/main?page=3">3</a></li>
-                <li><a href="/ntr/admin/main?page=4">4</a></li>
-                <li><a href="/ntr/admin/main?page=5">5</a></li>
-                <div class="form-group">
-                    <input id="pageinput" type="text" class="form-control" placeholder=""
-                           onkeydown="if(event.keyCode == 13) page()">
-                </div>
-            </ul>
-        </nav>
-        <div class="span2"></div>
+        <div id="navigator">
+            <ul id="pagenav"></ul>
+        </div>
     </div>
 </div>
 </body>

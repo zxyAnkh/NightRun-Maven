@@ -16,7 +16,7 @@
 <head>
     <base href="<%=basePath%>">
     <title>城院夜跑系统</title>
-    <meta charset="utf-8">
+    <meta content="text/html; charset=UTF-8" charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -27,6 +27,27 @@
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<%=basePath%>app/js/useradd.js"></script>
+    <script type="text/javascript">
+        function addUser() {
+            var no = document.getElementById("userno").value;
+            var name = document.getElementById("username").value;
+            var data = {userno: no, username: name};
+            $.ajax({
+                type: "POST",
+                url: "/ntr/admin/userAdd",
+                data: JSON.stringify(data),
+                contentType: 'application/json;charset=UTF-8',
+                success: function (data) {
+                    console.log(data);
+                    if (data === 1) {
+                        window.location.href = "/ntr/admin/userAll?page=1";
+                    } else {
+                        alert("添加失败")
+                    }
+                }
+            });
+        }
+    </script>
 </head>
 <body>
 <%@include file="head.jsp" %>
@@ -43,7 +64,8 @@
                                     <div class="form-group">
                                         <label for="userno" class="col-sm-2 control-label">用户编号</label>
                                         <div class="col-sm-10">
-                                            <input type="text" class="form-control" name="userno" id="userno" placeholder="请输入用户编号" onchange="check()"/>
+                                            <input type="text" class="form-control" name="userno" id="userno"
+                                                   placeholder="请输入用户编号"/>
                                             <SPAN id="userno_notice" class="hidden"></SPAN>
                                         </div>
                                     </div>
@@ -51,13 +73,15 @@
                                         <label for="username" class="col-sm-2 control-label">用户姓名</label>
                                         <div class="col-sm-10">
                                             <input type="text" class="form-control" name="username" id="username"
-                                                   onchange="check()" placeholder="请输入用户姓名"/>
+                                                   placeholder="请输入用户姓名"/>
                                             <SPAN id="username_notice" class="hidden"></SPAN>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" class="btn btn-primary disabled" id="submit">确认添加</button>
+                                            <button type="button" class="btn btn-primary" id="submit"
+                                                    onclick="addUser()">确认添加
+                                            </button>
                                         </div>
                                     </div>
                                 </form>

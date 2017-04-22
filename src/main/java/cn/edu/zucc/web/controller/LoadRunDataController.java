@@ -41,7 +41,7 @@ public class LoadRunDataController {
         return new ModelAndView("admin/main");
     }
 
-    @RequestMapping(value = "/admin/getRunPage")
+    @RequestMapping(value = "/admin/getRunPage", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)
     public
     @ResponseBody

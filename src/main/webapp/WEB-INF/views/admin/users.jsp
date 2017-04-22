@@ -15,18 +15,23 @@
 <script>
     function pagenavigator(){
         $.ajax({
-            type: "POST",
+            type: "GET",
             url: '/ntr/admin/getUsersPage',
             contentType:"application/json;charset=UTF-8",
             success:function(data){
+                var url = window.location.href;
+                var currPage = url.substring(url.indexOf('?') + 1).substring(url.substring(url.indexOf('?') + 1).indexOf('=') + 1);
                 data = JSON.parse(data);
                 var page = data['page'];
-                var pagenav = $("#pagenav");
-                for(var i = 1; i <= page;i++){
-                    var li = '<li><a href="/ntr/admin/users?page='+i+'">'+i+'</a></li>';
-                    pagenav.append(li);
-                }
-                pagenav.append('<div class="form-group"><input id="pageinput" type="text" class="form-control" placeholder="" onkeydown="if(event.keyCode == 13) page()"></div>');
+                var options = {
+                    currentPage: currPage,
+                    totalPages: page,
+                    numberOfPages: 5,
+                    pageUrl: function (type, page, current) {
+                        return "/ntr/admin/users?page=" + page;
+                    }
+                };
+                $('#navigator').bootstrapPaginator(options);
             }
         });
     }
@@ -50,6 +55,7 @@
     <script src="<%=basePath%>app/js/select.js" type="text/javascript"></script>
     <script src="<%=basePath%>app/js/dArUsers.js" type="text/javascript"></script>
     <script type="text/javascript" src="<%=basePath%>app/js/page.js"></script>
+    <script type="text/javascript" src="<%=basePath%>app/js/bootstrap-paginator.js"></script>
 </head>
 <body onload="pagenavigator()">
 <%@include file="head.jsp"%>
@@ -71,15 +77,19 @@
                 <td name="item">${user.userno}</td>
                 <td>${user.username}</td>
                 <td>${user.usergrade}</td>
-                <td><c:if test="${user.userbranch == 1}">计算</c:if></td>
+                <td><c:if test="${user.userbranch == 1}">计算</c:if>
+                    <c:if test="${user.userbranch == 4}">医学</c:if>
+                    <c:if test="${user.userbranch == 9}">法学</c:if></td>
             </tr>
         </c:forEach>
         </tbody>
     </table>
-    <nav>
-        <ul class="pagination" id="pagenav">
-        </ul>
-    </nav>
+    <div class="span2" id="navigator">
+        <nav>
+            <ul class="pagination" id="pagenav">
+            </ul>
+        </nav>
+    </div>
 </div>
 </body>
 </html>

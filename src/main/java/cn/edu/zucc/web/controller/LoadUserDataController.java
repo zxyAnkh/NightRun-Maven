@@ -54,7 +54,7 @@ public class LoadUserDataController {
         return new ModelAndView("admin/usersAll");
     }
 
-    @RequestMapping("/admin/getUsersPage")
+    @RequestMapping(value = "/admin/getUsersPage", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)
     public
     @ResponseBody
@@ -71,7 +71,7 @@ public class LoadUserDataController {
         return "{\"page\":" + page + "}";
     }
 
-    @RequestMapping("/admin/getUsersAllPage")
+    @RequestMapping(value = "/admin/getUsersAllPage", method = RequestMethod.GET)
     @RequiresRoles(value = RoleSign.ADMIN)
     public
     @ResponseBody

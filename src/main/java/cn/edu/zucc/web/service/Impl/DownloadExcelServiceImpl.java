@@ -20,9 +20,10 @@ public class DownloadExcelServiceImpl implements DownloadExcelService {
         List<String> result = new ArrayList<String>();
         if (file.exists()) {
             String[] files = file.list();
-            if (files != null && files.length != 0) {
+            if (files != null && files.length >= start) {
                 for (int i = start; i < start + offset && i < files.length; i++) {
-                    if (files[i] != null && !"".equals(files[i])) {
+                    if (files[i] != null && !"".equals(files[i]) && ".xls".equalsIgnoreCase(
+                            files[i].substring(files[i].lastIndexOf('.'), files[i].lastIndexOf('.') + 4))) {
                         result.add(files[i]);
                     } else {
                         break;
@@ -37,6 +38,18 @@ public class DownloadExcelServiceImpl implements DownloadExcelService {
     public String getFilePath(String name) {
         String path = getPath();
         return path + name;
+    }
+
+    @Override
+    public Integer getPage() {
+        String path = getPath();
+        File file = new File(path);
+        int page = 0;
+        if (file.exists()) {
+            String[] files = file.list();
+            page = files.length;
+        }
+        return page;
     }
 
     private String getPath() {
