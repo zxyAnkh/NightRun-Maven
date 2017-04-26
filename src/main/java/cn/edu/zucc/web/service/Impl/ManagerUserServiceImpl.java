@@ -26,6 +26,7 @@ public class ManagerUserServiceImpl implements ManagerUserService {
         if (u != null) {
             return false;
         }
+        u = new User();
         u.setUserno(user.getUserno());
         u.setUsername(user.getUsername());
         u.setUserbranch(String.valueOf(user.getUserno().charAt(4)));

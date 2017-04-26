@@ -25,7 +25,7 @@
     <script type="text/javascript" src="<%=basePath%>app/js/jquery-2.2.4.min.js"></script>
     <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
     <script src="http://cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="<%=basePath%>app/js/modifyInfo.js" type="text/javascript"></script>
+    <%--<script src="<%=basePath%>app/js/modifyInfo.js" type="text/javascript"></script>--%>
 </head>
 <body>
 <%@include file="head.jsp" %>
@@ -69,12 +69,9 @@
                                             <input type="password" class="form-control" name="newpassword2" id="newpassword2"/>
                                         </div>
                                     </div>
-                                    <script type="text/javascript">
-                                        check();
-                                    </script>
                                     <div class="form-group">
                                         <div class="col-sm-offset-2 col-sm-10">
-                                            <button type="submit" class="btn btn-primary disabled" id="submit">确认修改</button>
+                                            <button type="submit" class="btn btn-primary" id="submit">确认修改</button>
                                         </div>
                                     </div>
                                 </form>

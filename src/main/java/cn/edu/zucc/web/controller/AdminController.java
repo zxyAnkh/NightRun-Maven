@@ -54,11 +54,11 @@ public class AdminController {
      * @param userInfoForm 用户个人信息表单
      * @return
      */
-    @RequestMapping(value = "/info", method = {RequestMethod.POST, RequestMethod.GET})
+    @RequestMapping(value = "/info", method = {RequestMethod.POST})
     @RequiresRoles(value = RoleSign.ADMIN)
     @RequiresPermissions(value = PermissionSign.ADMIN_UPDATE)
     public String updateInfo(Model model, HttpSession httpSession, UserInfoForm userInfoForm) {
-        logger.info("/admin/info");
+        logger.info("/admin/info: " + userInfoForm.toString());
         User user = (User) httpSession.getAttribute("userInfo");
         try {
             if (userInfoForm.getOldpassword() != null && PasswordHash.validatePassword(userInfoForm.getOldpassword(), user.getPassword())) {
@@ -75,6 +75,13 @@ public class AdminController {
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
         }
+        return "admin/info";
+    }
+
+    @RequestMapping(value = "/info", method = {RequestMethod.GET})
+    @RequiresRoles(value = RoleSign.ADMIN)
+    @RequiresPermissions(value = PermissionSign.ADMIN_UPDATE)
+    public String updateInfo() {
         return "admin/info";
     }
 

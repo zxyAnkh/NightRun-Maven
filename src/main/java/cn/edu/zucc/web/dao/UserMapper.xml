@@ -66,7 +66,7 @@
   </select>
     <!-- 根据用户名查询用户 -->
     <select id="selectByUserno" parameterType="java.lang.String" resultMap="BaseResultMap">
-        select id, userno, username, userbranch, usergrade, phoneuid
+        select id, userno, password, username, userbranch, usergrade, phoneuid
         from user
         where userno = #{record.userno}
     </select>
